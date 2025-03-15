@@ -1,12 +1,7 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
-
-import IndexView from '~/index.vue'
-
-const routes = [
-  { path: '/', component: IndexView },
-]
-
-export const router = createRouter({
-  history: createMemoryHistory(),
-  routes,
+import { createRouter, createWebHistory } from 'vue-router'
+import { routes } from 'vue-router/auto-routes'
+const router = createRouter({
+  history: createWebHistory(),
+  routes
 })
+export default router
