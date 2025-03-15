@@ -3,7 +3,7 @@ import vue from "@vitejs/plugin-vue";
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import tailwindcss from '@tailwindcss/vite'
-import path from 'path'
+import { resolve } from 'path'
 
 
 const host = process.env.TAURI_DEV_HOST;
@@ -46,8 +46,8 @@ export default defineConfig(async () => ({
   },
   resolve: {
     alias: {
-      '@': path.resolve(import.meta.url, './src'),
-      '~': path.resolve(import.meta.url, './src/pages'),
+      '@': resolve('src'),
+      '~': resolve('src/pages'),
     },
   },
 }));
