@@ -1,7 +1,7 @@
 import { Store } from '@tauri-apps/plugin-store';
 
-export const useStore = async () => {
-    const store = await Store.load('.messages.dat');
+export const useStore = async (fileName: string) => {
+    const store = await Store.load(fileName);
     return {
         get: async <T>(key: string): Promise<T | null> => {
             const value = await store.get<T>(key);
