@@ -1,12 +1,10 @@
 <template>
   <div class="container">
-    <h1>Tauri + Vue + Pinia Persistence Demo</h1>
-    <MessageList />
+    <h1>hello world !</h1>
   </div>
 </template>
 
 <script setup>
-import MessageList from '../components/MessageList.vue';
 </script>
 
 <style scoped>
