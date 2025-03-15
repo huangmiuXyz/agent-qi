@@ -1,17 +1,30 @@
 <template>
-  <div v-for="item in menus" :key="item.id" class="w-full h-full">
-    <Button>{{ item.name }}</Button>
+  <div
+    v-for="item in menus"
+    :key="item.key"
+    class="flex justify-center w-full h-full"
+  >
+    <Button
+      @click="handleClick(item)"
+      :iconName="item.icon"
+      shape="circle"
+    ></Button>
   </div>
 </template>
 
 <script setup lang="ts">
-const menus = [
+const menus: MenuList = [
   {
-    id: 1,
-    name: "小说",
-    path: "/",
+    key: "1",
+    label: "小说",
+    path: "/Sections",
+    icon: "ReadOutlined",
   },
 ];
+const router = useRouter();
+const handleClick = (item: MenuItem) => {
+  router.push(item.path);
+};
 </script>
 
 <style scoped></style>

@@ -1,5 +1,7 @@
 <template>
-  <div class="w-13 rounded-tl-xl rounded-bl-xl max-sm:hidden">
+  <div
+    class="box-border p-2 w-13 rounded-tl-xl rounded-bl-xl max-sm:hidden bg-sidebar"
+  >
     <Menus />
   </div>
 </template>

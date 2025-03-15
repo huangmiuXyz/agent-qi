@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import "./index.css";
-</script>
+<script setup lang="ts"></script>
 <template>
   <layout>
     <router-view />
