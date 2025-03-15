@@ -13,7 +13,7 @@ export default defineConfig(async () => ({
   plugins: [
     vue(),
     AutoImport({
-      imports: ['vue'],
+      imports: ['vue', 'vue-router'],
       dts: 'src/types/auto-imports.d.ts',
     }),
     Components({
