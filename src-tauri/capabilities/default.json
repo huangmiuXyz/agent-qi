@@ -5,9 +5,6 @@
   "windows": ["main"],
   "permissions": [
     "core:default",
-    "opener:default",
-    "store:default",
-    "store:allow-load",
-    "store:allow-save"
+    "opener:default"
   ]
 }

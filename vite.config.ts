@@ -18,7 +18,7 @@ export default defineConfig(async () => ({
     AutoImport({
       imports: ['vue', 'vue-router'],
       dts: 'src/types/auto-imports.d.ts',
-      dirs: ['src/store', 'src/hooks'],
+      dirs: ['src/store'],
     }),
     Components({
       dirs: ['src/components'],
@@ -38,10 +38,10 @@ export default defineConfig(async () => ({
     host: host || false,
     hmr: host
       ? {
-        protocol: "ws",
-        host,
-        port: 1421,
-      }
+          protocol: "ws",
+          host,
+          port: 1421,
+        }
       : undefined,
     watch: {
       // 3. tell vite to ignore watching `src-tauri`
