@@ -5,9 +5,7 @@ interface StoreRecord {
   state: any;
 }
 
-// 定义数据库类
 export class AppDatabase extends Dexie {
-  // 定义存储表
   storeStates!: Dexie.Table<StoreRecord, string>;
 
   constructor() {
@@ -17,7 +15,6 @@ export class AppDatabase extends Dexie {
     });
   }
 
-  // 保存状态
   async saveState(storeId: string, state: any): Promise<void> {
     try {
       const record: StoreRecord = {
@@ -32,7 +29,6 @@ export class AppDatabase extends Dexie {
     }
   }
 
-  // 加载状态
   async loadState(storeId: string): Promise<any | null> {
     try {
       const record = await this.storeStates.get(storeId);
@@ -43,7 +39,6 @@ export class AppDatabase extends Dexie {
     }
   }
 
-  // 删除状态
   async removeState(storeId: string): Promise<void> {
     try {
       await this.storeStates.delete(storeId);
@@ -52,7 +47,6 @@ export class AppDatabase extends Dexie {
     }
   }
 
-  // 清除所有状态
   async clearAllStates(): Promise<void> {
     try {
       await this.storeStates.clear();
@@ -62,5 +56,4 @@ export class AppDatabase extends Dexie {
   }
 }
 
-// 创建数据库实例
 export const db = new AppDatabase();

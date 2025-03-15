@@ -31,25 +31,15 @@ export function createPersistPlugin(pluginOptions: Partial<PersistOptions> = {})
 
     const filterState = (state: any) => {
       const serializedState = serialize(state);
+      const { include, exclude } = persistOptions;
 
-      if (persistOptions.include?.length) {
-        return Object.fromEntries(
-          Object.entries(serializedState).filter(([key]) =>
-            persistOptions.include!.includes(key)
-          )
-        );
-      }
-
-      if (persistOptions.exclude?.length) {
-        return Object.fromEntries(
-          Object.entries(serializedState).filter(([key]) =>
-            !persistOptions.exclude!.includes(key)
-          )
-        );
-      }
-
-      return serializedState;
+      return Object.fromEntries(
+        Object.entries(serializedState).filter(([key]) =>
+          include?.length ? include.includes(key) : !exclude?.includes(key)
+        )
+      );
     };
+
 
     const initializeStore = async () => {
       try {
