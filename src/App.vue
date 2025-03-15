@@ -1,6 +1,9 @@
 <script setup lang="ts">
-  import './index.css'
+  import { Suspense } from 'vue';
+import './index.css'
 </script>
 <template>
+ <Suspense>
   <router-view />
+ </Suspense>
 </template>
