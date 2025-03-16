@@ -1,9 +1,5 @@
 <template>
-  <editor-content
-    id="rich-editor"
-    class="h-full overflow-auto"
-    :editor="editor"
-  />
+  <editor-content id="rich-editor" class="h-full" :editor="editor" />
 </template>
 
 <script setup lang="ts">
@@ -36,5 +32,13 @@ watch(
   outline: none !important;
   caret-color: var(--color-caret);
   height: 100%;
+  min-height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  &::selection {
+    background-color: var(--color-bg-selection-richEditor);
+    color: var(--color-textColor-selection-richEditor);
+  }
 }
 </style>

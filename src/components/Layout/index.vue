@@ -4,7 +4,9 @@
     <sider-bar />
     <div class="flex flex-col flex-1">
       <title-bar />
-      <div class="flex-1 bg-pages rounded-tl-2xl flex">
+      <div
+        class="max-sm:p-0 flex-1 bg-pages rounded-tl-2xl flex justify-center p-3 pb-0"
+      >
         <slot />
       </div>
     </div>
@@ -13,4 +15,4 @@
 
 <script setup lang="ts"></script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
