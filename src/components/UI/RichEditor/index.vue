@@ -9,27 +9,24 @@ import Paragraph from "@tiptap/extension-paragraph";
 import Text from "@tiptap/extension-text";
 
 const modelValue = defineModel<string>({ default: "" });
+
 const editor = useEditor({
   content: modelValue.value,
   extensions: [Document, Paragraph, Text],
   editable: true,
   injectCSS: false,
   onUpdate: ({ editor }) => {
-    modelValue.value = editor.getText();
+    const newText = editor.getText();
+    if (newText !== modelValue.value) {
+      modelValue.value = newText;
+    }
   },
 });
 
-watch(
-  modelValue,
-  (newContent) => {
-    if (editor.value && editor.value.getText() !== newContent) {
-      editor.value.commands.setContent(newContent);
-    }
-  },
-  { immediate: true }
-);
-onMounted(() => {
-  editor.value?.commands.setContent(modelValue.value);
+watch(modelValue, (newContent) => {
+  if (editor.value && editor.value.getText() !== newContent) {
+    editor.value.commands.setContent(newContent, false); // `false` 避免历史记录变更
+  }
 });
 </script>
 
@@ -46,12 +43,9 @@ onMounted(() => {
   word-break: break-word;
   font-family: inherit;
 }
-.ProseMirror ::selection {
-  background-color: var(--color-bg-selection-richEditor);
-  color: var(--color-textColor-selection-richEditor);
-}
-/* 禁用粘贴时的富文本格式 */
+
 .ProseMirror p {
   margin: 0;
+  line-height: 1.8;
 }
 </style>
