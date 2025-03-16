@@ -51,11 +51,11 @@ watch(modelValue, (newContent) => {
   white-space: pre-wrap;
   word-break: break-word;
   font-family: inherit;
+  width: 100%;
 }
 
 .ProseMirror p {
   margin: 0;
-  line-height: 1.8;
 }
 
 .ProseMirror p.is-editor-empty:first-child::before {

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="tiptap-container bg-rich-editor overflow-auto max-w-200 flex-1 max-sm:w-full p-20"
+    class="tiptap-container bg-rich-editor overflow-auto max-w-200 flex-1 max-sm:w-full p-20 max-sm:px-5 max-sm:pt-10"
   >
     <RichEditor
       v-model="title"
@@ -8,7 +8,11 @@
       class="title-input w-full bg-transparent outline-none"
     />
     <div class="divider mb-4"></div>
-    <RichEditor class="flex-1" placeholder="请输入内容..." v-model="content" />
+    <RichEditor
+      class="flex-1 flex"
+      placeholder="请输入内容..."
+      v-model="content"
+    />
   </div>
 </template>
 
