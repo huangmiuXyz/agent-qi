@@ -6,7 +6,7 @@ declare global {
         "createFromIconfontCN" | "getTwoToneColor" | "setTwoToneColor" | "default"
     >;
     interface MenuItem {
-        key: string;
+        key: number;
         label: string;
         icon: IconType;
         path: string;
