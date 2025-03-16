@@ -2,7 +2,7 @@
   <div
     v-for="item in menus"
     :key="item.key"
-    class="flex justify-center w-full h-full"
+    class="flex justify-center w-full mt-5"
   >
     <Button
       @click="handleClick(item)"
