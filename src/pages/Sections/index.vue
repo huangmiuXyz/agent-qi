@@ -1,6 +1,6 @@
 <template>
   <div
-    class="tiptap-container bg-rich-editor overflow-auto max-w-200 flex-1 max-sm:w-full p-20 max-sm:px-5 max-sm:pt-10"
+    class="tiptap-container bg-rich-editor overflow-auto max-w-200 flex-1 max-sm:w-full max-sm:h-full p-20 max-sm:px-5 max-sm:pt-10"
   >
     <RichEditor
       v-model="title"
@@ -27,9 +27,13 @@ const content = ref("");
   flex-direction: column;
   border-radius: 12px 12px 0 0;
   box-shadow: 0 1px 40px rgba(0, 0, 0, 0.04);
-  height: calc(100vh - 3.6rem);
+  height: calc(100vh - 3.4rem);
 }
-
+@media (max-width: 640px) {
+  .tiptap-container {
+    height: 100% !important;
+  }
+}
 .title-input {
   border: none;
   font-size: 20px;

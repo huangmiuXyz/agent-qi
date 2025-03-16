@@ -56,6 +56,7 @@ watch(modelValue, (newContent) => {
 
 .ProseMirror p {
   margin: 0;
+  line-height: 1.5;
 }
 
 .ProseMirror p.is-editor-empty:first-child::before {
