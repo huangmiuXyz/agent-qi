@@ -64,7 +64,10 @@ watch(modelValue, (newContent) => {
 .ProseMirror p {
   line-height: v-bind(lineHeight);
 }
-
+.ProseMirror ::selection {
+  background: var(--color-bg-selection-richEditor);
+  color: var(--color-text-selection-richEditor);
+}
 .ProseMirror p.is-editor-empty:first-child::before {
   color: var(--color-text-placeholder);
   content: attr(data-placeholder);
