@@ -4,6 +4,7 @@ html,
 body,
 #app {
   @apply w-full h-full;
+  overscroll-behavior: none;
 }
 
 @theme {
@@ -12,6 +13,8 @@ body,
   --color-rich-editor: #fff;
   --color-title-bar: #fff;
   --color-caret: unset;
+  --color-bg-selection-richEditor: #b6d1f6;
+  --color-textColor-selection-richEditor: #000;
 }
 .ant-btn-icon-only {
   display: flex;
