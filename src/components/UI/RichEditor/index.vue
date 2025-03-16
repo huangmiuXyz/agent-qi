@@ -1,5 +1,5 @@
 <template>
-  <editor-content id="rich-editor" class="h-full" :editor="editor" />
+  <editor-content id="rich-editor" :editor="editor" />
 </template>
 
 <script setup lang="ts">
@@ -7,12 +7,22 @@ import { useEditor, EditorContent } from "@tiptap/vue-3";
 import Document from "@tiptap/extension-document";
 import Paragraph from "@tiptap/extension-paragraph";
 import Text from "@tiptap/extension-text";
-
+import Placeholder from "@tiptap/extension-placeholder";
+const props = defineProps<{
+  placeholder?: string;
+}>();
 const modelValue = defineModel<string>({ default: "" });
 
 const editor = useEditor({
   content: modelValue.value,
-  extensions: [Document, Paragraph, Text],
+  extensions: [
+    Document,
+    Paragraph,
+    Text,
+    Placeholder.configure({
+      placeholder: props.placeholder || "开始输入...",
+    }),
+  ],
   editable: true,
   injectCSS: false,
   onUpdate: ({ editor }) => {
@@ -21,6 +31,7 @@ const editor = useEditor({
       modelValue.value = newText;
     }
   },
+  autofocus: true,
 });
 
 watch(modelValue, (newContent) => {
@@ -28,17 +39,12 @@ watch(modelValue, (newContent) => {
     editor.value.commands.setContent(newContent, false);
   }
 });
-onMounted(() => {
-  editor.value?.commands.focus();
-});
 </script>
 
 <style>
 .ProseMirror {
   outline: none !important;
   caret-color: var(--color-caret);
-  height: 100%;
-  min-height: 100%;
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -50,5 +56,13 @@ onMounted(() => {
 .ProseMirror p {
   margin: 0;
   line-height: 1.8;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: var(--color-text-placeholder);
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
 }
 </style>

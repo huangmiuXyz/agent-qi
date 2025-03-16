@@ -15,9 +15,15 @@ body,
   --color-caret: unset;
   --color-bg-selection-richEditor: #b6d1f6;
   --color-textColor-selection-richEditor: #000;
+  --color-text-placeholder: #adb5bd;
 }
 .ant-btn-icon-only {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* 禁用首字母自动大写 */
+input, textarea {
+  text-transform: none;
 }
