@@ -27,7 +27,7 @@ watch(
 );
 </script>
 
-<style lang="scss">
+<style>
 .ProseMirror {
   outline: none !important;
   caret-color: var(--color-caret);
@@ -36,9 +36,9 @@ watch(
   overflow: auto;
   display: flex;
   flex-direction: column;
-  &::selection {
-    background-color: var(--color-bg-selection-richEditor);
-    color: var(--color-textColor-selection-richEditor);
-  }
+}
+.ProseMirror ::selection {
+  background-color: var(--color-bg-selection-richEditor);
+  color: var(--color-textColor-selection-richEditor);
 }
 </style>
