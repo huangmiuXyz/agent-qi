@@ -10,9 +10,10 @@ import Text from "@tiptap/extension-text";
 import Placeholder from "@tiptap/extension-placeholder";
 const props = defineProps<{
   placeholder?: string;
+  disableEnter?: boolean;
 }>();
 const modelValue = defineModel<string>({ default: "" });
-
+const lineHeight = ref(1.5);
 const editor = useEditor({
   content: modelValue.value,
   extensions: [
@@ -26,7 +27,13 @@ const editor = useEditor({
   editable: true,
   injectCSS: false,
   onUpdate: ({ editor }) => {
-    const newText = editor.getText();
+    let newText = editor.getText();
+    if (props.disableEnter) {
+      newText = newText.replace(/\n/g, "");
+      if (newText !== editor.getText()) {
+        editor.commands.setContent(newText);
+      }
+    }
     if (newText !== modelValue.value) {
       modelValue.value = newText;
     }
@@ -55,8 +62,7 @@ watch(modelValue, (newContent) => {
 }
 
 .ProseMirror p {
-  margin: 0;
-  line-height: 1.5;
+  line-height: v-bind(lineHeight);
 }
 
 .ProseMirror p.is-editor-empty:first-child::before {

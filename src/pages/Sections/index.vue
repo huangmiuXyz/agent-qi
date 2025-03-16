@@ -6,6 +6,7 @@
       v-model="title"
       placeholder="请输入标题..."
       class="title-input w-full bg-transparent outline-none"
+      :disableEnter="true"
     />
     <div class="divider mb-4"></div>
     <RichEditor
@@ -31,7 +32,10 @@ const content = ref("");
 }
 @media (max-width: 640px) {
   .tiptap-container {
-    height: 100% !important;
+    height: calc(100vh - 2.6rem);
+    border-radius: 0;
+    box-shadow: none;
+    padding-top: 0;
   }
 }
 .title-input {
