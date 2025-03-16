@@ -1,7 +1,7 @@
 <template>
-  <div class="p-2 flex justify-center">
-    <div class="bg-rich-editor tiptap-container flex-none w-[800px]">
-      <div class="p-4">
+  <div class="p-2 flex justify-center flex-1">
+    <div class="bg-rich-editor tiptap-container flex-none w-[800px] h-full">
+      <div class="p-4 h-full">
         <RichEditor />
       </div>
     </div>

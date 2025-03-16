@@ -4,7 +4,7 @@
     <sider-bar />
     <div class="flex flex-col flex-1">
       <title-bar />
-      <div class="flex-1 bg-pages rounded-tl-2xl">
+      <div class="flex-1 bg-pages rounded-tl-2xl flex">
         <slot />
       </div>
     </div>
