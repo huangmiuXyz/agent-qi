@@ -7,7 +7,11 @@ body,
 }
 
 @theme {
-  --color-sidebar: #f5f5f5;
+  --color-sidebar: #fff;
+  --color-pages: #f5f5f3;
+  --color-rich-editor: #fff;
+  --color-title-bar: #fff;
+  --color-caret: unset;
 }
 .ant-btn-icon-only {
   display: flex;

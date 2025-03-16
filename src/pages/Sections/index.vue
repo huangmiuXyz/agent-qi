@@ -1,7 +1,20 @@
 <template>
-  <div></div>
+  <div class="p-2 flex justify-center">
+    <div class="bg-rich-editor tiptap-container flex-none w-[800px]">
+      <div class="p-4">
+        <RichEditor />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup></script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.tiptap-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  box-shadow: 0 1px 40px rgba(0, 0, 0, 0.04);
+}
+</style>
