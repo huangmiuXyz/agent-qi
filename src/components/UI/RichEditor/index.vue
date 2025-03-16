@@ -25,8 +25,11 @@ const editor = useEditor({
 
 watch(modelValue, (newContent) => {
   if (editor.value && editor.value.getText() !== newContent) {
-    editor.value.commands.setContent(newContent, false); // `false` 避免历史记录变更
+    editor.value.commands.setContent(newContent, false);
   }
+});
+onMounted(() => {
+  editor.value?.commands.focus();
 });
 </script>
 
