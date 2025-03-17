@@ -16,6 +16,7 @@ body,
   --color-bg-selection-richEditor: #b6d1f6;
   --color-textColor-selection-richEditor: #000;
   --color-text-placeholder: #adb5bd;
+  --shadow-paper: 0 1px 40px rgba(0, 0, 0, 0.04);
 }
 .ant-btn-icon-only {
   display: flex;
