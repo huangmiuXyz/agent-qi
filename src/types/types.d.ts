@@ -9,7 +9,7 @@ declare global {
         key: number;
         label: string;
         icon: IconType;
-        path: string;
+        path?: string;
         position?: "bottom"
     }
 

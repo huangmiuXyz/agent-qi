@@ -29,7 +29,6 @@ const menus: MenuList = [
   {
     key: 2,
     label: "设置",
-    path: "/Settings",
     icon: "SettingOutlined",
     position: "bottom",
   },
@@ -37,6 +36,7 @@ const menus: MenuList = [
 const router = useRouter();
 const activeMenu = ref(1);
 const handleClick = (item: MenuItem) => {
+  if (!item.path) return;
   activeMenu.value = item.key;
   router.push(item.path);
 };
