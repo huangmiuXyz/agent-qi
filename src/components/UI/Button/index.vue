@@ -4,8 +4,7 @@
 
 <script setup lang="ts">
 import { h, computed } from "vue";
-import * as Icons from "@ant-design/icons-vue";
-
+const Icons: Record<string, any> = {};
 const props = defineProps<{
   iconName: IconType;
 }>();

@@ -9,6 +9,9 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AButton: typeof import('ant-design-vue/es')['Button']
+    AForm: typeof import('ant-design-vue/es')['Form']
+    AFormItem: typeof import('ant-design-vue/es')['FormItem']
+    AInput: typeof import('ant-design-vue/es')['Input']
     AModal: typeof import('ant-design-vue/es')['Modal']
     Button: typeof import('./../components/UI/Button/index.vue')['default']
     Layout: typeof import('./../components/Layout/index.vue')['default']

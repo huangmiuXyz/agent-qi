@@ -1,10 +1,6 @@
-import * as Icons from '@ant-design/icons-vue'
 
 declare global {
-    type IconType = Exclude<
-        keyof typeof Icons,
-        "createFromIconfontCN" | "getTwoToneColor" | "setTwoToneColor" | "default"
-    >;
+    type IconType = string
     interface MenuItem {
         key: number;
         label: string;

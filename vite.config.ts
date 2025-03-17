@@ -5,7 +5,6 @@ import Components from 'unplugin-vue-components/vite';
 import tailwindcss from '@tailwindcss/vite'
 import { resolve } from 'path'
 import VueRouter from 'unplugin-vue-router/vite'
-import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 
 
 const host = process.env.TAURI_DEV_HOST;
@@ -23,7 +22,7 @@ export default defineConfig(async () => ({
     Components({
       dirs: ['src/components'],
       dts: 'src/types/components.d.ts',
-      resolvers: [AntDesignVueResolver({ importStyle: 'css-in-js', })],
+      resolvers: [],
     }),
     tailwindcss(),
   ],
