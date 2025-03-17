@@ -32,7 +32,8 @@
 </template>
 
 <script setup lang="ts">
-import Settings from "@/components/Action/Settings/index.vue";
+import { useCustomModal } from "@/hooks/useCustomModal";
+
 const topMenus = computed(() =>
   menus.filter((item) => item.position !== "bottom")
 );
@@ -40,6 +41,7 @@ const bottomMenus = computed(() =>
   menus.filter((item) => item.position === "bottom")
 );
 
+const { openModal } = useCustomModal();
 const menus: MenuList = [
   {
     key: 1,
@@ -53,7 +55,11 @@ const menus: MenuList = [
     icon: "SettingOutlined",
     position: "bottom",
     onClick: () => {
-      useCustomModal(Settings).openModal();
+      openModal({
+        title: "设置",
+        content: "设置面板内容",
+        maskClosable: true,
+      });
     },
   },
 ];

@@ -1,8 +1,9 @@
 <script setup lang="ts"></script>
+
 <template>
   <n-modal-provider>
-    <layout>
+    <Layout>
       <router-view />
-    </layout>
+    </Layout>
   </n-modal-provider>
 </template>
