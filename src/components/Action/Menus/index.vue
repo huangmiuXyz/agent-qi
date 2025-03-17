@@ -16,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+import Settings from '@/components/Action/Settings/index.vue';
 const topMenus = computed(() => menus.filter(item => item.position !== 'bottom'));
 const bottomMenus = computed(() => menus.filter(item => item.position === 'bottom'));
 
@@ -31,12 +32,18 @@ const menus: MenuList = [
     label: "设置",
     icon: "SettingOutlined",
     position: "bottom",
+    onClick: () => {
+      useModal(Settings).openModal()
+    }
   },
 ];
 const router = useRouter();
 const activeMenu = ref(1);
-const handleClick = (item: MenuItem) => {
-  if (!item.path) return;
+const handleClick = async (item: MenuItem) => {
+  if (!item.path) {
+    item.onClick?.()
+    return;
+  };
   activeMenu.value = item.key;
   router.push(item.path);
 };

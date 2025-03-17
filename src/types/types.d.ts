@@ -11,6 +11,7 @@ declare global {
         icon: IconType;
         path?: string;
         position?: "bottom"
+        onClick?: () => void;
     }
 
     type MenuList = MenuItem[]
