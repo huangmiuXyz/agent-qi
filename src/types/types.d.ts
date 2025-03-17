@@ -10,6 +10,7 @@ declare global {
         label: string;
         icon: IconType;
         path: string;
+        position?: "bottom"
     }
 
     type MenuList = MenuItem[]
