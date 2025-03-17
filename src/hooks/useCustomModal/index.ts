@@ -1,10 +1,9 @@
 import { useModal, ModalProps } from 'naive-ui'
-import { ref, h } from 'vue'
 
+const modalRef = ref()
 export const useCustomModal = () => {
+  const window = useWindowSize()
   const modal = useModal()
-  const modalRef = ref<ReturnType<typeof modal.create> | null>(null)
-
   const openModal = (options: ModalProps = {}) => {
 
     if (modalRef.value) {
@@ -17,8 +16,15 @@ export const useCustomModal = () => {
     modalRef.value = modal.create({
       content: () => h('div', null, [defaultContent]),
       preset: 'card',
-      transformOrigin: 'center',
+      transformOrigin: 'mouse',
       maskClosable: true,
+      style: {
+        width: '40vw',
+        height: '90vh',
+        overflow: 'auto',
+        borderRadius: '10px',
+      },
+      draggable: true,
       ...options,
       onClose: () => {
         closeModal()

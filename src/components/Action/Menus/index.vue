@@ -32,8 +32,8 @@
 </template>
 
 <script setup lang="ts">
-import { useCustomModal } from "@/hooks/useCustomModal";
-
+import Setting from "../Settings/index.vue";
+const { openModal } = useCustomModal();
 const topMenus = computed(() =>
   menus.filter((item) => item.position !== "bottom")
 );
@@ -41,7 +41,6 @@ const bottomMenus = computed(() =>
   menus.filter((item) => item.position === "bottom")
 );
 
-const { openModal } = useCustomModal();
 const menus: MenuList = [
   {
     key: 1,
@@ -57,7 +56,7 @@ const menus: MenuList = [
     onClick: () => {
       openModal({
         title: "设置",
-        content: "设置面板内容",
+        content: () => h(Setting),
         maskClosable: true,
       });
     },

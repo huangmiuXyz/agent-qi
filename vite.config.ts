@@ -23,7 +23,7 @@ export default defineConfig(async () => ({
         ]
       }],
       dts: 'src/types/auto-imports.d.ts',
-      dirs: ['src/store', 'src/hooks'],
+      dirs: ['src/store', 'src/hooks', 'src/utils'],
     }),
     Components({
       dirs: ['src/components'],

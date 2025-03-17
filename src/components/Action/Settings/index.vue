@@ -1,4 +1,4 @@
-<template>1</template>
+<template></template>
 
 <script setup></script>
 
