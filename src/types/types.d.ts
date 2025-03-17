@@ -1,6 +1,7 @@
 
+import antdIcon from "@vicons/antd";
 declare global {
-    type IconType = string
+    type IconType = keyof typeof antdIcon
     interface MenuItem {
         key: number;
         label: string;

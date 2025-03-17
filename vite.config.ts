@@ -5,8 +5,7 @@ import Components from 'unplugin-vue-components/vite';
 import tailwindcss from '@tailwindcss/vite'
 import { resolve } from 'path'
 import VueRouter from 'unplugin-vue-router/vite'
-
-
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 const host = process.env.TAURI_DEV_HOST;
 
 // https://vitejs.dev/config/
@@ -15,14 +14,21 @@ export default defineConfig(async () => ({
     VueRouter({}),
     vue(),
     AutoImport({
-      imports: ['vue', 'vue-router'],
+      imports: ['vue', 'vue-router', {
+        'naive-ui': [
+          'useDialog',
+          'useMessage',
+          'useNotification',
+          'useLoadingBar'
+        ]
+      }],
       dts: 'src/types/auto-imports.d.ts',
       dirs: ['src/store', 'src/hooks'],
     }),
     Components({
       dirs: ['src/components'],
       dts: 'src/types/components.d.ts',
-      resolvers: [],
+      resolvers: [NaiveUiResolver()]
     }),
     tailwindcss(),
   ],

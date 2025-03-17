@@ -1,1 +1,1 @@
-export { useModal } from './useModal/index' 
+export { useCustomModal } from './useCustomModal/index' 
