@@ -2,7 +2,6 @@ import { useModal, ModalProps } from 'naive-ui'
 
 const modalRef = ref()
 export const useCustomModal = () => {
-  const window = useWindowSize()
   const modal = useModal()
   const openModal = (options: ModalProps = {}) => {
 
