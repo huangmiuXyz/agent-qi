@@ -18,7 +18,7 @@ export default defineConfig(async () => ({
     AutoImport({
       imports: ['vue', 'vue-router'],
       dts: 'src/types/auto-imports.d.ts',
-      dirs: ['src/store'],
+      dirs: ['src/store', 'src/hooks'],
     }),
     Components({
       dirs: ['src/components'],
