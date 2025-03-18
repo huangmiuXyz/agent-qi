@@ -15,6 +15,7 @@ export const useMenus = () => {
         AIF({
             command: "openSettingModal",
             description: "打开设置弹窗",
+            name: '打开设置弹窗'
         },
             () =>
                 openModal({
