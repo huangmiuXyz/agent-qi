@@ -11,20 +11,27 @@ export const useMenus = () => {
 
     const router = useRouter();
     const activeMenu = ref(1);
-    const openSettingModal = AIF({}, () =>
-        openModal({
-            title: "设置",
-            style: {
-                width: "80vw",
-                height: "90vh",
-                overflow: "auto",
-                borderRadius: "10px",
-            },
-            width: 800,
-            height: 600,
-            content: () => h(Setting),
-            maskClosable: true,
-        }));
+    const openSettingModal =
+        AIF({
+            params: {},
+            command: "openSettingModal",
+            description: "打开设置弹窗",
+        },
+            () =>
+                openModal({
+                    title: "设置",
+                    style: {
+                        width: "50vw",
+                        minWidth: "500px",
+                        height: "90vh",
+                        overflow: "auto",
+                        borderRadius: "10px",
+                    },
+                    width: 800,
+                    height: 600,
+                    content: () => h(Setting),
+                    maskClosable: true,
+                }));
 
     const menus: MenuList = [
         {
