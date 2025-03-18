@@ -11,6 +11,7 @@ declare global {
         path?: string;
         position?: "bottom"
         onClick?: () => void;
+        description: string
     }
     type Window = {
         __TAURI_OS_PLUGIN_INTERNALS__: {

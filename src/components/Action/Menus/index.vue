@@ -8,7 +8,7 @@
       >
         <Button
           circle
-          @click="handleClick(item)"
+          @click="handleClick(item.key)"
           :iconName="item.icon"
           :quaternary="activeMenu === item.key ? false : true"
         ></Button>
@@ -22,7 +22,7 @@
       >
         <Button
           circle
-          @click="handleClick(item)"
+          @click="handleClick(item.key)"
           :iconName="item.icon"
           :quaternary="activeMenu === item.key ? false : true"
         ></Button>

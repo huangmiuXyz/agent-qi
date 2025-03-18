@@ -39,24 +39,39 @@ export const useMenus = () => {
             label: "小说",
             path: "/Sections",
             icon: "ReadOutlined",
+            description: "切换到写小说页面，可以对小说进行编辑修改",
         },
         {
             key: 2,
             label: "设置",
             icon: "SettingOutlined",
+            description: "切换到设置页面，可以对软件进行设置，修改各种参数",
             position: "bottom",
             onClick: openSettingModal,
         },
     ];
 
-    const handleClick = async (item: MenuItem) => {
+    const handleClick = AIF({
+        command: "changeMenus",
+        description: "切换菜单",
+        paramsDescription: "参数",
+        params: [{
+            type: "number",
+            description: `菜单的key只能从${JSON.stringify(menus)}中选择`
+        }],
+        name: '切换菜单'
+    }, async (key: MenuItem["key"]) => {
+        const item = menus.find((item) => item.key === key);
+        if (!item) {
+            return;
+        }
         if (!item.path) {
             item.onClick?.();
             return;
         }
         activeMenu.value = item.key;
         router.push(item.path);
-    };
+    });
     return {
         handleClick,
         bottomMenus,
