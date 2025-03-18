@@ -32,54 +32,8 @@
 </template>
 
 <script setup lang="ts">
-import Setting from "../Settings/index.vue";
-const { openModal } = useCustomModal();
-const topMenus = computed(() =>
-  menus.filter((item) => item.position !== "bottom")
-);
-const bottomMenus = computed(() =>
-  menus.filter((item) => item.position === "bottom")
-);
-
-const menus: MenuList = [
-  {
-    key: 1,
-    label: "小说",
-    path: "/Sections",
-    icon: "ReadOutlined",
-  },
-  {
-    key: 2,
-    label: "设置",
-    icon: "SettingOutlined",
-    position: "bottom",
-    onClick: () => {
-      openModal({
-        title: "设置",
-        style: {
-          width: "80vw",
-          height: "90vh",
-          overflow: "auto",
-          borderRadius: "10px",
-        },
-        width: 800,
-        height: 600,
-        content: () => h(Setting),
-        maskClosable: true,
-      });
-    },
-  },
-];
-const router = useRouter();
-const activeMenu = ref(1);
-const handleClick = async (item: MenuItem) => {
-  if (!item.path) {
-    item.onClick?.();
-    return;
-  }
-  activeMenu.value = item.key;
-  router.push(item.path);
-};
+import { useMenus } from "./index";
+const { handleClick, bottomMenus, topMenus, activeMenu } = useMenus();
 </script>
 
 <style scoped></style>
