@@ -1,7 +1,7 @@
 interface AIFOptions {
     command: string
     description: string
-    params: Record<string, any>
+    params?: Record<string, any>
 }
 export const AIFunctionMap = new Map<string, Function>()
 export const AIF = <T extends (...args: any[]) => any>(options: AIFOptions, func: T) => {

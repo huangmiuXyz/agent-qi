@@ -13,7 +13,6 @@ export const useMenus = () => {
     const activeMenu = ref(1);
     const openSettingModal =
         AIF({
-            params: {},
             command: "openSettingModal",
             description: "打开设置弹窗",
         },
