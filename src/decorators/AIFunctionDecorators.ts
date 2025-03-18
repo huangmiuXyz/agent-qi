@@ -12,7 +12,6 @@ export const AIF = <T extends (...args: any[]) => any>(options: AIFOptions, func
     }
     AIFunctionWeakMap.set({ key: options.name }, { fn, options })
     AIFunctionMap.set(options.name, options)
-    getAllAIFuntion()
     return fn
 }
 
