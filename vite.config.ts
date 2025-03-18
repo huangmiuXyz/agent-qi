@@ -26,9 +26,10 @@ export default defineConfig(async () => ({
       dirs: ['src/store', 'src/hooks', 'src/utils', 'src/decorators'],
     }),
     Components({
-      dirs: ['src/components'],
+      dirs: ['src/components', "src/pages/**/components"],
       dts: 'src/types/components.d.ts',
-      resolvers: [NaiveUiResolver()]
+      resolvers: [NaiveUiResolver()],
+      deep: true
     }),
     tailwindcss(),
   ],

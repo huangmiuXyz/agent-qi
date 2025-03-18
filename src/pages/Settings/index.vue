@@ -1,4 +1,6 @@
-<template></template>
+<template>
+  <SettingMenus />
+</template>
 
 <script setup></script>
 

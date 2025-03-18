@@ -10,7 +10,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('./../components/UI/Button/index.vue')['default']
     Layout: typeof import('./../components/Layout/index.vue')['default']
-    Menus: typeof import('./../components/Action/Menus/index.vue')['default']
+    Menus: typeof import('./../components/Layout/SiderBar/Menus/index.vue')['default']
     NavBar: typeof import('./../components/Layout/NavBar/index.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NCard: typeof import('naive-ui')['NCard']
