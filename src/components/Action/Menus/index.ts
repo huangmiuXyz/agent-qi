@@ -45,7 +45,7 @@ export const useMenus = () => {
             key: 2,
             label: "设置",
             icon: "SettingOutlined",
-            description: "切换到设置页面，可以对软件进行设置，修改各种参数",
+            description: "打开设置弹窗，可以对软件进行设置，修改各种参数",
             position: "bottom",
             onClick: openSettingModal,
         },
