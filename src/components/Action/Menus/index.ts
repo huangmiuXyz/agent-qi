@@ -11,7 +11,7 @@ export const useMenus = () => {
 
     const router = useRouter();
     const activeMenu = ref(1);
-    const openSettingModal = () =>
+    const openSettingModal = AIF({}, () =>
         openModal({
             title: "设置",
             style: {
@@ -24,7 +24,7 @@ export const useMenus = () => {
             height: 600,
             content: () => h(Setting),
             maskClosable: true,
-        });
+        }));
 
     const menus: MenuList = [
         {

@@ -34,6 +34,7 @@ export const useCustomModal = () => {
       draggable: true,
       ...options,
     })
+    return modalRef.value
   }
 
   const closeModal = () => {
