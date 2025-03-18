@@ -57,7 +57,9 @@ export const useMenus = () => {
         paramsDescription: "参数",
         params: [{
             type: "number",
-            description: `菜单的key只能从${JSON.stringify(menus)}中选择`
+            description: `菜单的key只能从${JSON.stringify(menus.map(item => ({
+                key: item.key, description: item.description
+            })))}中选择`
         }],
         name: '切换菜单'
     }, async (key: MenuItem["key"]) => {
