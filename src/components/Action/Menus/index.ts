@@ -1,4 +1,3 @@
-
 import Setting from "../Settings/index.vue";
 export const useMenus = () => {
     const { openModal } = useCustomModal();
