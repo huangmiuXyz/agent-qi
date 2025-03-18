@@ -10,7 +10,6 @@ const props = defineProps<{
   iconName: IconType;
 }>();
 
-// 动态获取图标组件
 const icon = computed(() => {
   const IconComponent = Icons[props.iconName];
   return () => h(IconComponent);

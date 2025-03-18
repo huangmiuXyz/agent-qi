@@ -18,13 +18,10 @@ body,
   --color-text-placeholder: #adb5bd;
   --shadow-paper: 0 1px 40px rgba(0, 0, 0, 0.04);
 }
-.ant-btn-icon-only {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 禁用首字母自动大写 */
 input, textarea {
   text-transform: none;
+}
+
+.n-icon-slot{
+  display: contents !important;
 }

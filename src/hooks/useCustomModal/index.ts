@@ -1,36 +1,39 @@
-import { useModal, ModalProps } from 'naive-ui'
+import { WindowOptions } from '@tauri-apps/api/window';
+import { useModal, ModalOptions } from 'naive-ui'
+import { ref } from 'vue'
 
 const modalRef = ref()
+type Options = WindowOptions & ModalOptions & {
+  width: number;
+  height: number;
+}
 export const useCustomModal = () => {
   const modal = useModal()
-  const openModal = (options: ModalProps = {}) => {
-
+  const openModal = async (options: Options) => {
+    const { width, height, title } = options
     if (modalRef.value) {
       modalRef.value.destroy()
     }
-    const defaultContent = typeof options.content === 'string'
-      ? options.content
-      : 'This is a custom modal content.'
-
+    if (window.__TAURI_OS_PLUGIN_INTERNALS__) {
+      const modal = await getWindowByLabel('modal')
+      if (modal) return
+      await createWindow('modal', {
+        width,
+        height,
+        title,
+        titleBarStyle: 'overlay'
+      }).catch(e => {
+        console.log(e);
+      })
+      return
+    }
     modalRef.value = modal.create({
-      content: () => h('div', null, [defaultContent]),
+      content: options.content,
       preset: 'card',
-      transformOrigin: 'mouse',
       maskClosable: true,
-      style: {
-        width: '40vw',
-        height: '90vh',
-        overflow: 'auto',
-        borderRadius: '10px',
-      },
       draggable: true,
       ...options,
-      onClose: () => {
-        closeModal()
-        options.onClose?.()
-      }
     })
-
   }
 
   const closeModal = () => {

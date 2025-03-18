@@ -1,3 +1,5 @@
+import '@tauri-apps/plugin-os';
+
 
 import antdIcon from "@vicons/antd";
 declare global {
@@ -9,6 +11,16 @@ declare global {
         path?: string;
         position?: "bottom"
         onClick?: () => void;
+    }
+    type Window = {
+        __TAURI_OS_PLUGIN_INTERNALS__: {
+            platform: string;
+            family: string;
+            version: string;
+            arch: string;
+            exe_extension: string;
+            os_type: string;
+        }
     }
 
     type MenuList = MenuItem[]

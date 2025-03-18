@@ -56,6 +56,14 @@ const menus: MenuList = [
     onClick: () => {
       openModal({
         title: "设置",
+        style: {
+          width: "80vw",
+          height: "90vh",
+          overflow: "auto",
+          borderRadius: "10px",
+        },
+        width: 800,
+        height: 600,
         content: () => h(Setting),
         maskClosable: true,
       });
