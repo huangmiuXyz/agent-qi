@@ -54,7 +54,6 @@ export const useMenus = () => {
     const handleClick = AIF({
         command: "changeMenus",
         description: "切换菜单",
-        paramsDescription: "参数",
         params: [{
             type: "number",
             description: `菜单的key只能从${JSON.stringify(menus.map(item => ({

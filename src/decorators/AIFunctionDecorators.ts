@@ -2,7 +2,6 @@ interface AIFOptions {
     name: string
     command: string
     description: string
-    paramsDescription?: string
     params?: Record<string, any>
 }
 export const AIFunctionWeakMap = new WeakMap<{ key: string }, { fn: Function, options: AIFOptions }>()
