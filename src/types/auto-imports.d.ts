@@ -7,6 +7,8 @@
 export {}
 declare global {
   const AIF: typeof import('../decorators/AIFunctionDecorators')['AIF']
+  const AIFunctionMap: typeof import('../decorators/AIFunctionDecorators')['AIFunctionMap']
+  const AIFunctionWeakMap: typeof import('../decorators/AIFunctionDecorators')['AIFunctionWeakMap']
   const EffectScope: typeof import('vue')['EffectScope']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
@@ -15,6 +17,8 @@ declare global {
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const effectScope: typeof import('vue')['effectScope']
+  const getAIFunction: typeof import('../decorators/AIFunctionDecorators')['getAIFunction']
+  const getAllAIFuntion: typeof import('../decorators/AIFunctionDecorators')['getAllAIFuntion']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const getEnum: typeof import('../utils/getEnum')['getEnum']

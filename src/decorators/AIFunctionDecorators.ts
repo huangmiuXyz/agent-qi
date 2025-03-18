@@ -22,5 +22,5 @@ export const getAIFunction = (command: string) => {
 }
 
 export const getAllAIFuntion = () => {
-    return Object.fromEntries(AIFunctionMap)
+    return Array.from(AIFunctionMap.values())
 }
