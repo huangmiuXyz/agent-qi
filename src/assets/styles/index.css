@@ -19,6 +19,7 @@ body,
   --shadow-paper: 0 1px 40px rgba(0, 0, 0, 0.04);
   --color-settings-sidebar-menu: #e8e9e9;
   --color-settings-sidebar-content: #f2f2f2; 
+  --color-settings-sidebar-menu-item-active: #d4d5d5;
 }
 .dark {
   --color-sidebar: #444545;

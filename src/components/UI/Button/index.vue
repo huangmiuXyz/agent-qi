@@ -8,7 +8,8 @@
 import * as antdIcon from "@vicons/antd";
 import * as materialIcon from "@vicons/material";
 import * as carbonIcon from "@vicons/carbon";
-const Icons = { ...antdIcon, ...materialIcon, ...carbonIcon };
+import * as tablerIcon from "@vicons/tabler";
+const Icons = { ...antdIcon, ...materialIcon, ...carbonIcon, ...tablerIcon };
 const props = defineProps<{
   iconName?: IconType;
 }>();

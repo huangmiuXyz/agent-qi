@@ -14,14 +14,18 @@ declare module 'vue' {
     LayoutTitleBar: typeof import('./../components/Layout/TitleBar/index.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NModalProvider: typeof import('naive-ui')['NModalProvider']
+    NSpace: typeof import('naive-ui')['NSpace']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Sections: typeof import('./../pages/Sections/index.vue')['default']
     Settings: typeof import('./../pages/Settings/index.vue')['default']
     SettingsContent: typeof import('./../pages/Settings/Content/index.vue')['default']
+    SettingsFunction: typeof import('./../pages/Settings/Function/index.vue')['default']
     SettingsMenus: typeof import('./../pages/Settings/Menus/index.vue')['default']
+    SettingsMenusItem: typeof import('./../pages/Settings/Menus/Item/index.vue')['default']
     SettingsTitleBar: typeof import('./../pages/Settings/TitleBar/index.vue')['default']
     UIButton: typeof import('./../components/UI/Button/index.vue')['default']
+    UIForm: typeof import('./../components/UI/Form/index.vue')['default']
     UIRichEditor: typeof import('./../components/UI/RichEditor/index.vue')['default']
   }
 }
