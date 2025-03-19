@@ -30,6 +30,7 @@ export const useMenus = () => {
                     height: 600,
                     content: () => h(Setting),
                     maskClosable: true,
+                    url: '/settings'
                 }));
 
     const menus: MenuList = [

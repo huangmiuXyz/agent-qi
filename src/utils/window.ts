@@ -1,8 +1,10 @@
-import { Window, WindowOptions } from '@tauri-apps/api/window';
+import { WebviewOptions } from '@tauri-apps/api/webview';
+import { WebviewWindow } from '@tauri-apps/api/webviewWindow';
+import { WindowOptions } from '@tauri-apps/api/window';
 
-export const createWindow = (label: string, options: WindowOptions): Promise<Window> => {
+export const createWindow = (label: string, options: (Omit<WebviewOptions, "x" | "y" | "width" | "height"> & WindowOptions) | undefined): Promise<WebviewWindow> => {
     return new Promise((resolve, reject) => {
-        const window = new Window(label, options)
+        const window = new WebviewWindow(label, options)
         window.once('tauri://created', () => {
             resolve(window)
         });
@@ -13,6 +15,6 @@ export const createWindow = (label: string, options: WindowOptions): Promise<Win
 }
 
 export const getWindowByLabel = (label: string) => {
-    const window = Window.getByLabel(label)
+    const window = WebviewWindow.getByLabel(label)
     return window
 }

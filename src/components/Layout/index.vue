@@ -1,6 +1,9 @@
 <template>
   <!-- 右上角和右下角圆角 -->
-  <div class="w-full h-full flex rounded-tr-2xl rounded-br-2xl">
+  <div
+    v-if="!layoutOut.includes(path)"
+    class="w-full h-full flex rounded-tr-2xl rounded-br-2xl"
+  >
     <layout-sider-bar />
     <div class="flex flex-col flex-1">
       <layout-title-bar />
@@ -11,8 +14,13 @@
       </div>
     </div>
   </div>
+  <slot v-else />
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const router = useRouter();
+const layoutOut = ref(["/settings"]);
+const path = computed(() => router.currentRoute.value.fullPath);
+</script>
 
 <style scoped></style>

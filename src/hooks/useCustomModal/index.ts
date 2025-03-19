@@ -6,11 +6,12 @@ const modalRef = ref()
 type Options = WindowOptions & ModalOptions & {
   width: number;
   height: number;
+  url?: string
 }
 export const useCustomModal = () => {
   const modal = useModal()
   const openModal = async (options: Options) => {
-    const { width, height, title } = options
+    const { width, height, title, url } = options
     if (modalRef.value) {
       modalRef.value.destroy()
     }
@@ -22,6 +23,7 @@ export const useCustomModal = () => {
         height,
         title,
         titleBarStyle: 'overlay',
+        url
       }).catch(e => {
         console.log(e);
       })
