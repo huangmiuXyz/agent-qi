@@ -11,7 +11,6 @@ declare module 'vue' {
     Layout: typeof import('./../components/Layout/index.vue')['default']
     LayoutMenus: typeof import('./../components/Layout/Menus/index.vue')['default']
     LayoutSiderBar: typeof import('./../components/Layout/SiderBar/index.vue')['default']
-    LayoutSiderBarMenus: typeof import('./../components/Layout/SiderBar/Menus/index.vue')['default']
     LayoutTitleBar: typeof import('./../components/Layout/TitleBar/index.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NModalProvider: typeof import('naive-ui')['NModalProvider']
@@ -21,6 +20,7 @@ declare module 'vue' {
     Settings: typeof import('./../pages/Settings/index.vue')['default']
     SettingsContent: typeof import('./../pages/Settings/Content/index.vue')['default']
     SettingsMenus: typeof import('./../pages/Settings/Menus/index.vue')['default']
+    SettingsTitleBar: typeof import('./../pages/Settings/TitleBar/index.vue')['default']
     UIButton: typeof import('./../components/UI/Button/index.vue')['default']
     UIRichEditor: typeof import('./../components/UI/RichEditor/index.vue')['default']
   }

@@ -27,11 +27,12 @@ export const useMenus = () => {
                         overflow: "auto",
                         borderRadius: "10px",
                     },
+                    hiddenTitle: true,
                     width: 800,
                     height: 600,
                     content: () => h(Setting),
                     maskClosable: true,
-                    url: '/settings'
+                    url: '/settings',
                 }));
     const menus: ComputedRef<MenuList> = computed(() => [
         {

@@ -20,10 +20,28 @@ body,
   --color-settings-sidebar-menu: #e8e9e9;
   --color-settings-sidebar-content: #f2f2f2; 
 }
+.dark {
+  --color-sidebar: #444545;
+  --color-pages: #121212;
+  --color-rich-editor: #1a1a1a;
+  --color-title-bar: #444545;
+  --color-caret: #ffffff;
+  --color-bg-selection-richEditor: #b6d1f6;
+  --color-textColor-selection-richEditor: #ffffff;
+  --color-text-placeholder: #666666;
+  --shadow-paper: 0 1px 40px rgba(0, 0, 0, 0.2);
+  --color-settings-sidebar-menu: #2a2a2a;
+  --color-settings-sidebar-content: #000000;
+}
 input, textarea {
   text-transform: none;
 }
 
 .n-icon-slot{
   display: contents !important;
+}
+
+
+.dark .n-icon-slot {
+  color: white;
 }

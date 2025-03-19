@@ -1,4 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+watchEffect(() => {
+  const { getDark } = configStore();
+  document.body.classList.toggle("dark", getDark.value);
+});
+</script>
 
 <template>
   <n-modal-provider>

@@ -7,7 +7,7 @@
     "dev": "vite",
     "dev:tauri": "tauri dev",
     "build": "vue-tsc --noEmit && vite build",
-    "build:mac": "npm run build && tauri build --target macos",
+    "build:mac": "pnpm run build && tauri build --target aarch64-apple-darwin",
     "preview": "vite preview",
     "tauri": "tauri"
   },
