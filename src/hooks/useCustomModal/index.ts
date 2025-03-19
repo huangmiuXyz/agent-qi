@@ -21,7 +21,7 @@ export const useCustomModal = () => {
         width,
         height,
         title,
-        titleBarStyle: 'overlay'
+        titleBarStyle: 'overlay',
       }).catch(e => {
         console.log(e);
       })

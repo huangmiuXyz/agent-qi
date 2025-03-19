@@ -6,12 +6,12 @@
         :key="item.key"
         class="flex justify-center w-full mb-2"
       >
-        <Button
+        <UIButton
           circle
           @click="handleClick(item.key)"
           :iconName="item.icon"
           :quaternary="activeMenu === item.key ? false : true"
-        ></Button>
+        ></UIButton>
       </div>
     </div>
     <div>
@@ -20,12 +20,12 @@
         :key="item.key"
         class="flex justify-center w-full mb-2"
       >
-        <Button
+        <UIButton
           circle
           @click="handleClick(item.key)"
           :iconName="item.icon"
           :quaternary="activeMenu === item.key ? false : true"
-        ></Button>
+        ></UIButton>
       </div>
     </div>
   </div>

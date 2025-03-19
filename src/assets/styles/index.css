@@ -17,6 +17,7 @@ body,
   --color-textColor-selection-richEditor: #000;
   --color-text-placeholder: #adb5bd;
   --shadow-paper: 0 1px 40px rgba(0, 0, 0, 0.04);
+  --color-sidebar-menu: #e8e9e9;
 }
 input, textarea {
   text-transform: none;

@@ -15,5 +15,4 @@ export const createWindow = (label: string, options: WindowOptions): Promise<Win
 export const getWindowByLabel = (label: string) => {
     const window = Window.getByLabel(label)
     return window
-
 }

@@ -8,19 +8,20 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Button: typeof import('./../components/UI/Button/index.vue')['default']
     Layout: typeof import('./../components/Layout/index.vue')['default']
-    Menus: typeof import('./../components/Layout/SiderBar/Menus/index.vue')['default']
-    NavBar: typeof import('./../components/Layout/NavBar/index.vue')['default']
+    LayoutMenus: typeof import('./../components/Layout/Menus/index.vue')['default']
+    LayoutSiderBar: typeof import('./../components/Layout/SiderBar/index.vue')['default']
+    LayoutSiderBarMenus: typeof import('./../components/Layout/SiderBar/Menus/index.vue')['default']
+    LayoutTitleBar: typeof import('./../components/Layout/TitleBar/index.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
-    NCard: typeof import('naive-ui')['NCard']
-    NModal: typeof import('naive-ui')['NModal']
     NModalProvider: typeof import('naive-ui')['NModalProvider']
-    RichEditor: typeof import('./../components/UI/RichEditor/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Settings: typeof import('./../components/Action/Settings/index.vue')['default']
-    SiderBar: typeof import('./../components/Layout/SiderBar/index.vue')['default']
-    TitleBar: typeof import('./../components/Layout/TitleBar/index.vue')['default']
+    Sections: typeof import('./../pages/Sections/index.vue')['default']
+    Settings: typeof import('./../pages/Settings/index.vue')['default']
+    SettingsContent: typeof import('./../pages/Settings/Content/index.vue')['default']
+    SettingsMenus: typeof import('./../pages/Settings/Menus/index.vue')['default']
+    UIButton: typeof import('./../components/UI/Button/index.vue')['default']
+    UIRichEditor: typeof import('./../components/UI/RichEditor/index.vue')['default']
   }
 }
