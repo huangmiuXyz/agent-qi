@@ -15,8 +15,8 @@ pub fn run() {
 
             #[cfg(target_os = "macos")]
             {
-                use cocoa::appkit::{NSColor, NSWindow, NSWindowTitleVisibility};
-                use cocoa::base::{id, nil, YES};
+                use cocoa::appkit::{NSWindow, NSWindowTitleVisibility};
+                use cocoa::base::{id, YES};
 
                 let ns_window = window.ns_window().unwrap() as id;
                 unsafe {
