@@ -2,12 +2,14 @@ import '@tauri-apps/plugin-os';
 
 
 import antdIcon from "@vicons/antd";
+import materialIcon from '@vicons/material'
+import carbonIcon from '@vicons/carbon'
 declare global {
-    type IconType = keyof typeof antdIcon
+    type IconType = keyof typeof antdIcon | keyof typeof materialIcon | keyof typeof carbonIcon
     interface MenuItem {
         key: number;
         label: string;
-        icon: IconType;
+        icon: IconType | (() => IconType);
         path?: string;
         position?: "bottom"
         onClick?: () => void;

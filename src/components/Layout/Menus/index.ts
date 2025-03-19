@@ -1,11 +1,13 @@
+import { useLocalStorage } from "@vueuse/core";
 import Setting from "~/Settings/index.vue"
+const isDark = useLocalStorage('isDark', false)
 export const useMenus = () => {
     const { openModal } = useCustomModal();
     const topMenus = computed(() =>
-        menus.filter((item) => item.position !== "bottom")
+        menus.value.filter((item) => item.position !== "bottom")
     );
     const bottomMenus = computed(() =>
-        menus.filter((item) => item.position === "bottom")
+        menus.value.filter((item) => item.position === "bottom")
     );
 
     const router = useRouter();
@@ -32,8 +34,19 @@ export const useMenus = () => {
                     maskClosable: true,
                     url: '/settings'
                 }));
-
-    const menus: MenuList = [
+    const setDark = AIF({
+        command: "setDark",
+        description: "设置黑暗模式",
+        params: [{
+            type: "boolean",
+            description: "是否开启黑暗模式"
+        }],
+        name: '设置黑暗模式'
+    }, (value: boolean) => {
+        isDark.value = value
+        document.documentElement.classList.toggle("dark", value)
+    });
+    const menus: ComputedRef<MenuList> = computed(() => [
         {
             key: 1,
             label: "小说",
@@ -43,26 +56,36 @@ export const useMenus = () => {
         },
         {
             key: 2,
+            label: "黑暗模式",
+            icon: isDark.value ? "WbSunnyOutlined" : "Moon",
+            description: "切换黑暗模式",
+            position: "bottom",
+            onClick: () => {
+                setDark(!isDark.value)
+            },
+        },
+        {
+            key: 3,
             label: "设置",
             icon: "SettingOutlined",
             description: "打开设置弹窗，可以对软件进行设置，修改各种参数",
             position: "bottom",
             onClick: openSettingModal,
         },
-    ];
+    ]);
 
     const handleClick = AIF({
         command: "changeMenus",
         description: "切换菜单",
         params: [{
             type: "number",
-            description: `菜单的key只能从${JSON.stringify(menus.map(item => ({
+            description: `菜单的key只能从${JSON.stringify(menus.value.map(item => ({
                 key: item.key, description: item.description
             })))}中选择`
         }],
         name: '切换菜单'
     }, async (key: MenuItem["key"]) => {
-        const item = menus.find((item) => item.key === key);
+        const item = menus.value.find((item) => item.key === key);
         if (!item) {
             return;
         }

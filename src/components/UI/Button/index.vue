@@ -6,8 +6,9 @@
 
 <script setup lang="ts">
 import * as antdIcon from "@vicons/antd";
-
-const Icons = { ...antdIcon };
+import * as materialIcon from "@vicons/material";
+import * as carbonIcon from "@vicons/carbon";
+const Icons = { ...antdIcon, ...materialIcon, ...carbonIcon };
 const props = defineProps<{
   iconName?: IconType;
 }>();
