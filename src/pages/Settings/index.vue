@@ -1,6 +1,8 @@
 <template>
-  <SettingsMenus />
-  <SettingsContent />
+  <div class="w-full h-full flex">
+    <SettingsMenus />
+    <SettingsContent />
+  </div>
 </template>
 
 <script setup></script>

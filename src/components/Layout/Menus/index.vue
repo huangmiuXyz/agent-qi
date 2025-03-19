@@ -10,7 +10,7 @@
           circle
           @click="handleClick(item.key)"
           :iconName="item.icon"
-          :quaternary="activeMenu === item.key ? false : true"
+          :secondary="activeMenu === item.key ? true : false"
         ></UIButton>
       </div>
     </div>
@@ -24,7 +24,7 @@
           circle
           @click="handleClick(item.key)"
           :iconName="item.icon"
-          :quaternary="activeMenu === item.key ? false : true"
+          type="text"
         ></UIButton>
       </div>
     </div>

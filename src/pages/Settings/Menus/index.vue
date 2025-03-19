@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-sidebar-menu w-20">1</div>
+  <div class="bg-settings-sidebar-menu w-50 h-full"></div>
 </template>
 
 <script setup></script>
