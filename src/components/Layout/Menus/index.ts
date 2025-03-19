@@ -1,7 +1,6 @@
-import { useLocalStorage } from "@vueuse/core";
 import Setting from "~/Settings/index.vue"
-const isDark = useLocalStorage('isDark', false)
 export const useMenus = () => {
+    const { getDark, setDark } = configStore()
     const { openModal } = useCustomModal();
     const topMenus = computed(() =>
         menus.value.filter((item) => item.position !== "bottom")
@@ -34,18 +33,6 @@ export const useMenus = () => {
                     maskClosable: true,
                     url: '/settings'
                 }));
-    const setDark = AIF({
-        command: "setDark",
-        description: "设置黑暗模式",
-        params: [{
-            type: "boolean",
-            description: "是否开启黑暗模式"
-        }],
-        name: '设置黑暗模式'
-    }, (value: boolean) => {
-        isDark.value = value
-        document.documentElement.classList.toggle("dark", value)
-    });
     const menus: ComputedRef<MenuList> = computed(() => [
         {
             key: 1,
@@ -57,11 +44,11 @@ export const useMenus = () => {
         {
             key: 2,
             label: "黑暗模式",
-            icon: isDark.value ? "WbSunnyOutlined" : "Moon",
+            icon: getDark.value ? "WbSunnyOutlined" : "Moon",
             description: "切换黑暗模式",
             position: "bottom",
             onClick: () => {
-                setDark(!isDark.value)
+                setDark(!getDark.value)
             },
         },
         {

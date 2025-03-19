@@ -9,7 +9,7 @@
         <UIButton
           circle
           @click="handleClick(item.key)"
-          :iconName="item.icon"
+          :iconName="callFunction(item.icon)"
           :secondary="activeMenu === item.key ? true : false"
         ></UIButton>
       </div>
@@ -23,7 +23,7 @@
         <UIButton
           circle
           @click="handleClick(item.key)"
-          :iconName="item.icon"
+          :iconName="callFunction(item.icon)"
           type="text"
         ></UIButton>
       </div>
@@ -34,6 +34,7 @@
 <script setup lang="ts">
 import { useMenus } from "./index";
 const { handleClick, bottomMenus, topMenus, activeMenu } = useMenus();
+import { callFunction } from "@/utils/type";
 </script>
 
 <style scoped></style>
