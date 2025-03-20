@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+html,
+body,
+#app {
+  @apply w-full h-full;
+  overscroll-behavior: none;
+}
+
+@theme {
+  --color-sidebar: #fff;
+  --color-pages: #f5f5f3;
+  --color-rich-editor: #fff;
+  --color-title-bar: #fff;
+  --color-caret: unset;
+  --color-bg-selection-richEditor: #b6d1f6;
+  --color-textColor-selection-richEditor: #000;
+  --color-text-placeholder: #adb5bd;
+  --shadow-paper: 0 1px 40px rgba(0, 0, 0, 0.04);
+  --color-settings-sidebar-menu: #e8e9e9;
+  --color-settings-sidebar-content: #f2f2f2; 
+  --color-settings-sidebar-menu-item-active: #d4d5d5;
+  --color-icon: #000;
+  --color-settings-sidebar-menu-item-text: #000;
+}
+.dark {
+  --color-sidebar: #444545;
+  --color-pages: #121212;
+  --color-rich-editor: #1a1a1a;
+  --color-title-bar: #444545;
+  --color-caret: #ffffff;
+  --color-bg-selection-richEditor: #b6d1f6;
+  --color-textColor-selection-richEditor: #ffffff;
+  --color-text-placeholder: #666666;
+  --shadow-paper: 0 1px 40px rgba(0, 0, 0, 0.2);
+  --color-settings-sidebar-menu: #2a2a2a;
+  --color-settings-sidebar-content: #000000;
+  --color-settings-sidebar-menu-item-active: #737373;
+  --color-icon: #fff;
+  --color-settings-sidebar-menu-item-text: #fff;
+}
+
+.n-icon-slot{
+  display: contents !important;
+  color: var(--color-icon);
+}
+
+
+.dark .n-icon-slot {
+  color: var(--color-icon)
+}

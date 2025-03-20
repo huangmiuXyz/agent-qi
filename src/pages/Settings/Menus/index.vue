@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { useSettingsMenu } from "../hooks/useSettingsMenu";
+import { useSettingsMenu } from "~/Settings/composable/useSettingsMenu";
 const { menus, getActiveMenu, handleClickMenu } = useSettingsMenu();
 </script>
 

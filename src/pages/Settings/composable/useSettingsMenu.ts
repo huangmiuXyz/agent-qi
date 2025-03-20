@@ -14,6 +14,12 @@ export const useSettingsMenu = () => {
             key: 'function',
             description: "函数设置",
         },
+        {
+            name: "AI设置",
+            icon: "ElectricalServicesRound",
+            key: 'aiSetting',
+            description: "AI设置",
+        },
     ];
     const handleClickMenu = AIF(
         {

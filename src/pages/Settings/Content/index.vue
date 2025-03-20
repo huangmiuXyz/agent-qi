@@ -7,13 +7,14 @@
 </template>
 
 <script setup lang="ts">
-import { useSettingsMenu } from "../hooks/useSettingsMenu";
+import { useSettingsMenu } from "~/Settings/composable/useSettingsMenu";
 const { getActiveMenu } = useSettingsMenu();
-const Form: Record<SettingsFormKey, FormProps> = {
+settingsStore;
+const Form = {
   function: { schemas: [] },
   general: { schemas: [] },
   aiSetting: { schemas: [] },
-};
+} as const satisfies Record<SettingsFormKey, FormProps>;
 </script>
 
 <style scoped></style>
