@@ -40,13 +40,23 @@ declare global {
 
     type MenuList = MenuItem[]
 
+    interface SettingsMenuValues {
+        general: {},
+        function: {},
+        aiSetting: {
+            API_KEY: string,
+            API_URL: string
+        }
+    }
 
-    type SettingsFormKey = 'general' | 'function' | 'aiSetting'
+    type SettingsFormKey = keyof SettingsMenuValues
     interface FormSchema {
 
     }
     interface FormProps {
         schemas: FormSchema[]
+        title: string
+        description: string
     }
     interface SettingsMenu {
         name: string;

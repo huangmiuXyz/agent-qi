@@ -1,4 +1,6 @@
-<template></template>
+<template>
+  <NForm></NForm>
+</template>
 
 <script setup lang="ts">
 defineProps<{

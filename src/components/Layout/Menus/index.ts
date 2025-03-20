@@ -1,6 +1,6 @@
 import Setting from "~/Settings/index.vue"
 export const useMenus = () => {
-    const { getDark, setDark } = configStore()
+    const { getDark, setDark } = settingsStore()
     const { openModal } = useCustomModal();
     const topMenus = computed(() =>
         menus.value.filter((item) => item.position !== "bottom")

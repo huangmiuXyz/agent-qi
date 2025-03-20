@@ -1,6 +1,6 @@
 <script setup lang="ts">
 watchEffect(() => {
-  const { getDark } = configStore();
+  const { getDark } = settingsStore();
   document.body.classList.toggle("dark", getDark.value);
 });
 </script>

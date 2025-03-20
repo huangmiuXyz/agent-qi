@@ -44,9 +44,38 @@ export const useSettingsMenu = () => {
         }
     );
     const getActiveMenu = computed(() => activeMenu);
+    const Form = {
+        function: [],
+        general: [],
+        aiSetting: [
+            {
+                schemas: [{
+                    field: "API_KEY",
+                    type: "input",
+                    label: "API凭证",
+                    placeholder: "请输入API_KEY",
+                    required: true,
+                    defaultValue: "",
+                    description: "API_KEY是AI的访问凭证",
+                },
+                {
+                    field: "API_URL",
+                    type: "input",
+                    label: "API地址",
+                    placeholder: "请输入API_URL",
+                    required: true,
+                    defaultValue: "",
+                    description: "API_URL是AI的访问地址",
+                }],
+                title: "API设置",
+                description: "API设置",
+            },
+        ]
+    } as const satisfies Record<SettingsFormKey, FormProps[]>;;
     return {
         menus,
         handleClickMenu,
         getActiveMenu,
+        Form
     };
 };

@@ -13,6 +13,7 @@ declare module 'vue' {
     LayoutSiderBar: typeof import('./../components/Layout/SiderBar/index.vue')['default']
     LayoutTitleBar: typeof import('./../components/Layout/TitleBar/index.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
+    NForm: typeof import('naive-ui')['NForm']
     NModalProvider: typeof import('naive-ui')['NModalProvider']
     NSpace: typeof import('naive-ui')['NSpace']
     RouterLink: typeof import('vue-router')['RouterLink']
