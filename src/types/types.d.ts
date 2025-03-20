@@ -11,6 +11,7 @@ declare global {
         command: string
         description: string
         params?: Record<string, any>
+        windowLabel: 'main' | '设置'
     }
     type IconType =
         keyof typeof antdIcon
@@ -40,9 +41,12 @@ declare global {
     type MenuList = MenuItem[]
 
 
-    type SettingsFormKey = 'general' | 'function'
-    interface SettingsFormItem {
+    type SettingsFormKey = 'general' | 'function' | 'aiSetting'
+    interface FormSchema {
 
+    }
+    interface FormProps {
+        schemas: FormSchema[]
     }
     interface SettingsMenu {
         name: string;

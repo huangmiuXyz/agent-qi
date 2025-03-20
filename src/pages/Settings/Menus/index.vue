@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-settings-sidebar-menu w-50 h-full p-2">
+  <div class="bg-settings-sidebar-menu w-50 h-full p-2 select-none">
     <div class="mt-6 flex flex-col gap-2">
       <SettingsMenusItem
         @click="handleClickMenu(menu.key)"

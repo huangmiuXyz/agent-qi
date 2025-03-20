@@ -31,6 +31,7 @@ export const useSettingsMenu = () => {
                 },
             ],
             command: "switch-settings-menu",
+            windowLabel: '设置'
         },
         (key: SettingsFormKey) => {
             activeMenu.value = key;

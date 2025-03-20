@@ -8,16 +8,16 @@ export const useMenus = () => {
     const bottomMenus = computed(() =>
         menus.value.filter((item) => item.position === "bottom")
     );
-
     const router = useRouter();
     const activeMenu = ref(1);
     const openSettingModal =
         AIF({
             command: "openSettingModal",
             description: "打开设置弹窗",
-            name: '打开设置弹窗'
+            name: '打开设置弹窗',
+            windowLabel: 'main'
         },
-            () =>
+            () => {
                 openModal({
                     title: "设置",
                     style: {
@@ -33,7 +33,8 @@ export const useMenus = () => {
                     content: () => h(Setting),
                     maskClosable: true,
                     url: '/settings',
-                }));
+                })
+            });
     const menus: ComputedRef<MenuList> = computed(() => [
         {
             key: 1,
@@ -65,6 +66,7 @@ export const useMenus = () => {
     const handleClick = AIF({
         command: "changeMenus",
         description: "切换菜单",
+        windowLabel: 'main',
         params: [{
             type: "number",
             description: `菜单的key只能从${JSON.stringify(menus.value.map(item => ({

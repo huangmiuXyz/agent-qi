@@ -1,5 +1,5 @@
 <template>
-  <editor-content id="rich-editor" :editor="editor" />
+  <editor-content id="rich-editor" class="select-none" :editor="editor" />
 </template>
 
 <script setup lang="ts">
@@ -59,6 +59,7 @@ watch(modelValue, (newContent) => {
   word-break: break-word;
   font-family: inherit;
   width: 100%;
+  @apply select-none;
 }
 
 .ProseMirror p {

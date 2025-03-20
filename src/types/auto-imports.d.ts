@@ -19,6 +19,7 @@ declare global {
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const effectScope: typeof import('vue')['effectScope']
+  const execAIFunction: typeof import('../decorators/AIFunctionDecorators')['execAIFunction']
   const getAIFunction: typeof import('../decorators/AIFunctionDecorators')['getAIFunction']
   const getAllAIFuntion: typeof import('../decorators/AIFunctionDecorators')['getAllAIFuntion']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
