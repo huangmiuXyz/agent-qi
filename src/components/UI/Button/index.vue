@@ -1,5 +1,9 @@
 <template>
-  <n-button :render-icon="icon" v-bind="$attrs">
+  <n-button
+    :render-icon="icon"
+    v-bind="$attrs"
+    :style="{ fontSize: props.fontSize }"
+  >
     <slot />
   </n-button>
 </template>
@@ -9,10 +13,13 @@ import * as antdIcon from "@vicons/antd";
 import * as materialIcon from "@vicons/material";
 import * as carbonIcon from "@vicons/carbon";
 import * as tablerIcon from "@vicons/tabler";
+import { ButtonProps } from "naive-ui";
 const Icons = { ...antdIcon, ...materialIcon, ...carbonIcon, ...tablerIcon };
-const props = defineProps<{
+interface Props extends /* @vue-ignore */ ButtonProps {
   iconName?: IconType;
-}>();
+  fontSize?: string;
+}
+const props = defineProps<Props>();
 
 const icon = computed(() => {
   if (!props.iconName) return;

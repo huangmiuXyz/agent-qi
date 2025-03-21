@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { resolve } from 'path'
 import VueRouter from 'unplugin-vue-router/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 const host = process.env.TAURI_DEV_HOST;
 
 // https://vitejs.dev/config/
@@ -13,6 +14,7 @@ export default defineConfig(async () => ({
   plugins: [
     VueRouter({}),
     vue(),
+    vueJsx(),
     AutoImport({
       imports: ['vue', 'vue-router', {
         'naive-ui': [

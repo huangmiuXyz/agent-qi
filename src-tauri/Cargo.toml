@@ -15,16 +15,13 @@ name = "agent_qi_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
-tauri-build = { version = "2", features = [] }
-
-[dependencies.wry]
-version = "=0.50.3"
+tauri-build = { version = "2.1.0", features = [] }
 
 [dependencies]
-tauri = { version = "2", features = [] }
-tauri-plugin-opener = "2"
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
-tauri-plugin-os = "2"
+tauri = { version = "2.4.0", features = [] }
+tauri-plugin-opener = "2.2.6"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
+tauri-plugin-os = "2.2.1"
 [target."cfg(target_os = \"macos\")".dependencies]
 cocoa = "0.26.0"

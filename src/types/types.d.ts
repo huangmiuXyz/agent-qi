@@ -1,10 +1,12 @@
 import '@tauri-apps/plugin-os';
+import { Size } from "naive-ui/es/form/src/interface";
 
 
 import antdIcon from "@vicons/antd";
 import materialIcon from '@vicons/material'
 import carbonIcon from '@vicons/carbon'
 import tablerIcon from '@vicons/tabler'
+import { VNode } from 'vue';
 declare global {
     interface AIFOptions {
         name: string
@@ -52,11 +54,17 @@ declare global {
     type SettingsFormKey = keyof SettingsMenuValues
     interface FormSchema<K> {
         field: keyof SettingsMenuValues[K]
-        component: 'input'
+        component: 'input' | 'select'
         label: string
         placeholder: string
         defaultValue: string
         description: string
+        options?: {
+            label: string
+            value: string
+        }[]
+        size?: Size
+        feedbackRender?: () => VNode
     }
     interface FormProps {
         schemas: FormSchema[]
