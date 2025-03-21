@@ -22,6 +22,8 @@ body,
   --color-settings-sidebar-menu-item-active: #d4d5d5;
   --color-icon: #000;
   --color-settings-sidebar-menu-item-text: #000;
+  --color-settings-content-text:#000;
+  --color-form:#fff;
 }
 .dark {
   --color-sidebar: #444545;
@@ -38,14 +40,11 @@ body,
   --color-settings-sidebar-menu-item-active: #737373;
   --color-icon: #fff;
   --color-settings-sidebar-menu-item-text: #fff;
+  --color-settings-content-text:#fff;
+  --color-form:#262626;
 }
 
 .n-icon-slot{
-  display: contents !important;
-  color: var(--color-icon);
+  display: contents !important; 
 }
-
-
-.dark .n-icon-slot {
-  color: var(--color-icon)
-}
+ 

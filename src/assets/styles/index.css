@@ -2,11 +2,15 @@
 
 html,
 body,
-#app {
+#app ,
+.n-config-provider {
   @apply w-full h-full;
   overscroll-behavior: none;
+  font-family: "PingFang SC", system-ui
 }
- 
 input, textarea {
   text-transform: none;
+}
+.n-form-item-label{
+  font-weight: 500 !important;
 }

@@ -50,8 +50,13 @@ declare global {
     }
 
     type SettingsFormKey = keyof SettingsMenuValues
-    interface FormSchema {
-
+    interface FormSchema<K> {
+        field: keyof SettingsMenuValues[K]
+        component: 'input'
+        label: string
+        placeholder: string
+        defaultValue: string
+        description: string
     }
     interface FormProps {
         schemas: FormSchema[]

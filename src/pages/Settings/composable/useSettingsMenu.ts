@@ -15,7 +15,7 @@ export const useSettingsMenu = () => {
             description: "函数设置",
         },
         {
-            name: "AI设置",
+            name: "AI 设置",
             icon: "ElectricalServicesRound",
             key: 'aiSetting',
             description: "AI设置",
@@ -49,25 +49,23 @@ export const useSettingsMenu = () => {
         general: [],
         aiSetting: [
             {
-                schemas: [{
-                    field: "API_KEY",
-                    type: "input",
-                    label: "API凭证",
-                    placeholder: "请输入API_KEY",
-                    required: true,
-                    defaultValue: "",
-                    description: "API_KEY是AI的访问凭证",
-                },
-                {
-                    field: "API_URL",
-                    type: "input",
-                    label: "API地址",
-                    placeholder: "请输入API_URL",
-                    required: true,
-                    defaultValue: "",
-                    description: "API_URL是AI的访问地址",
-                }],
-                title: "API设置",
+                schemas: [
+                    {
+                        field: "API_URL",
+                        component: "input",
+                        label: "API 地址",
+                        placeholder: "API 地址",
+                        defaultValue: "",
+                        description: "API_URL是openai的请求地址",
+                    }, {
+                        field: "API_KEY",
+                        component: "input",
+                        label: "API 密钥",
+                        placeholder: "API 密钥",
+                        defaultValue: "",
+                        description: "API_KEY是访问openai的请求凭证",
+                    }],
+                title: "API 设置",
                 description: "API设置",
             },
         ]

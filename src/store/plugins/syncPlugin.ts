@@ -10,22 +10,28 @@ interface StoreSyncPayload {
 
 export function createSyncPlugin() {
     return ({ store }: PiniaPluginContext) => {
+        let isUpdatingFromSync = false;
+
         listen<StoreSyncPayload>(STORE_SYNC_EVENT, (event) => {
             const { storeId, state } = event.payload;
             if (storeId === store.$id) {
                 const currentState = JSON.stringify(store.$state);
                 const newState = JSON.stringify(state);
-
                 if (currentState !== newState) {
+                    isUpdatingFromSync = true;
                     store.$patch(state);
+                    isUpdatingFromSync = false;
                 }
             }
         });
+
         store.$subscribe((_, state) => {
-            emit(STORE_SYNC_EVENT, {
-                storeId: store.$id,
-                state: JSON.parse(JSON.stringify(state))
-            });
+            if (!isUpdatingFromSync) {
+                emit(STORE_SYNC_EVENT, {
+                    storeId: store.$id,
+                    state: JSON.parse(JSON.stringify(state))
+                });
+            }
         });
     };
-} 
+}
