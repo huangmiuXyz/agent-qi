@@ -69,6 +69,21 @@ export const useSettingsMenu = () => {
                 showFeedback: false,
                 tag: true,
                 filterable: true,
+                onChange: (value: string) => {
+                  if (
+                    settings.aiSetting.value.find(
+                      (item) => item.PROVIDES === value
+                    )
+                  ) {
+                    return;
+                  }
+                  settings.aiSetting.value.push({
+                    PROVIDES: value,
+                    API_URL: "",
+                    API_KEY: "",
+                    MODELS: [],
+                  });
+                },
                 options: settings.aiSetting.value.map((item) => ({
                   label: item.PROVIDES,
                   value: item.PROVIDES,

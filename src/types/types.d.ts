@@ -55,7 +55,7 @@ declare global {
                 MODELS: string[]
                 PROVIDES: PROVIDES
             }],
-            nowProvides: 'openai'
+            nowProvides: PROVIDES
         }
     }
 
@@ -80,6 +80,7 @@ declare global {
         tag?: boolean
         type?: "textarea" | "text" | "password";
         showFeedback?: boolean
+        onChange?: (value: string) => void
     }
     interface FormProps {
         schemas: FormSchema[]

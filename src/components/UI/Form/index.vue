@@ -33,6 +33,7 @@
           :filterable="item.filterable"
           :tag="item.tag"
           :multiple="item.multiple"
+          @onChange="item.onChange"
         />
       </div>
     </NFormItem>
