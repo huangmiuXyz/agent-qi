@@ -1,0 +1,30 @@
+.n-input {
+    --n-box-shadow-focus: none !important;
+    --n-box-shadow-focus-error: none !important;
+    --n-box-shadow-hover: none !important;
+    --n-border: none !important;
+    --n-border-hover: none !important;
+    --n-border-focus: none !important;
+    --n-border-disabled: none !important;
+}
+
+:root{
+    /* 原有变量定义保留 */
+}
+.n-form-item-label {
+    font-weight: 500 !important;
+}
+
+.n-card__content {
+    padding: 0 !important;
+}
+
+.n-card-header {
+    padding: 10px !important;
+    font-size: 15px !important;
+}
+
+.n-divider {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+}

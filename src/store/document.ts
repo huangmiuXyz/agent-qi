@@ -24,6 +24,7 @@ export const documentStore = defineStore('document', () => {
         getDocument,
         nowDocumentId,
         getNowDocument,
-        addSection
+        addSection,
+        document
     }
 })

@@ -1,7 +1,7 @@
 <template>
-  <n-input v-bind="$attrs" />
+  <n-input class="ui-input" v-bind="$attrs" />
 </template>
 
 <script setup lang="ts"></script>
 
-<style scoped></style>
+<style></style>
