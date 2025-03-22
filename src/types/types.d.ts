@@ -15,6 +15,7 @@ declare global {
         description: string
         params?: Record<string, any>
         windowLabel: 'main' | '设置'
+        category: 'remote-api' | 'local-function'
     }
     type IconType =
         keyof typeof antdIcon

@@ -1,7 +1,14 @@
+import '@/api'
 export const openAiService = () => {
     return {
-        getModel: () => {
+        getModel: AIF({
+            name: 'getModel',
+            command: 'getModel',
+            description: '根据设置中的api地址获取模型列表',
+            windowLabel: 'main',
+            category: 'remote-api'
+        }, () => {
             return Apis.general.get_v1_models()
-        },
+        }),
     }
 };

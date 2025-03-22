@@ -10,7 +10,9 @@ export const alovaInstance = createAlova({
     return res.json();
   },
   beforeRequest: method => {
-    console.log(method)
+    if (!method.baseURL) {
+      method.url = settingsStore(piniaInstance).getSetting('aiSetting', 'API_URL') + method.url
+    }
   }
 });
 

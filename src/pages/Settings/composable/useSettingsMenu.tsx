@@ -38,6 +38,7 @@ export const useSettingsMenu = () => {
       ],
       command: "switch-settings-menu",
       windowLabel: "设置",
+      category: "local-function",
     },
     (key: SettingsFormKey) => {
       activeMenu.value = key;
@@ -108,7 +109,7 @@ export const useSettingsMenu = () => {
             description: "API设置",
           },
         ],
-      } as Record<SettingsFormKey, FormProps[]>)
+      }) as Record<SettingsFormKey, FormProps[]>
   );
   return {
     menus,

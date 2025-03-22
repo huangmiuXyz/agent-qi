@@ -24,7 +24,7 @@
           circle
           @click="handleClick(item.key)"
           :iconName="callFunction(item.icon)"
-          type="text"
+          quaternary
         ></UIButton>
       </div>
     </div>

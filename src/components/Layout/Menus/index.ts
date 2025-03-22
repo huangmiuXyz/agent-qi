@@ -15,7 +15,8 @@ export const useMenus = () => {
             command: "openSettingModal",
             description: "打开设置弹窗",
             name: '打开设置弹窗',
-            windowLabel: 'main'
+            windowLabel: 'main',
+            category: 'local-function'
         },
             () => {
                 openModal({
@@ -73,7 +74,8 @@ export const useMenus = () => {
                 key: item.key, description: item.description
             })))}中选择`
         }],
-        name: '切换菜单'
+        name: '切换菜单',
+        category: 'local-function'
     }, async (key: MenuItem["key"]) => {
         const item = menus.value.find((item) => item.key === key);
         if (!item) {
