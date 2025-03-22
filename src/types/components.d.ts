@@ -25,6 +25,7 @@ declare module 'vue' {
     Sections: typeof import('./../pages/Sections/index.vue')['default']
     Settings: typeof import('./../pages/Settings/index.vue')['default']
     SettingsContent: typeof import('./../pages/Settings/Content/index.vue')['default']
+    SettingsContentAiSettingForm: typeof import('./../pages/Settings/Content/aiSettingForm.vue')['default']
     SettingsFunction: typeof import('./../pages/Settings/Function/index.vue')['default']
     SettingsMenus: typeof import('./../pages/Settings/Menus/index.vue')['default']
     SettingsMenusItem: typeof import('./../pages/Settings/Menus/Item/index.vue')['default']

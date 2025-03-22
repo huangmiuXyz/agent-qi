@@ -43,14 +43,19 @@ declare global {
     }
 
     type MenuList = MenuItem[]
-    // settings
+    // 
+    type PROVIDES = 'openai' | string
     interface SettingsMenuValues {
         general: {},
         function: {},
         aiSetting: {
-            API_KEY: string,
-            API_URL: string,
-            MODELS: string[]
+            value: [{
+                API_KEY: string,
+                API_URL: string,
+                MODELS: string[]
+                PROVIDES: PROVIDES
+            }],
+            nowProvides: 'openai'
         }
     }
 
@@ -74,11 +79,13 @@ declare global {
         filterable?: boolean
         tag?: boolean
         type?: "textarea" | "text" | "password";
+        showFeedback?: boolean
     }
     interface FormProps {
         schemas: FormSchema[]
         title: string
         description: string
+        name?: keyof SettingsMenuValues
     }
     interface SettingsMenu {
         name: string;

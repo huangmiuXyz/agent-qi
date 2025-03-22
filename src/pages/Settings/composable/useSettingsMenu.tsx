@@ -63,6 +63,22 @@ export const useSettingsMenu = () => {
                 defaultValue: "",
                 description: "API_URL是openai的请求地址",
                 size: "small",
+                showFeedback: false,
+              },
+            ],
+            title: "API 设置",
+            description: "API设置",
+          },
+          {
+            schemas: [
+              {
+                field: "API_URL",
+                component: "input",
+                label: "API 地址",
+                placeholder: "API 地址",
+                defaultValue: "",
+                description: "API_URL是openai的请求地址",
+                size: "small",
               },
               {
                 field: "API_KEY",
@@ -88,6 +104,7 @@ export const useSettingsMenu = () => {
                 multiple: true,
                 tag: true,
                 filterable: true,
+                showFeedback: false,
                 onFocus: async () => {
                   modelSelectLoading.value = true;
                   try {

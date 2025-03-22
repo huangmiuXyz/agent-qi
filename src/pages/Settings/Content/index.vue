@@ -8,11 +8,9 @@
           {{ item.title }}
         </div>
         <div class="pl-5 pr-5">
-          <UIForm
-            class="bg-form p-4 rounded-lg"
-            :schemas="item.schemas as unknown as FormSchema<SettingsFormKey>[]"
-            label-placement="left"
-            v-model="settings[getActiveMenu.value]"
+          <SettingsContentAiSettingForm
+            v-if="getActiveMenu.value === 'aiSetting'"
+            :item="item"
           />
         </div>
       </div>
@@ -23,7 +21,6 @@
 <script setup lang="ts">
 import { useSettingsMenu } from "~/Settings/composable/useSettingsMenu";
 const { getActiveMenu, getForm } = useSettingsMenu();
-const { settings } = settingsStore();
 </script>
 
 <style scoped></style>

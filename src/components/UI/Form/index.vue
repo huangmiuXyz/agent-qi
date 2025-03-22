@@ -1,6 +1,11 @@
 <template>
   <NForm :label-placement :model="modal">
-    <NFormItem v-for="item in schemas" :label="item.label" :path="item.field">
+    <NFormItem
+      v-for="item in schemas"
+      :show-feedback="item.showFeedback"
+      :label="item.label"
+      :path="item.field"
+    >
       <template #feedback>
         <component :is="item.feedbackRender" />
       </template>

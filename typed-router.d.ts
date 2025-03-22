@@ -22,6 +22,7 @@ declare module 'vue-router/auto-routes' {
     '/Sections/': RouteRecordInfo<'/Sections/', '/Sections', Record<never, never>, Record<never, never>>,
     '/Settings/': RouteRecordInfo<'/Settings/', '/Settings', Record<never, never>, Record<never, never>>,
     '/Settings/Content/': RouteRecordInfo<'/Settings/Content/', '/Settings/Content', Record<never, never>, Record<never, never>>,
+    '/Settings/Content/aiSettingForm': RouteRecordInfo<'/Settings/Content/aiSettingForm', '/Settings/Content/aiSettingForm', Record<never, never>, Record<never, never>>,
     '/Settings/Menus/': RouteRecordInfo<'/Settings/Menus/', '/Settings/Menus', Record<never, never>, Record<never, never>>,
     '/Settings/Menus/Item/': RouteRecordInfo<'/Settings/Menus/Item/', '/Settings/Menus/Item', Record<never, never>, Record<never, never>>,
     '/Settings/TitleBar/': RouteRecordInfo<'/Settings/TitleBar/', '/Settings/TitleBar', Record<never, never>, Record<never, never>>,

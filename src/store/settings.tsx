@@ -9,9 +9,15 @@ export const settingsStore = defineStore("settings", () => {
     general: {},
     function: {},
     aiSetting: {
-      API_KEY: "",
-      API_URL: "",
-      MODELS: [],
+      value: [
+        {
+          API_KEY: "",
+          API_URL: "",
+          MODELS: [],
+          PROVIDES: "openai",
+        },
+      ],
+      nowProvides: "openai",
     },
   });
   const getAllSettings = computed(() => settings);
