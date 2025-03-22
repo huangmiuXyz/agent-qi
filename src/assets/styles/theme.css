@@ -24,6 +24,7 @@ body,
   --color-settings-sidebar-menu-item-text: #000;
   --color-settings-content-text:#000;
   --color-form:#fff;
+  --color-document-list: #fff;
 }
 .dark {
   --color-sidebar: #444545;
@@ -42,6 +43,7 @@ body,
   --color-settings-sidebar-menu-item-text: #fff;
   --color-settings-content-text:#fff;
   --color-form:#262626;
+  --color-document-list: #1a1a1a;
 }
 
 .n-icon-slot{

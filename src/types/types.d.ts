@@ -99,9 +99,18 @@ declare global {
     type Models = OpenAI.Models.Model[]
     type getModelsResponse = ReturnType<typeof listModels>
     // document
-    interface Document {
+    interface Section {
+        id: string
         create: Date
         update: Date
+        title: string
+    }
+    interface Documents {
+        id: string
+        create?: Date
+        update?: Date
+        sections: Section[]
+        title: string
     }
 }
 

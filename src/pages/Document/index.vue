@@ -1,6 +1,7 @@
 <template>
+  <DocumentList />
   <div
-    class="tiptap-container bg-rich-editor overflow-auto max-w-200 flex-1 max-sm:w-full max-sm:h-full p-10 max-sm:px-5"
+    class="tiptap-container bg-rich-editor overflow-auto max-w-200 flex-1/2 max-sm:w-full max-sm:h-full p-10 max-sm:px-5"
   >
     <UIRichEditor
       v-model="title"
@@ -15,6 +16,7 @@
       v-model="content"
     />
   </div>
+  <DocumentAIPanel />
 </template>
 
 <script setup>
