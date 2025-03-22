@@ -47,6 +47,7 @@ export const useSettingsMenu = () => {
   const getActiveMenu = computed(() => activeMenu);
   const models = ref<SelectMixedOption[]>([]);
   const modelSelectLoading = ref(false);
+  const { settings } = settingsStore();
   const getForm = computed(
     () =>
       ({
@@ -54,20 +55,26 @@ export const useSettingsMenu = () => {
         general: [],
         aiSetting: [
           {
-            schemas: [
-              {
-                field: "API_URL",
-                component: "input",
-                label: "API 地址",
-                placeholder: "API 地址",
-                defaultValue: "",
-                description: "API_URL是openai的请求地址",
-                size: "small",
-                showFeedback: false,
-              },
-            ],
             title: "API 设置",
             description: "API设置",
+            schemas: [
+              {
+                field: "nowProvides",
+                component: "select",
+                label: "供应商",
+                placeholder: "供应商",
+                defaultValue: "openai",
+                description: "供应商",
+                size: "small",
+                showFeedback: false,
+                tag: true,
+                filterable: true,
+                options: settings.aiSetting.value.map((item) => ({
+                  label: item.PROVIDES,
+                  value: item.PROVIDES,
+                })),
+              },
+            ],
           },
           {
             schemas: [
@@ -121,8 +128,6 @@ export const useSettingsMenu = () => {
                 },
               },
             ],
-            title: "API 设置",
-            description: "API设置",
           },
         ],
       }) as Record<SettingsFormKey, FormProps[]>

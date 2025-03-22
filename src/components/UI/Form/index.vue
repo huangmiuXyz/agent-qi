@@ -1,5 +1,10 @@
 <template>
-  <NForm :label-placement :model="modal">
+  <NForm
+    :label-placement
+    :model="modal"
+    :label-width="80"
+    :label-align="'left'"
+  >
     <NFormItem
       v-for="item in schemas"
       :show-feedback="item.showFeedback"
