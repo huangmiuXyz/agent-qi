@@ -1,6 +1,6 @@
 <template>
   <div class="h-full flex flex-col justify-between">
-    <div class="mt-6">
+    <div :class="win.__TAURI_OS_PLUGIN_INTERNALS__ ? 'mt-6' : ''">
       <div
         v-for="item in topMenus"
         :key="item.key"
@@ -35,6 +35,7 @@
 import { useMenus } from "./index";
 const { handleClick, bottomMenus, topMenus, activeMenu } = useMenus();
 import { callFunction } from "@/utils/type";
+const win = window;
 </script>
 
 <style scoped></style>

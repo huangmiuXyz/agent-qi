@@ -9,6 +9,9 @@ export const alovaInstance = createAlova({
   responded: res => {
     return res.json();
   },
+  beforeRequest: method => {
+    console.log(method)
+  }
 });
 
 export const $$userConfigMap = withConfigType({});

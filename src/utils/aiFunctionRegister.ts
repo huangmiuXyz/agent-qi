@@ -22,9 +22,10 @@ export const execAIFunction = async <T extends (...args: any[]) => any>(name: st
         await emit(`exec-ai-function-${options.windowLabel}`, { name, args })
     }
 }
-
-listen(`exec-ai-function-${getCurrentWindow().label}`, (event) => {
-    const { name, args } = event.payload as { name: string, args: any[] }
-    const { fn } = AIFunctionMap.value.get(name)!
-    fn(...args)
-})
+if (window.__TAURI_OS_PLUGIN_INTERNALS__) {
+    listen(`exec-ai-function-${getCurrentWindow().label}`, (event) => {
+        const { name, args } = event.payload as { name: string, args: any[] }
+        const { fn } = AIFunctionMap.value.get(name)!
+        fn(...args)
+    })
+}

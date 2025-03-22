@@ -4,4 +4,6 @@ export const piniaInstance = createPinia();
 
 
 piniaInstance.use(persistPlugin);
-piniaInstance.use(syncPlugin);
+if (window.__TAURI_OS_PLUGIN_INTERNALS__) {
+    piniaInstance.use(syncPlugin);
+}
