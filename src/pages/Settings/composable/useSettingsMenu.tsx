@@ -91,8 +91,7 @@ export const useSettingsMenu = () => {
                 onFocus: async () => {
                   modelSelectLoading.value = true;
                   try {
-                    const { data } =
-                      await openAiService().getModel<getModelsResponse>();
+                    const { data } = await openAiService().getModel();
                     models.value = data.map((e) => ({
                       label: e.id,
                       value: e.id,

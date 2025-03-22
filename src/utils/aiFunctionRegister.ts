@@ -2,13 +2,14 @@ import { getCurrentWindow } from "@tauri-apps/api/window"
 import { emit, listen } from "@tauri-apps/api/event"
 
 export const AIFunctionMap = ref(new Map<string, { fn: Function, options: AIFOptions }>())
-export const AIF =
-    <T extends (...args: any[]) => any>(
-        options: AIFOptions,
-        fn: (...args: Parameters<T>) => ReturnType<T>) => {
-        AIFunctionMap.value.set(options.name, { fn, options })
-        return fn
-    }
+export const AIF = <T extends (...args: any[]) => any>(
+    options: AIFOptions,
+    fn: T
+): T => {
+    AIFunctionMap.value.set(options.name, { fn, options });
+    return fn;
+};
+
 
 export const getAllAIFuntion = () => {
     return Array.from(AIFunctionMap.value.values())
