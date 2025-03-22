@@ -31,6 +31,8 @@ declare module 'vue' {
     SettingsTitleBar: typeof import('./../pages/Settings/TitleBar/index.vue')['default']
     UIButton: typeof import('./../components/UI/Button/index.vue')['default']
     UIForm: typeof import('./../components/UI/Form/index.vue')['default']
+    UIInput: typeof import('./../components/UI/Input/index.vue')['default']
     UIRichEditor: typeof import('./../components/UI/RichEditor/index.vue')['default']
+    UISelect: typeof import('./../components/UI/Select/index.vue')['default']
   }
 }

@@ -1,28 +1,29 @@
 <template>
-  <NForm :label-placement :model="modal" :show-feedback="false">
-    <NFormItem
-      v-for="(item, index) in schemas"
-      :label="item.label"
-      :path="item.field"
-      :feedback-class="index === schemas.length - 1 ? 'hidden' : ''"
-    >
+  <NForm :label-placement :model="modal">
+    <NFormItem v-for="item in schemas" :label="item.label" :path="item.field">
+      <template #feedback>
+        <component :is="item.feedbackRender" />
+      </template>
       <div class="flex flex-col w-full">
-        <NInput
+        <UIInput
           :size="item.size"
           v-if="item.component === 'input'"
           v-model:value="modal![item.field]"
           :placeholder="item.placeholder"
+          :type="item.type"
         />
-        <NSelect
+        <UISelect
           :size="item.size"
           v-if="item.component === 'select'"
           v-model:value="modal![item.field]"
           :options="item.options"
           :placeholder="item.placeholder"
+          @focus="item.onFocus"
+          :loading="item.loading"
+          :filterable="item.filterable"
+          :tag="item.tag"
+          :multiple="item.multiple"
         />
-        <div v-if="item.feedbackRender" class="h-8 w-full">
-          <component :is="item.feedbackRender" />
-        </div>
       </div>
     </NFormItem>
   </NForm>

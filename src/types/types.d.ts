@@ -1,12 +1,13 @@
 import '@tauri-apps/plugin-os';
 import { Size } from "naive-ui/es/form/src/interface";
-
+import OpenAI from "openai";
 
 import antdIcon from "@vicons/antd";
 import materialIcon from '@vicons/material'
 import carbonIcon from '@vicons/carbon'
 import tablerIcon from '@vicons/tabler'
 import { VNode } from 'vue';
+const listModels = new OpenAI.Models().list
 declare global {
     interface AIFOptions {
         name: string
@@ -41,13 +42,14 @@ declare global {
     }
 
     type MenuList = MenuItem[]
-
+    // settings
     interface SettingsMenuValues {
         general: {},
         function: {},
         aiSetting: {
             API_KEY: string,
-            API_URL: string
+            API_URL: string,
+            MODELS: string[]
         }
     }
 
@@ -65,6 +67,12 @@ declare global {
         }[]
         size?: Size
         feedbackRender?: () => VNode
+        onFocus?: (e: FocusEvent) => void
+        loading?: boolean
+        multiple?: boolean
+        filterable?: boolean
+        tag?: boolean
+        type?: "textarea" | "text" | "password";
     }
     interface FormProps {
         schemas: FormSchema[]
@@ -78,6 +86,9 @@ declare global {
         description: string
     }
     type SettingsMenuList = SettingsMenu[]
+    //openai
+    type Models = OpenAI.Models.Model[]
+    type getModelsResponse = ReturnType<typeof listModels>
 }
 
 export { }

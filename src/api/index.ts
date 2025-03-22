@@ -1,7 +1,18 @@
 import { createAlova } from 'alova';
-import adapterFetch from 'alova/fetch';
+import fetchAdapter from 'alova/fetch';
+import vueHook from 'alova/vue';
+import { createApis, withConfigType } from './createApis';
 
 export const alovaInstance = createAlova({
-    requestAdapter: adapterFetch(),
-    responded: response => response.json()
+  statesHook: vueHook,
+  requestAdapter: fetchAdapter(),
+  responded: res => {
+    return res.json();
+  },
 });
+
+export const $$userConfigMap = withConfigType({});
+
+const Apis = createApis(alovaInstance, $$userConfigMap);
+
+export default Apis;

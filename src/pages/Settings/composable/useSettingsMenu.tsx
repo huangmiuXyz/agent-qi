@@ -1,4 +1,4 @@
-import UIButton from "@/components/UI/Button/index.vue";
+import { SelectMixedOption } from "naive-ui/es/select/src/interface";
 const activeMenu = ref<SettingsFormKey>("general");
 export const useSettingsMenu = () => {
   const menus: SettingsMenuList = [
@@ -44,55 +44,76 @@ export const useSettingsMenu = () => {
     }
   );
   const getActiveMenu = computed(() => activeMenu);
-  const Form = {
-    function: [],
-    general: [],
-    aiSetting: [
-      {
-        schemas: [
+  const models = ref<SelectMixedOption[]>([]);
+  const modelSelectLoading = ref(false);
+  const getForm = computed(
+    () =>
+      ({
+        function: [],
+        general: [],
+        aiSetting: [
           {
-            field: "API_URL",
-            component: "input",
-            label: "API 地址",
-            placeholder: "API 地址",
-            defaultValue: "",
-            description: "API_URL是openai的请求地址",
-            size: "small",
-          },
-          {
-            field: "API_KEY",
-            component: "input",
-            label: "API 密钥",
-            placeholder: "API 密钥",
-            defaultValue: "",
-            description: "API_KEY是访问openai的请求凭证",
-            size: "small",
-          },
-          {
-            field: "model",
-            component: "select",
-            label: "模型选择",
-            placeholder: "模型选择",
-            defaultValue: "模型选择",
-            description:
-              "model是访问openai的请求模型,请选择一个模型,请求之前建议调用获取模型的接口从接口中选择模型的ID填入此处",
-            size: "small",
-            feedbackRender: () => (
-              <UIButton fontSize="12px" text={true}>
-                获取模型
-              </UIButton>
-            ),
+            schemas: [
+              {
+                field: "API_URL",
+                component: "input",
+                label: "API 地址",
+                placeholder: "API 地址",
+                defaultValue: "",
+                description: "API_URL是openai的请求地址",
+                size: "small",
+              },
+              {
+                field: "API_KEY",
+                component: "input",
+                label: "API 密钥",
+                placeholder: "API 密钥",
+                defaultValue: "",
+                description: "API_KEY是访问openai的请求凭证",
+                size: "small",
+                type: "password",
+              },
+              {
+                field: "MODELS",
+                component: "select",
+                label: "模型选择",
+                placeholder: "模型选择",
+                defaultValue: "模型选择",
+                description:
+                  "MODELS是访问openai的请求模型,请选择一个模型,请求之前建议调用获取模型的接口从接口中选择模型的ID填入此处(此处为多选类型为：[{label: '模型ID', value: '模型ID'}])",
+                size: "small",
+                loading: modelSelectLoading.value,
+                options: models.value,
+                multiple: true,
+                tag: true,
+                filterable: true,
+                onFocus: async () => {
+                  modelSelectLoading.value = true;
+                  try {
+                    const { data } =
+                      await openAiService().getModel<getModelsResponse>();
+                    models.value = data.map((e) => ({
+                      label: e.id,
+                      value: e.id,
+                    }));
+                  } catch (error) {
+                    console.error(error);
+                  } finally {
+                    modelSelectLoading.value = false;
+                  }
+                },
+              },
+            ],
+            title: "API 设置",
+            description: "API设置",
           },
         ],
-        title: "API 设置",
-        description: "API设置",
-      },
-    ],
-  } as const satisfies Record<SettingsFormKey, FormProps[]>;
+      } as Record<SettingsFormKey, FormProps[]>)
+  );
   return {
     menus,
     handleClickMenu,
     getActiveMenu,
-    Form,
+    getForm,
   };
 };

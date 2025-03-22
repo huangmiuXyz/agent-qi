@@ -1,9 +1,9 @@
 <template>
   <div class="bg-settings-sidebar-content flex-1">
     <div class="mt-6">
-      <div v-for="item in Form[getActiveMenu.value]" :key="item.title">
+      <div v-for="item in getForm[getActiveMenu.value]" :key="item.title">
         <div
-          class="pl-9 pr-9 pb-2 font-medium text-base text-settings-content-text items-baseline"
+          class="select-none pl-9 pr-9 pb-2 font-medium text-base text-settings-content-text items-baseline"
         >
           {{ item.title }}
         </div>
@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import { useSettingsMenu } from "~/Settings/composable/useSettingsMenu";
-const { getActiveMenu, Form } = useSettingsMenu();
+const { getActiveMenu, getForm } = useSettingsMenu();
 const { settings } = settingsStore();
 </script>
 

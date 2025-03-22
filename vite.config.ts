@@ -25,7 +25,7 @@ export default defineConfig(async () => ({
         ]
       }],
       dts: 'src/types/auto-imports.d.ts',
-      dirs: ['src/store', 'src/composable', 'src/utils'],
+      dirs: ['src/store', 'src/composable', 'src/utils', 'src/services'],
     }),
     Components({
       dirs: ['src/components', "src/pages"],
