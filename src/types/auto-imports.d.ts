@@ -18,6 +18,7 @@ declare global {
   const customRef: typeof import('vue')['customRef']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
+  const documentStore: typeof import('../store/document')['documentStore']
   const effectScope: typeof import('vue')['effectScope']
   const execAIFunction: typeof import('../utils/aiFunctionRegister')['execAIFunction']
   const getAllAIFuntion: typeof import('../utils/aiFunctionRegister')['getAllAIFuntion']

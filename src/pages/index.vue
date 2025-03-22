@@ -7,7 +7,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 onMounted(() => {
-  router.replace("/sections");
+  router.replace("/document");
 });
 </script>
 

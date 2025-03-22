@@ -7,7 +7,7 @@
     v-model="settings.aiSetting"
   />
   <UIForm
-    v-else
+    v-else-if="settings.aiSetting.value?.[nowProvidesFormIndex]"
     class="bg-form p-4 rounded-lg"
     :schemas="item.schemas as unknown as FormSchema<SettingsFormKey>[]"
     label-placement="left"

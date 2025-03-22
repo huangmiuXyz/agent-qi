@@ -80,7 +80,7 @@ declare global {
         tag?: boolean
         type?: "textarea" | "text" | "password";
         showFeedback?: boolean
-        onChange?: (value: string) => void
+        onUpdate?: (value: string) => void
     }
     interface FormProps {
         schemas: FormSchema[]
@@ -98,6 +98,11 @@ declare global {
     //openai
     type Models = OpenAI.Models.Model[]
     type getModelsResponse = ReturnType<typeof listModels>
+    // document
+    interface Document {
+        create: Date
+        update: Date
+    }
 }
 
 export { }

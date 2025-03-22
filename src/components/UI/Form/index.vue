@@ -33,7 +33,7 @@
           :filterable="item.filterable"
           :tag="item.tag"
           :multiple="item.multiple"
-          @onChange="item.onChange"
+          @update:value="item.onUpdate"
         />
       </div>
     </NFormItem>
@@ -43,13 +43,12 @@
 <script setup lang="ts">
 import { LabelPlacement } from "naive-ui/es/form/src/interface";
 import { VNode } from "vue";
-
 defineProps<{
   schemas: FormSchema<SettingsFormKey>[];
   labelPlacement: LabelPlacement;
   feedbackRender?: () => VNode;
 }>();
-const modal = defineModel<Record<string, any> | undefined>();
+const modal = defineModel<Record<string, any>>({ required: true });
 </script>
 
 <style scoped></style>

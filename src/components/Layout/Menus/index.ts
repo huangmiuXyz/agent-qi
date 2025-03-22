@@ -40,7 +40,7 @@ export const useMenus = () => {
         {
             key: 1,
             label: "小说",
-            path: "/Sections",
+            path: "/document",
             icon: "ReadOutlined",
             description: "切换到写小说页面，可以对小说进行编辑修改",
         },

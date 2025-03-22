@@ -20,7 +20,12 @@ export const settingsStore = defineStore("settings", () => {
       nowProvides: "openai",
     },
   });
-  const getAllSettings = computed(() => settings);
+  const getAllSettings = computed({
+    get: () => settings.value,
+    set: () => {
+      throw new Error("Cannot set readonly property");
+    },
+  });
   const setSetting = <K extends SettingsFormKey>(
     key: K,
     field: keyof SettingsMenuValues[K],

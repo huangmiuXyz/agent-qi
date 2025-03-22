@@ -69,7 +69,7 @@ export const useSettingsMenu = () => {
                 showFeedback: false,
                 tag: true,
                 filterable: true,
-                onChange: (value: string) => {
+                onUpdate: (value: string) => {
                   if (
                     settings.aiSetting.value.find(
                       (item) => item.PROVIDES === value
