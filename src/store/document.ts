@@ -8,6 +8,7 @@ export const documentStore = defineStore('document', () => {
     const nowDocumentId = ref<DocumentId>(1)
     const getNowDocument = computed(() => document.value.find(item => item.id === nowDocumentId.value))
     const getDocument = computed(() => document)
+    const nowDocumentIndex = computed(() => document.value.findIndex(item => item.id === nowDocumentId.value))
     const addSection = (title: string) => {
         const index = document.value.findIndex(item => item.id === nowDocumentId.value)
         if (index !== -1) {
@@ -22,9 +23,9 @@ export const documentStore = defineStore('document', () => {
     }
     return {
         getDocument,
-        nowDocumentId,
         getNowDocument,
         addSection,
+        nowDocumentIndex,
         document
     }
 })
