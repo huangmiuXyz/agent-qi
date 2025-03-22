@@ -104,9 +104,11 @@ declare global {
         create: Date
         update: Date
         title: string
+        content: string
     }
+    type DocumentId = string | number
     interface Documents {
-        id: string
+        id: DocumentId
         create?: Date
         update?: Date
         sections: Section[]

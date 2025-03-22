@@ -21,3 +21,7 @@ input, textarea {
   padding: 10px !important;
   font-size: 15px !important;
 }
+.n-divider{
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+}
