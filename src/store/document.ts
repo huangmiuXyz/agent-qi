@@ -25,6 +25,9 @@ export const documentStore = defineStore('document', () => {
             nowSectionId.value = sectionId
         }
     }
+    const setNowSectionId = (id: SectionId) => {
+        nowSectionId.value = id
+    }
     return {
         getDocument,
         getNowDocument,
@@ -32,6 +35,7 @@ export const documentStore = defineStore('document', () => {
         nowDocumentIndex,
         nowSectionIndex,
         document,
-        nowSectionId
+        nowSectionId,
+        setNowSectionId
     }
 })
