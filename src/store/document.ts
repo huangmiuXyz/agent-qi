@@ -31,6 +31,7 @@ export const documentStore = defineStore('document', () => {
         addSection,
         nowDocumentIndex,
         nowSectionIndex,
-        document
+        document,
+        nowSectionId
     }
 })

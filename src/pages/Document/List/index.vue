@@ -6,7 +6,9 @@
     <n-divider />
     <div
       class="flex flex-col gap-2"
-      v-if="document[nowDocumentIndex].sections.length"
+      v-if="
+        document[nowDocumentIndex].sections.length && nowSectionIndex !== -1
+      "
     >
       <div v-for="item in getNowDocument?.sections" :key="item.id">
         <UIInput

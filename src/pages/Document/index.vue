@@ -2,8 +2,8 @@
   <div class="max-sm:p-0 flex-1 bg-pages rounded-tl-2xl flex p-3 pb-0 gap-4">
     <DocumentList />
     <div
-      v-if="nowDocumentIndex && nowSectionIndex"
       class="tiptap-container bg-rich-editor overflow-auto max-w-200 flex-5/6 max-sm:w-full max-sm:h-full p-10 max-sm:px-5"
+      v-if="document[nowDocumentIndex].sections[nowSectionIndex]"
     >
       <UIRichEditor
         v-model="document[nowDocumentIndex].sections[nowSectionIndex].title"
@@ -17,8 +17,8 @@
         placeholder="请输入内容..."
         v-model="document[nowDocumentIndex].sections[nowSectionIndex].content"
       />
-      <DocumentAIPanel />
     </div>
+    <DocumentAIPanel />
   </div>
 </template>
 
