@@ -25,11 +25,11 @@
             :class="{ 'bg-document-list-active': nowSectionId === item.id }"
             class="reset-naive-input hover:bg-document-list-active rounded-md"
             @click="setNowSectionId(item.id)"
+            @dblclick="sectionsTitleReadonly = false"
             :key="item.id"
           >
             <UIInput
               @blur="sectionsTitleReadonly = true"
-              @dblick="sectionsTitleReadonly = false"
               :readonly="sectionsTitleReadonly"
               size="small"
               v-model:value="item.title"

@@ -19,7 +19,7 @@
         v-model="document[nowDocumentIndex].sections[nowSectionIndex].content"
       />
     </div>
-    <DocumentAIPanel class="pages-height" />
+    <!-- <DocumentAIPanel class="pages-height" /> -->
   </div>
 </template>
 
@@ -34,6 +34,7 @@ const { document, nowDocumentIndex, nowSectionIndex } =
   height: calc(100vh - 3.4rem);
   overflow: hidden;
 }
+
 .tiptap-container {
   display: flex;
   flex-direction: column;
