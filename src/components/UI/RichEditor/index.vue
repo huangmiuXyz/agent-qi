@@ -12,7 +12,7 @@ const props = defineProps<{
   placeholder?: string;
   disableEnter?: boolean;
 }>();
-const modelValue = defineModel<string>({ default: "" });
+const modelValue = defineModel<string | Object>({ default: "" });
 const lineHeight = ref(1.8);
 const editor = useEditor({
   content: modelValue.value,
@@ -28,21 +28,22 @@ const editor = useEditor({
   injectCSS: false,
   onUpdate: ({ editor }) => {
     let newText = editor.getText();
+    const newJSON = editor.getJSON();
     if (props.disableEnter) {
       newText = newText.replace(/\n/g, "");
       if (newText !== editor.getText()) {
         editor.commands.setContent(newText);
       }
     }
-    if (newText !== modelValue.value) {
-      modelValue.value = newText;
+    if (newJSON !== modelValue.value) {
+      modelValue.value = newJSON;
     }
   },
   autofocus: true,
 });
 
 watch(modelValue, (newContent) => {
-  if (editor.value && editor.value.getText() !== newContent) {
+  if (editor.value && editor.value.getJSON() !== newContent) {
     editor.value.commands.setContent(newContent, false);
   }
 });
