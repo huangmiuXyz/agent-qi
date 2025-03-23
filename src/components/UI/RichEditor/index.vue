@@ -34,6 +34,10 @@ const editor = useEditor({
       if (newText !== editor.getText()) {
         editor.commands.setContent(newText);
       }
+      if (newText !== modelValue.value) {
+        modelValue.value = newText;
+      }
+      return;
     }
     if (newJSON !== modelValue.value) {
       modelValue.value = newJSON;
@@ -43,7 +47,15 @@ const editor = useEditor({
 });
 
 watch(modelValue, (newContent) => {
-  if (editor.value && editor.value.getJSON() !== newContent) {
+  if (
+    editor.value &&
+    editor.value.getJSON() !== newContent &&
+    props.disableEnter
+  ) {
+    editor.value.commands.setContent(newContent, false);
+    return;
+  }
+  if (editor.value && editor.value.getText() !== newContent) {
     editor.value.commands.setContent(newContent, false);
   }
 });
