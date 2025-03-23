@@ -3,20 +3,12 @@
     <DocumentList />
     <div
       class="tiptap-container bg-rich-editor overflow-auto max-w-200 flex-5/6 max-sm:w-full max-sm:h-full p-10 max-sm:px-5"
-      v-if="document[nowDocumentIndex].sections[nowSectionIndex]"
-    >
-      <UIRichEditor
-        v-model="document[nowDocumentIndex].sections[nowSectionIndex].title"
-        placeholder="请输入标题..."
-        class="title-input w-full bg-transparent outline-none"
-        :disableEnter="true"
-      />
+      v-if="document[nowDocumentIndex].sections[nowSectionIndex]">
+      <UIRichEditor v-model="document[nowDocumentIndex].sections[nowSectionIndex].title" placeholder="请输入标题..."
+        class="title-input w-full bg-transparent outline-none" :disableEnter="true" />
       <div class="divider mb-4"></div>
-      <UIRichEditor
-        class="flex-1 flex"
-        placeholder="请输入内容..."
-        v-model="document[nowDocumentIndex].sections[nowSectionIndex].content"
-      />
+      <UIRichEditor class="flex-1 flex" placeholder="请输入内容..."
+        v-model="document[nowDocumentIndex].sections[nowSectionIndex].content" />
     </div>
     <DocumentAIPanel />
   </div>

@@ -1,23 +1,12 @@
 <template>
-  <div
-    class="flex-1/6 max-w-50 min-w-50 p-2 h-full rounded-xl bg-document-list select-none"
-  >
+  <div class="flex-1/6 max-w-50 min-w-50 p-2 h-full rounded-xl bg-document-list select-none">
     <UIInput size="small" v-model="search" placeholder="搜索章节" />
     <n-divider />
-    <div
-      class="flex flex-col gap-2"
-      v-if="
-        document[nowDocumentIndex].sections.length && nowSectionIndex !== -1
-      "
-    >
-      <div v-for="item in getNowDocument?.sections" :key="item.id">
-        <UIInput
-          size="small"
-          v-model:value="
-            document[nowDocumentIndex].sections[nowSectionIndex!].title
-          "
-          placeholder="章节标题"
-        />
+    <div class="flex flex-col gap-2" v-if="document[nowDocumentIndex].sections.length && nowSectionIndex !== -1
+      ">
+      <div v-for="(item, index) in getNowDocument?.sections" :key="item.id">
+        <UIInput size="small" v-model:value="document[nowDocumentIndex].sections[index].title
+      " placeholder="章节标题" />
       </div>
     </div>
     <n-divider v-if="getNowDocument?.sections.length" />
