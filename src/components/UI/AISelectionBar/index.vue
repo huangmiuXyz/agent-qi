@@ -31,7 +31,6 @@ const aiSelectionBarRef = useTemplateRef<HTMLDivElement>("aiSelectionBarRef");
 onMounted(() => {
   aiSelectionBarRef.value!.addEventListener("mousedown", (e) => {
     e.preventDefault();
-    e.stopPropagation();
   });
 });
 

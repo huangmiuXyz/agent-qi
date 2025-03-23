@@ -13,6 +13,7 @@
       />
       <div class="divider mb-4"></div>
       <UIRichEditor
+        id="sectionEditor"
         class="flex-1 flex"
         style="font-size: 16px"
         placeholder="请输入内容..."

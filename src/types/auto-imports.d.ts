@@ -69,6 +69,7 @@ declare global {
   const toValue: typeof import('vue')['toValue']
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
+  const useAISelectionBar: typeof import('../composable/index')['useAISelectionBar']
   const useAlova: typeof import('../composable/index')['useAlova']
   const useAttrs: typeof import('vue')['useAttrs']
   const useCssModule: typeof import('vue')['useCssModule']

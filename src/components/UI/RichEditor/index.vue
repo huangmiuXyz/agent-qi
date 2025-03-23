@@ -16,6 +16,7 @@ const props = defineProps<{
 const selectionTxt = ref<string>("");
 const modelValue = defineModel<string | Object>({ default: "" });
 const lineHeight = ref(1.8);
+const { setAiSelectionBarPosition } = useAISelectionBar();
 const editor = useEditor({
   content: modelValue.value,
   extensions: [
@@ -83,7 +84,6 @@ watch(modelValue, (newContent) => {
     editor.value.commands.setContent(newContent, false);
   }
 });
-const { setAiSelectionBarPosition } = settingsStore();
 </script>
 
 <style>
