@@ -13,9 +13,14 @@ declare global {
         name: string
         command: string
         description: string
-        params?: Record<string, any>
+        params?: {
+            type: string,
+            description: string,
+            required: boolean
+        }[]
         windowLabel: 'main' | '设置'
-        category: 'remote-api' | 'local-function'
+        type: 'remote-api' | 'local-function',
+        category: 'document' | 'setting'
     }
     type IconType =
         keyof typeof antdIcon

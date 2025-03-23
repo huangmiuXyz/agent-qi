@@ -6,7 +6,8 @@ export const openAiService = () => {
             command: 'getModel',
             description: '根据设置中的api地址获取模型列表',
             windowLabel: 'main',
-            category: 'remote-api'
+            type: 'remote-api',
+            category: 'setting'
         }, () => {
             return Apis.general.get_v1_models()
         }),

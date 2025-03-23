@@ -34,11 +34,13 @@ export const useSettingsMenu = () => {
               description: item.description,
             }))
           )}中选择`,
+          required: true,
         },
       ],
+      category: "setting",
       command: "switch-settings-menu",
       windowLabel: "设置",
-      category: "local-function",
+      type: "local-function",
     },
     (key: SettingsFormKey) => {
       activeMenu.value = key;

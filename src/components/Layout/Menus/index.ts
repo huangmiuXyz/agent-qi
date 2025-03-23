@@ -16,7 +16,8 @@ export const useMenus = () => {
             description: "打开设置弹窗",
             name: '打开设置弹窗',
             windowLabel: 'main',
-            category: 'local-function'
+            type: 'local-function',
+            category: 'setting'
         },
             () => {
                 openModal({
@@ -72,10 +73,12 @@ export const useMenus = () => {
             type: "number",
             description: `菜单的key只能从${JSON.stringify(menus.value.map(item => ({
                 key: item.key, description: item.description
-            })))}中选择`
+            })))}中选择`,
+            required: true
         }],
         name: '切换菜单',
-        category: 'local-function'
+        type: 'local-function',
+        category: 'setting'
     }, async (key: MenuItem["key"]) => {
         const item = menus.value.find((item) => item.key === key);
         if (!item) {

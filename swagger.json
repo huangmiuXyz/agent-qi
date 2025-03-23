@@ -40,11 +40,7 @@
                   "description": "默认为 1 生成的音频速度。选择0.25到4.0之间的值。1.0是默认值。"
                 }
               },
-              "required": [
-                "model",
-                "input",
-                "voice"
-              ]
+              "required": ["model", "input", "voice"]
             }
           }
         ],
@@ -63,12 +59,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       }
     },
     "/v1/audio/transcriptions": {
@@ -158,9 +150,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "text"
-              ]
+              "required": ["text"]
             }
           }
         },
@@ -169,12 +159,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"]
       }
     },
     "/v1/audio/translations": {
@@ -258,9 +244,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "text"
-              ]
+              "required": ["text"]
             }
           }
         },
@@ -269,12 +253,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"]
       }
     },
     "/v1/chat/completions": {
@@ -395,12 +375,7 @@
                   "description": "控制模型调用哪个函数(如果有的话)。none 表示模型不会调用函数,而是生成消息。auto 表示模型可以在生成消息和调用函数之间进行选择。通过 {\"type\": \"function\", \"function\": {\"name\": \"my_function\"}} 强制模型调用该函数。  如果没有函数存在,默认为 none。如果有函数存在,默认为 auto。  显示可能的类型"
                 }
               },
-              "required": [
-                "model",
-                "messages",
-                "tools",
-                "tool_choice"
-              ]
+              "required": ["model", "messages", "tools", "tool_choice"]
             }
           }
         ],
@@ -460,10 +435,7 @@
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "role",
-                          "content"
-                        ]
+                        "required": ["role", "content"]
                       },
                       "finish_reason": {
                         "type": "string"
@@ -491,13 +463,7 @@
                   ]
                 }
               },
-              "required": [
-                "id",
-                "object",
-                "created",
-                "choices",
-                "usage"
-              ]
+              "required": ["id", "object", "created", "choices", "usage"]
             }
           }
         },
@@ -506,12 +472,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       }
     },
     "/v1/completions": {
@@ -611,11 +573,7 @@
                   "description": "表示最终用户的唯一标识符,这可以帮助OpenAI监控和检测滥用。 了解更多。"
                 }
               },
-              "required": [
-                "model",
-                "prompt",
-                "user"
-              ]
+              "required": ["model", "prompt", "user"]
             }
           }
         ],
@@ -720,12 +678,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       }
     },
     "/v1/embeddings": {
@@ -758,10 +712,7 @@
                   "description": "输入文本以获取嵌入，编码为字符串或标记数组。要在单个请求中获取多个输入的嵌入，请传递一个字符串数组或令牌数组数组。每个输入的长度不得超过 8192 个标记。"
                 }
               },
-              "required": [
-                "model",
-                "input"
-              ]
+              "required": ["model", "input"]
             }
           }
         ],
@@ -811,18 +762,10 @@
                       "type": "integer"
                     }
                   },
-                  "required": [
-                    "prompt_tokens",
-                    "total_tokens"
-                  ]
+                  "required": ["prompt_tokens", "total_tokens"]
                 }
               },
-              "required": [
-                "object",
-                "data",
-                "model",
-                "usage"
-              ]
+              "required": ["object", "data", "model", "usage"]
             }
           }
         },
@@ -831,12 +774,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       }
     },
     "/v1/fine_tuning/jobs": {
@@ -970,12 +909,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       },
       "get": {
         "summary": "列出微调作业",
@@ -1045,11 +980,7 @@
                   "type": "boolean"
                 }
               },
-              "required": [
-                "object",
-                "data",
-                "has_more"
-              ]
+              "required": ["object", "data", "has_more"]
             }
           }
         },
@@ -1058,9 +989,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/fine_tuning/jobs/{fine_tuning_job_id}": {
@@ -1142,9 +1071,7 @@
                       "type": "integer"
                     }
                   },
-                  "required": [
-                    "n_epochs"
-                  ],
+                  "required": ["n_epochs"],
                   "description": "微调作业使用的超参数。更多详细信息请参阅微调指南"
                 },
                 "trained_tokens": {
@@ -1175,9 +1102,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/fine_tuning/jobs/{fine_tuning_job_id}/cancel": {
@@ -1257,9 +1182,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "n_epochs"
-                  ],
+                  "required": ["n_epochs"],
                   "description": "微调作业使用的超参数。更多详细信息请参阅微调指南"
                 },
                 "status": {
@@ -1296,9 +1219,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/fine_tuning/jobs/{fine_tuning_job_id}/events": {
@@ -1409,11 +1330,7 @@
                   "type": "boolean"
                 }
               },
-              "required": [
-                "object",
-                "data",
-                "has_more"
-              ]
+              "required": ["object", "data", "has_more"]
             }
           }
         },
@@ -1422,9 +1339,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/images/generations": {
@@ -1481,9 +1396,7 @@
                   "description": "生成图像的大小。必须是256x256、512x512或 1024x1024之一。"
                 }
               },
-              "required": [
-                "prompt"
-              ]
+              "required": ["prompt"]
             }
           }
         ],
@@ -1519,16 +1432,11 @@
                         "type": "string"
                       }
                     },
-                    "required": [
-                      "url"
-                    ]
+                    "required": ["url"]
                   }
                 }
               },
-              "required": [
-                "created",
-                "data"
-              ]
+              "required": ["created", "data"]
             }
           }
         },
@@ -1537,12 +1445,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       }
     },
     "/v1/images/edits": {
@@ -1639,16 +1543,11 @@
                         "type": "string"
                       }
                     },
-                    "required": [
-                      "url"
-                    ]
+                    "required": ["url"]
                   }
                 }
               },
-              "required": [
-                "created",
-                "data"
-              ]
+              "required": ["created", "data"]
             }
           }
         },
@@ -1657,12 +1556,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"]
       }
     },
     "/v1/images/variations": {
@@ -1745,16 +1640,11 @@
                         "type": "string"
                       }
                     },
-                    "required": [
-                      "url"
-                    ]
+                    "required": ["url"]
                   }
                 }
               },
-              "required": [
-                "created",
-                "data"
-              ]
+              "required": ["created", "data"]
             }
           }
         },
@@ -1763,12 +1653,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"]
       }
     },
     "/v1/models": {
@@ -1818,19 +1704,11 @@
                         "type": "string"
                       }
                     },
-                    "required": [
-                      "id",
-                      "object",
-                      "created",
-                      "owned_by"
-                    ]
+                    "required": ["id", "object", "created", "owned_by"]
                   }
                 }
               },
-              "required": [
-                "object",
-                "data"
-              ]
+              "required": ["object", "data"]
             }
           }
         },
@@ -1839,9 +1717,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/models/{modelid}": {
@@ -1896,12 +1772,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "id",
-                "object",
-                "created",
-                "owned_by"
-              ]
+              "required": ["id", "object", "created", "owned_by"]
             }
           }
         },
@@ -1910,9 +1781,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/models/{model}": {
@@ -1947,11 +1816,7 @@
                   "type": "boolean"
                 }
               },
-              "required": [
-                "id",
-                "object",
-                "deleted"
-              ]
+              "required": ["id", "object", "deleted"]
             }
           }
         },
@@ -1960,9 +1825,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/files": {
@@ -2041,12 +1904,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"]
       },
       "get": {
         "summary": "列出文件",
@@ -2110,10 +1969,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "data",
-                "object"
-              ]
+              "required": ["data", "object"]
             }
           }
         },
@@ -2122,9 +1978,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/files/{file_id}": {
@@ -2175,11 +2029,7 @@
                   "type": "boolean"
                 }
               },
-              "required": [
-                "id",
-                "object",
-                "deleted"
-              ]
+              "required": ["id", "object", "deleted"]
             }
           }
         },
@@ -2188,9 +2038,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       },
       "get": {
         "summary": "检索文件",
@@ -2260,9 +2108,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/files/{file_id}/content": {
@@ -2304,9 +2150,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/octet-stream"
-        ]
+        "produces": ["application/octet-stream"]
       }
     },
     "/v1/moderations": {
@@ -2339,10 +2183,7 @@
                   "description": "有两种内容审核模型可用：`text-moderation-stable`和`text-moderation-latest`。  默认值`text-moderation-latest`将随着时间的推移自动升级。这可确保您始终使用我们最准确的模型。如果您使用`text-moderation-stable`，我们将在更新模型之前提供提前通知。的准确度`text-moderation-stable`可能略低于 的准确度`text-moderation-latest`。"
                 }
               },
-              "required": [
-                "input",
-                "model"
-              ]
+              "required": ["input", "model"]
             }
           }
         ],
@@ -2365,7 +2206,7 @@
                       "violence": true,
                       "violence/graphic": false
                     },
-                    "category_scores": {
+                    "type_scores": {
                       "hate": 0.22714105248451233,
                       "hate/threatening": 0.4132447838783264,
                       "self-harm": 0.005232391878962517,
@@ -2442,7 +2283,7 @@
                         "title": "",
                         "description": "审核模型检测到的所有分类标签"
                       },
-                      "category_scores": {
+                      "type_scores": {
                         "type": "object",
                         "properties": {
                           "hate": {
@@ -2498,11 +2339,7 @@
                   "description": "审核结果的详细信息"
                 }
               },
-              "required": [
-                "id",
-                "model",
-                "results"
-              ]
+              "required": ["id", "model", "results"]
             }
           }
         },
@@ -2511,12 +2348,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       }
     },
     "/v1/assistants": {
@@ -2574,9 +2407,7 @@
                   "description": "一组可附加到对象的 16 个键值对。这对于以结构化格式存储有关对象的附加信息非常有用。键的最大长度为 64 个字符，值的最大长度为 512 个字符。"
                 }
               },
-              "required": [
-                "model"
-              ]
+              "required": ["model"]
             }
           }
         ],
@@ -2668,12 +2499,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       },
       "get": {
         "summary": "列出助手",
@@ -2789,13 +2616,7 @@
                   "type": "boolean"
                 }
               },
-              "required": [
-                "object",
-                "data",
-                "first_id",
-                "last_id",
-                "has_more"
-              ]
+              "required": ["object", "data", "first_id", "last_id", "has_more"]
             }
           }
         },
@@ -2804,9 +2625,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/assistants/{assistant_id}": {
@@ -2894,9 +2713,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/assistants/{assistant_id }": {
@@ -2982,10 +2799,7 @@
                     "type": "retrieval"
                   }
                 ],
-                "file_ids": [
-                  "file-abc123",
-                  "file-abc456"
-                ],
+                "file_ids": ["file-abc123", "file-abc456"],
                 "metadata": {}
               }
             },
@@ -3055,12 +2869,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       },
       "delete": {
         "summary": "删除助手",
@@ -3093,11 +2903,7 @@
                   "type": "boolean"
                 }
               },
-              "required": [
-                "id",
-                "object",
-                "deleted"
-              ]
+              "required": ["id", "object", "deleted"]
             }
           }
         },
@@ -3106,9 +2912,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/assistants/{assistant_id}/files": {
@@ -3146,12 +2950,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "id",
-                "object",
-                "created_at",
-                "assistant_id"
-              ]
+              "required": ["id", "object", "created_at", "assistant_id"]
             }
           }
         },
@@ -3160,9 +2959,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       },
       "get": {
         "summary": "列出助手文件",
@@ -3234,12 +3031,7 @@
                         "type": "string"
                       }
                     },
-                    "required": [
-                      "id",
-                      "object",
-                      "created_at",
-                      "assistant_id"
-                    ]
+                    "required": ["id", "object", "created_at", "assistant_id"]
                   }
                 },
                 "first_id": {
@@ -3252,13 +3044,7 @@
                   "type": "boolean"
                 }
               },
-              "required": [
-                "object",
-                "data",
-                "first_id",
-                "last_id",
-                "has_more"
-              ]
+              "required": ["object", "data", "first_id", "last_id", "has_more"]
             }
           }
         },
@@ -3267,9 +3053,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/assistants/{assistant_id}/files/{file_id }": {
@@ -3314,12 +3098,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "id",
-                "object",
-                "created_at",
-                "assistant_id"
-              ]
+              "required": ["id", "object", "created_at", "assistant_id"]
             }
           }
         },
@@ -3328,9 +3107,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       },
       "delete": {
         "summary": "删除辅助文件",
@@ -3373,11 +3150,7 @@
                   "type": "boolean"
                 }
               },
-              "required": [
-                "id",
-                "object",
-                "deleted"
-              ]
+              "required": ["id", "object", "deleted"]
             }
           }
         },
@@ -3386,9 +3159,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/threads": {
@@ -3426,10 +3197,7 @@
                         "description": "一组可附加到对象的 16 个键值对。这对于以结构化格式存储有关对象的附加信息非常有用。键的最大长度为 64 个字符，值的最大长度为 512 个字符。"
                       }
                     },
-                    "required": [
-                      "role",
-                      "content"
-                    ]
+                    "required": ["role", "content"]
                   },
                   "description": "用于启动线程的消息列表。"
                 },
@@ -3471,12 +3239,7 @@
                   "properties": {}
                 }
               },
-              "required": [
-                "id",
-                "object",
-                "created_at",
-                "metadata"
-              ]
+              "required": ["id", "object", "created_at", "metadata"]
             }
           }
         },
@@ -3485,12 +3248,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       }
     },
     "/v1/threads/{thread_id }": {
@@ -3566,18 +3325,10 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "modified",
-                    "user"
-                  ]
+                  "required": ["modified", "user"]
                 }
               },
-              "required": [
-                "id",
-                "object",
-                "created_at",
-                "metadata"
-              ]
+              "required": ["id", "object", "created_at", "metadata"]
             }
           }
         },
@@ -3586,12 +3337,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       },
       "delete": {
         "summary": "删除话题",
@@ -3624,11 +3371,7 @@
                   "type": "boolean"
                 }
               },
-              "required": [
-                "id",
-                "object",
-                "deleted"
-              ]
+              "required": ["id", "object", "deleted"]
             }
           }
         },
@@ -3637,9 +3380,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/threads/{thread_id}/messages": {
@@ -3683,10 +3424,7 @@
                   "description": "一组可附加到对象的 16 个键值对。这对于以结构化格式存储有关对象的附加信息非常有用。键的最大长度为 64 个字符，值的最大长度为 512 个字符。"
                 }
               },
-              "required": [
-                "role",
-                "content"
-              ]
+              "required": ["role", "content"]
             }
           }
         ],
@@ -3761,10 +3499,7 @@
                             }
                           }
                         },
-                        "required": [
-                          "value",
-                          "annotations"
-                        ],
+                        "required": ["value", "annotations"],
                         "description": "作为消息一部分的文本内容。"
                       }
                     }
@@ -3812,12 +3547,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       },
       "get": {
         "summary": "列出消息",
@@ -3916,16 +3647,10 @@
                                   }
                                 }
                               },
-                              "required": [
-                                "value",
-                                "annotations"
-                              ]
+                              "required": ["value", "annotations"]
                             }
                           },
-                          "required": [
-                            "type",
-                            "text"
-                          ]
+                          "required": ["type", "text"]
                         }
                       },
                       "file_ids": {
@@ -3969,13 +3694,7 @@
                   "type": "boolean"
                 }
               },
-              "required": [
-                "object",
-                "data",
-                "first_id",
-                "last_id",
-                "has_more"
-              ]
+              "required": ["object", "data", "first_id", "last_id", "has_more"]
             }
           }
         },
@@ -3984,9 +3703,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/threads/{thread_id}/messages/{message_id }": {
@@ -4054,10 +3771,7 @@
                             }
                           }
                         },
-                        "required": [
-                          "value",
-                          "annotations"
-                        ]
+                        "required": ["value", "annotations"]
                       }
                     }
                   }
@@ -4099,9 +3813,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       },
       "post": {
         "summary": "修改留言",
@@ -4139,16 +3851,11 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "modified",
-                    "user"
-                  ],
+                  "required": ["modified", "user"],
                   "description": "一组可附加到对象的 16 个键值对。这对于以结构化格式存储有关对象的附加信息非常有用。键的最大长度为 64 个字符，值的最大长度为 512 个字符。"
                 }
               },
-              "required": [
-                "metadata"
-              ]
+              "required": ["metadata"]
             }
           }
         ],
@@ -4220,10 +3927,7 @@
                             }
                           }
                         },
-                        "required": [
-                          "value",
-                          "annotations"
-                        ]
+                        "required": ["value", "annotations"]
                       }
                     }
                   }
@@ -4250,10 +3954,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "modified",
-                    "user"
-                  ]
+                  "required": ["modified", "user"]
                 }
               },
               "required": [
@@ -4276,12 +3977,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       }
     },
     "/v1 /threads/{thread_id}/messages/{message_id}/files/{file_id}": {
@@ -4333,12 +4030,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "id",
-                "object",
-                "created_at",
-                "message_id"
-              ]
+              "required": ["id", "object", "created_at", "message_id"]
             }
           }
         },
@@ -4347,9 +4039,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/threads/{thread_id}/messages/{message_id}/files _": {
@@ -4430,12 +4120,7 @@
                         "type": "string"
                       }
                     },
-                    "required": [
-                      "id",
-                      "object",
-                      "created_at",
-                      "message_id"
-                    ]
+                    "required": ["id", "object", "created_at", "message_id"]
                   }
                 },
                 "first_id": {
@@ -4448,13 +4133,7 @@
                   "type": "boolean"
                 }
               },
-              "required": [
-                "object",
-                "data",
-                "first_id",
-                "last_id",
-                "has_more"
-              ]
+              "required": ["object", "data", "first_id", "last_id", "has_more"]
             }
           }
         },
@@ -4463,9 +4142,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/threads/{thread_id}/runs": {
@@ -4513,9 +4190,7 @@
                             "description": "正在定义的工具类型：code_interpreter"
                           }
                         },
-                        "required": [
-                          "type"
-                        ]
+                        "required": ["type"]
                       },
                       "Retrieval tool": {
                         "type": "object",
@@ -4525,9 +4200,7 @@
                             "description": "正在定义的工具类型：retrieval"
                           }
                         },
-                        "required": [
-                          "type"
-                        ]
+                        "required": ["type"]
                       },
                       "Function tool": {
                         "type": "object",
@@ -4553,16 +4226,10 @@
                                 "description": "函数接受的参数，描述为 JSON Schema 对象。请参阅指南以获取示例，并参阅 JSON 架构参考以获取有关格式的文档。  要描述不接受参数的函数，请提供值{\"type\": \"object\", \"properties\": {}}。"
                               }
                             },
-                            "required": [
-                              "name",
-                              "parameters"
-                            ]
+                            "required": ["name", "parameters"]
                           }
                         },
-                        "required": [
-                          "type",
-                          "function"
-                        ]
+                        "required": ["type", "function"]
                       }
                     }
                   },
@@ -4574,11 +4241,7 @@
                   "description": "一组可附加到对象的 16 个键值对。这对于以结构化格式存储有关对象的附加信息非常有用。键的最大长度为 64 个字符，值的最大长度为 512 个字符。"
                 }
               },
-              "required": [
-                "assistant_id",
-                "instructions",
-                "model"
-              ]
+              "required": ["assistant_id", "instructions", "model"]
             }
           }
         ],
@@ -4680,12 +4343,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       },
       "get": {
         "summary": "列表运行",
@@ -4796,9 +4455,7 @@
                               "type": "string"
                             }
                           },
-                          "required": [
-                            "type"
-                          ]
+                          "required": ["type"]
                         }
                       },
                       "file_ids": {
@@ -4843,13 +4500,7 @@
                   "type": "boolean"
                 }
               },
-              "required": [
-                "object",
-                "data",
-                "first_id",
-                "last_id",
-                "has_more"
-              ]
+              "required": ["object", "data", "first_id", "last_id", "has_more"]
             }
           }
         },
@@ -4858,9 +4509,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/threads/{thread_id}/runs/{run_id }": {
@@ -4897,9 +4546,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "user_id"
-                  ],
+                  "required": ["user_id"],
                   "description": "一组可附加到对象的 16 个键值对。这对于以结构化格式存储有关对象的附加信息非常有用。键的最大长度为 64 个字符，值的最大长度为 512 个字符。"
                 }
               }
@@ -4979,9 +4626,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "user_id"
-                  ]
+                  "required": ["user_id"]
                 }
               },
               "required": [
@@ -5011,12 +4656,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       }
     },
     "/v1/threads/{thread_id}/runs/{run_id}/submit_tool_outputs": {
@@ -5064,9 +4705,7 @@
                   "description": "为其提交输出的工具列表。"
                 }
               },
-              "required": [
-                "tool_outputs"
-              ]
+              "required": ["tool_outputs"]
             }
           }
         ],
@@ -5155,10 +4794,7 @@
                                         "type": "string"
                                       }
                                     },
-                                    "required": [
-                                      "type",
-                                      "description"
-                                    ]
+                                    "required": ["type", "description"]
                                   },
                                   "unit": {
                                     "type": "object",
@@ -5173,16 +4809,10 @@
                                         }
                                       }
                                     },
-                                    "required": [
-                                      "type",
-                                      "enum"
-                                    ]
+                                    "required": ["type", "enum"]
                                   }
                                 },
-                                "required": [
-                                  "location",
-                                  "unit"
-                                ]
+                                "required": ["location", "unit"]
                               },
                               "required": {
                                 "type": "array",
@@ -5191,18 +4821,10 @@
                                 }
                               }
                             },
-                            "required": [
-                              "type",
-                              "properties",
-                              "required"
-                            ]
+                            "required": ["type", "properties", "required"]
                           }
                         },
-                        "required": [
-                          "name",
-                          "description",
-                          "parameters"
-                        ]
+                        "required": ["name", "description", "parameters"]
                       }
                     }
                   }
@@ -5245,12 +4867,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       }
     },
     "/v1/threads/{thread_id}/runs/{run_id}/cancel": {
@@ -5373,9 +4991,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/threads/runs": {
@@ -5424,12 +5040,7 @@
                             "description": "一组可附加到对象的 16 个键值对。这对于以结构化格式存储有关对象的附加信息非常有用。键的最大长度为 64 个字符，值的最大长度为 512 个字符。"
                           }
                         },
-                        "required": [
-                          "role",
-                          "content",
-                          "metadata",
-                          "file_ids"
-                        ]
+                        "required": ["role", "content", "metadata", "file_ids"]
                       },
                       "description": "用于启动线程的消息列表。"
                     },
@@ -5460,10 +5071,7 @@
                   "description": "一组可附加到对象的 16 个键值对。这对于以结构化格式存储有关对象的附加信息非常有用。键的最大长度为 64 个字符，值的最大长度为 512 个字符。"
                 }
               },
-              "required": [
-                "assistant_id",
-                "thread"
-              ]
+              "required": ["assistant_id", "thread"]
             }
           }
         ],
@@ -5560,12 +5168,8 @@
             "bearer": []
           }
         ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
       }
     },
     "/v1 /threads/{thread_id}/runs/{run_id}/steps/{step_id}": {
@@ -5656,15 +5260,10 @@
                           "type": "string"
                         }
                       },
-                      "required": [
-                        "message_id"
-                      ]
+                      "required": ["message_id"]
                     }
                   },
-                  "required": [
-                    "type",
-                    "message_creation"
-                  ]
+                  "required": ["type", "message_creation"]
                 }
               },
               "required": [
@@ -5691,9 +5290,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     },
     "/v1/threads/{thread_id}/runs/{run_id}/steps": {
@@ -5816,15 +5413,10 @@
                                 "type": "string"
                               }
                             },
-                            "required": [
-                              "message_id"
-                            ]
+                            "required": ["message_id"]
                           }
                         },
-                        "required": [
-                          "type",
-                          "message_creation"
-                        ]
+                        "required": ["type", "message_creation"]
                       }
                     }
                   }
@@ -5839,13 +5431,7 @@
                   "type": "boolean"
                 }
               },
-              "required": [
-                "object",
-                "data",
-                "first_id",
-                "last_id",
-                "has_more"
-              ]
+              "required": ["object", "data", "first_id", "last_id", "has_more"]
             }
           }
         },
@@ -5854,9 +5440,7 @@
             "bearer": []
           }
         ],
-        "produces": [
-          "application/json"
-        ]
+        "produces": ["application/json"]
       }
     }
   },
@@ -5867,9 +5451,7 @@
   ],
   "swagger": "2.0",
   "host": "api.openai.com",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "basePath": "/v1",
   "definitions": {},
   "securityDefinitions": {

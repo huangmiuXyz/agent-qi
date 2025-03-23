@@ -36,15 +36,15 @@ type Alova2MethodConfig<Responded> =
       infer SE
     >
   >
-    ? Omit<
-        AlovaMethodCreateConfig<
-          AlovaGenerics<Responded, any, RequestConfig, Response, ResponseHeader, L1Cache, L2Cache, SE>,
-          any,
-          Responded
-        >,
-        'params'
-      >
-    : never;
+  ? Omit<
+    AlovaMethodCreateConfig<
+      AlovaGenerics<Responded, any, RequestConfig, Response, ResponseHeader, L1Cache, L2Cache, SE>,
+      any,
+      Responded
+    >,
+    'params'
+  >
+  : never;
 
 // Extract the return type of transform function that define in $$userConfigMap, if it not exists, use the default type.
 type ExtractUserDefinedTransformed<
@@ -52,8 +52,8 @@ type ExtractUserDefinedTransformed<
   Default
 > = DefinitionKey extends keyof UserMethodConfigMap
   ? UserMethodConfigMap[DefinitionKey]['transform'] extends (...args: any[]) => any
-    ? Awaited<ReturnType<UserMethodConfigMap[DefinitionKey]['transform']>>
-    : Default
+  ? Awaited<ReturnType<UserMethodConfigMap[DefinitionKey]['transform']>>
+  : Default
   : Default;
 type Alova2Method<
   Responded,
@@ -72,23 +72,23 @@ type Alova2Method<
       infer SE
     >
   >
-    ? Method<
-        AlovaGenerics<
-          CurrentConfig extends undefined
-            ? ExtractUserDefinedTransformed<DefinitionKey, Responded>
-            : CurrentConfig['transform'] extends (...args: any[]) => any
-              ? Awaited<ReturnType<CurrentConfig['transform']>>
-              : ExtractUserDefinedTransformed<DefinitionKey, Responded>,
-          any,
-          RequestConfig,
-          Response,
-          ResponseHeader,
-          L1Cache,
-          L2Cache,
-          SE
-        >
-      >
-    : never;
+  ? Method<
+    AlovaGenerics<
+      CurrentConfig extends undefined
+      ? ExtractUserDefinedTransformed<DefinitionKey, Responded>
+      : CurrentConfig['transform'] extends (...args: any[]) => any
+      ? Awaited<ReturnType<CurrentConfig['transform']>>
+      : ExtractUserDefinedTransformed<DefinitionKey, Responded>,
+      any,
+      RequestConfig,
+      Response,
+      ResponseHeader,
+      L1Cache,
+      L2Cache,
+      SE
+    >
+  >
+  : never;
 
 declare global {
   interface Apis {
@@ -3052,7 +3052,7 @@ declare global {
        *       'violence/graphic': boolean
        *     }
        *     // 审核模型对所有分类标签的得分
-       *     category_scores?: {
+       *     type_scores?: {
        *       // 审核模型对仇恨言论的得分
        *       // [required]
        *       hate: number
@@ -3135,7 +3135,7 @@ declare global {
             /**
              * 审核模型对所有分类标签的得分
              */
-            category_scores?: {
+            type_scores?: {
               /**
                * 审核模型对仇恨言论的得分
                * [required]
@@ -3247,7 +3247,7 @@ declare global {
             /**
              * 审核模型对所有分类标签的得分
              */
-            category_scores?: {
+            type_scores?: {
               /**
                * 审核模型对仇恨言论的得分
                * [required]
