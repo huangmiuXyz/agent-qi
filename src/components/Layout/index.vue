@@ -11,12 +11,16 @@
     </div>
   </div>
   <slot v-else />
+  <UIAISelectionBar :position="aiSelectionBarPosition" />
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from "pinia";
+
 const router = useRouter();
 const layoutOut = ref(["/settings"]);
 const path = computed(() => router.currentRoute.value.fullPath);
+const { aiSelectionBarPosition } = storeToRefs(settingsStore());
 </script>
 
 <style scoped></style>

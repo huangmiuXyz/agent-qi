@@ -59,6 +59,23 @@ watch(modelValue, (newContent) => {
     editor.value.commands.setContent(newContent, false);
   }
 });
+const { setAiSelectionBarPosition } = settingsStore();
+const onMouseUp = () => {
+  if (!editor.value?.state.selection.empty) {
+    const position = editor.value?.state.selection.from;
+    const paragraph = editor.value?.state.doc.nodeAt(position!);
+    if (paragraph) {
+      console.log(paragraph);
+      return;
+    }
+  }
+};
+onMounted(() => {
+  document.addEventListener("mouseup", onMouseUp);
+});
+onBeforeMount(() => {
+  document.removeEventListener("mouseup", onMouseUp);
+});
 </script>
 
 <style>

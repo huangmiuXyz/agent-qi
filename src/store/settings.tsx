@@ -39,6 +39,13 @@ export const settingsStore = defineStore("settings", () => {
   ) => {
     return settings.value[key][field];
   };
+  const aiSelectionBarPosition = ref({
+    x: 0,
+    y: 0,
+  });
+  const setAiSelectionBarPosition = (position: { x: number; y: number }) => {
+    aiSelectionBarPosition.value = position;
+  };
   return {
     isDark,
     settings,
@@ -47,5 +54,7 @@ export const settingsStore = defineStore("settings", () => {
     getAllSettings,
     setSetting,
     getSetting,
+    aiSelectionBarPosition,
+    setAiSelectionBarPosition,
   };
 });
