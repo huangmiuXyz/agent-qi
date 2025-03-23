@@ -20,6 +20,9 @@ importers:
       '@tauri-apps/plugin-os':
         specifier: ~2
         version: 2.2.1
+      '@tiptap/core':
+        specifier: 3.0.0-next.4
+        version: 3.0.0-next.4(@tiptap/pm@3.0.0-next.4)
       '@tiptap/extension-document':
         specifier: 3.0.0-next.4
         version: 3.0.0-next.4(@tiptap/core@3.0.0-next.4(@tiptap/pm@3.0.0-next.4))
