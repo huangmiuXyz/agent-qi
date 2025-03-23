@@ -1,5 +1,5 @@
 <template>
-  <editor-content id="rich-editor" class="select-none" :editor="editor" />
+  <editor-content class="select-none" :editor="editor" />
 </template>
 
 <script setup lang="ts">
@@ -11,7 +11,9 @@ import Placeholder from "@tiptap/extension-placeholder";
 const props = defineProps<{
   placeholder?: string;
   disableEnter?: boolean;
+  id: string;
 }>();
+const selectionTxt = ref<string>("");
 const modelValue = defineModel<string | Object>({ default: "" });
 const lineHeight = ref(1.8);
 const editor = useEditor({
@@ -26,6 +28,28 @@ const editor = useEditor({
   ],
   editable: true,
   injectCSS: false,
+  onSelectionUpdate: ({ editor }) => {
+    selectionTxt.value = editor.state.doc.textBetween(
+      editor.state.selection.from,
+      editor.state.selection.to
+    );
+    const selection = window.getSelection();
+    if (selectionTxt.value) {
+      const range = selection!.getRangeAt(0);
+      const rect = range.getBoundingClientRect();
+      console.log(rect.top);
+
+      setAiSelectionBarPosition({
+        y: rect.top - 50,
+        x: rect.left,
+      });
+    } else {
+      setAiSelectionBarPosition({
+        y: 0,
+        x: 0,
+      });
+    }
+  },
   onUpdate: ({ editor }) => {
     let newText = editor.getText();
     const newJSON = editor.getJSON();
@@ -60,22 +84,6 @@ watch(modelValue, (newContent) => {
   }
 });
 const { setAiSelectionBarPosition } = settingsStore();
-const onMouseUp = () => {
-  if (!editor.value?.state.selection.empty) {
-    const position = editor.value?.state.selection.from;
-    const paragraph = editor.value?.state.doc.nodeAt(position!);
-    if (paragraph) {
-      console.log(paragraph);
-      return;
-    }
-  }
-};
-onMounted(() => {
-  document.addEventListener("mouseup", onMouseUp);
-});
-onBeforeMount(() => {
-  document.removeEventListener("mouseup", onMouseUp);
-});
 </script>
 
 <style>

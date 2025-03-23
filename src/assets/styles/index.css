@@ -1,13 +1,48 @@
-@import './theme.css';
-@import './naive.css';
+@import "./theme.css";
+@import "./naive.css";
 html,
 body,
-#app ,
+#app,
 .n-config-provider {
   @apply w-full h-full;
   overscroll-behavior: none;
-  font-family: "PingFang SC", system-ui
+  font-family: "PingFang SC", system-ui;
 }
-input, textarea {
+input,
+textarea {
   text-transform: none;
+}
+.ui-button-ai {
+  height: 100%;
+  padding: 4px;
+  display: flex !important;
+  align-items: center !important;
+  cursor: pointer;
+  background-image: linear-gradient(
+    120deg,
+    #6eb6f2 10%,
+    #a855f7,
+    #ea580c,
+    #eab308
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition:
+    background-image 0.5s ease,
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.ui-button-ai:hover {
+  background-image: linear-gradient(
+    120deg,
+    #f6d02f 10%,
+    #e24342,
+    #ff7043,
+    #d32f2f
+  );
+  transition: background-color 0.3s ease;
+  transform: scale(1.1);
+  opacity: 0.9;
 }
