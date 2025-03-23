@@ -14,6 +14,7 @@
       <div class="divider mb-4"></div>
       <UIRichEditor
         class="flex-1 flex"
+        style="font-size: 16px"
         placeholder="请输入内容..."
         v-model="document[nowDocumentIndex].sections[nowSectionIndex].content"
       />
