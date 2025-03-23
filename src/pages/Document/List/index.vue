@@ -1,18 +1,26 @@
 <template>
-  <div class="grow shrink-0 p-2 h-full rounded-xl bg-document-list select-none">
+  <div
+    class="flex-1/6 max-w-50 min-w-50 p-2 h-full rounded-xl bg-document-list select-none"
+  >
     <UIInput size="small" v-model="search" placeholder="搜索章节" />
     <n-divider />
-    <div class="flex flex-col gap-2">
-      <template v-if="getNowDocument?.sections.length">
-        <div v-for="item in getNowDocument?.sections" :key="item.id">
-          <UIInput size="small" v-model="item.title" placeholder="章节标题" />
-        </div>
-      </template>
-      <div v-else class="flex justify-center">
-        <UIButton size="small" text @click="addSection('')">
-          添加章节
-        </UIButton>
+    <div
+      class="flex flex-col gap-2"
+      v-if="document[nowDocumentIndex].sections.length"
+    >
+      <div v-for="item in getNowDocument?.sections" :key="item.id">
+        <UIInput
+          size="small"
+          v-model:value="
+            document[nowDocumentIndex].sections[nowSectionIndex!].title
+          "
+          placeholder="章节标题"
+        />
       </div>
+    </div>
+    <n-divider v-if="getNowDocument?.sections.length" />
+    <div class="flex justify-center">
+      <UIButton size="small" text @click="newSection()"> 添加章节 </UIButton>
     </div>
   </div>
 </template>
@@ -21,8 +29,12 @@
 import { storeToRefs } from "pinia";
 
 const search = ref("");
-const { getNowDocument } = storeToRefs(documentStore());
+const { getNowDocument, nowDocumentIndex, nowSectionIndex, document } =
+  storeToRefs(documentStore());
 const { addSection } = documentStore();
+const newSection = () => {
+  addSection("新章节");
+};
 </script>
 
 <style scoped></style>

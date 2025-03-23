@@ -1,18 +1,31 @@
 <template>
-  <DocumentList />
-  <div
-    class="tiptap-container bg-rich-editor overflow-auto max-w-200 flex-1/2 max-sm:w-full max-sm:h-full p-10 max-sm:px-5">
-    <UIRichEditor v-model="document[nowDocumentIndex].title" placeholder="请输入标题..."
-      class="title-input w-full bg-transparent outline-none" :disableEnter="true" />
-    <div class="divider mb-4"></div>
-    <UIRichEditor class="flex-1 flex" placeholder="请输入内容..." v-model="document[nowDocumentIndex].content" />
+  <div class="max-sm:p-0 flex-1 bg-pages rounded-tl-2xl flex p-3 pb-0 gap-4">
+    <DocumentList />
+    <div
+      v-if="nowDocumentIndex && nowSectionIndex"
+      class="tiptap-container bg-rich-editor overflow-auto max-w-200 flex-5/6 max-sm:w-full max-sm:h-full p-10 max-sm:px-5"
+    >
+      <UIRichEditor
+        v-model="document[nowDocumentIndex].sections[nowSectionIndex].title"
+        placeholder="请输入标题..."
+        class="title-input w-full bg-transparent outline-none"
+        :disableEnter="true"
+      />
+      <div class="divider mb-4"></div>
+      <UIRichEditor
+        class="flex-1 flex"
+        placeholder="请输入内容..."
+        v-model="document[nowDocumentIndex].sections[nowSectionIndex].content"
+      />
+      <DocumentAIPanel />
+    </div>
   </div>
-  <DocumentAIPanel />
 </template>
 
 <script setup>
 import { storeToRefs } from "pinia";
-const { document, nowDocumentIndex } = storeToRefs(documentStore()) 
+const { document, nowDocumentIndex, nowSectionIndex } =
+  storeToRefs(documentStore());
 </script>
 
 <style scoped>

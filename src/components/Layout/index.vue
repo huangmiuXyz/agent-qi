@@ -7,11 +7,7 @@
     <layout-sider-bar />
     <div class="flex flex-col flex-1">
       <layout-title-bar />
-      <div
-        class="max-sm:p-0 flex-1 bg-pages rounded-tl-2xl flex justify-between p-3 pb-0 gap-4"
-      >
-        <slot />
-      </div>
+      <slot />
     </div>
   </div>
   <slot v-else />

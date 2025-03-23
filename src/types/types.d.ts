@@ -99,8 +99,9 @@ declare global {
     type Models = OpenAI.Models.Model[]
     type getModelsResponse = ReturnType<typeof listModels>
     // document
+    type SectionId = string
     interface Section {
-        id: string
+        id: SectionId
         create: Date
         update: Date
         title: string
