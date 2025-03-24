@@ -43,14 +43,14 @@ const editor = useEditor({
   },
   onUpdate: ({ editor }) => {
     let newText = editor.getText();
-    const newJSON = editor.getJSON();
+    let newJSON = editor.getJSON();
     if (props.disableEnter) {
       newText = newText.replace(/\n/g, "");
       if (newText !== editor.getText()) {
         editor.commands.setContent(newText);
-      }
-      if (newText !== modelValue.value) {
-        modelValue.value = newText;
+        if (newText !== modelValue.value) {
+          modelValue.value = newText;
+        }
       }
       return;
     }
@@ -61,19 +61,6 @@ const editor = useEditor({
   autofocus: true,
 });
 
-watch(modelValue, (newContent) => {
-  if (
-    editor.value &&
-    editor.value.getJSON() !== newContent &&
-    props.disableEnter
-  ) {
-    editor.value.commands.setContent(newContent, false);
-    return;
-  }
-  if (editor.value && editor.value.getText() !== newContent) {
-    editor.value.commands.setContent(newContent, false);
-  }
-});
 const setAiSelectionBarPositionHandler = () => {
   requestAnimationFrame(() => {
     const selectionTxt = editor.value?.state.doc.textBetween(
@@ -105,6 +92,7 @@ const setAiSelectionBarPositionHandler = () => {
 };
 
 onMounted(() => {
+  editor.value!.commands.setContent(modelValue.value, false);
   const tiptapContainer = document.querySelector(".tiptap-container");
   tiptapContainer?.addEventListener(
     "mouseup",
