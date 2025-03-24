@@ -46,3 +46,13 @@ textarea {
   transform: scale(1.1);
   opacity: 0.9;
 }
+.n-card-header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  justify-content: end;
+}
+.n-card-header__main {
+  display: none;
+}

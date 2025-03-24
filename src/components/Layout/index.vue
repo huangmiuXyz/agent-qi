@@ -11,14 +11,13 @@
     </div>
   </div>
   <slot v-else />
-  <UIAISelectionBar :position="aiSelectionBarPosition" />
+  <UIAISelectionBar />
 </template>
 
 <script setup lang="ts">
 const router = useRouter();
 const layoutOut = ref(["/settings"]);
 const path = computed(() => router.currentRoute.value.fullPath);
-const { aiSelectionBarPosition } = toRefs(useAISelectionBar());
 </script>
 
 <style scoped></style>

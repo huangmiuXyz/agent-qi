@@ -34,17 +34,7 @@ const editor = useEditor({
       editor.state.selection.from,
       editor.state.selection.to
     );
-    const selection = window.getSelection();
-    if (selectionTxt.value) {
-      const range = selection!.getRangeAt(0);
-      const rect = range.getBoundingClientRect();
-      console.log(rect.top);
-
-      setAiSelectionBarPosition({
-        y: rect.top - 50,
-        x: rect.left,
-      });
-    } else {
+    if (!selectionTxt.value) {
       setAiSelectionBarPosition({
         y: 0,
         x: 0,
@@ -84,6 +74,55 @@ watch(modelValue, (newContent) => {
     editor.value.commands.setContent(newContent, false);
   }
 });
+const setAiSelectionBarPositionHandler = () => {
+  requestAnimationFrame(() => {
+    const selectionTxt = editor.value?.state.doc.textBetween(
+      editor.value?.state.selection.from,
+      editor.value?.state.selection.to
+    );
+    if (selectionTxt) {
+      const selection = window.getSelection();
+      const range = selection!.getRangeAt(0);
+      const rect = range.getBoundingClientRect();
+      if (rect.top - 50 < 50) {
+        setAiSelectionBarPosition({
+          y: rect.bottom,
+          x: rect.left,
+        });
+        return;
+      }
+      setAiSelectionBarPosition({
+        y: rect.top - 55,
+        x: rect.left,
+      });
+    } else {
+      setAiSelectionBarPosition({
+        y: 0,
+        x: 0,
+      });
+    }
+  });
+};
+
+onMounted(() => {
+  const tiptapContainer = document.querySelector(".tiptap-container");
+  tiptapContainer?.addEventListener(
+    "mouseup",
+    setAiSelectionBarPositionHandler
+  );
+  tiptapContainer?.addEventListener("scroll", setAiSelectionBarPositionHandler);
+});
+onBeforeUnmount(() => {
+  const tiptapContainer = document.querySelector(".tiptap-container");
+  tiptapContainer?.removeEventListener(
+    "scroll",
+    setAiSelectionBarPositionHandler
+  );
+  tiptapContainer?.removeEventListener(
+    "mouseup",
+    setAiSelectionBarPositionHandler
+  );
+});
 </script>
 
 <style>
@@ -94,9 +133,6 @@ watch(modelValue, (newContent) => {
   overflow: auto;
   display: table;
   flex-direction: column;
-  white-space: pre-wrap;
-  word-break: break-word;
-  font-family: inherit;
   width: 100%;
 }
 
