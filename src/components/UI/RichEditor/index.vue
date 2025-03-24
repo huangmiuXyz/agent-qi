@@ -8,15 +8,22 @@ import Document from "@tiptap/extension-document";
 import Paragraph from "@tiptap/extension-paragraph";
 import Text from "@tiptap/extension-text";
 import Placeholder from "@tiptap/extension-placeholder";
-const props = defineProps<{
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
+import { useAISelectionBar } from "@/composable";
+
+interface Props {
   placeholder?: string;
   disableEnter?: boolean;
   id: string;
-}>();
-const selectionTxt = ref<string>("");
+}
+
+const props = defineProps<Props>();
 const modelValue = defineModel<string | Object>({ default: "" });
 const lineHeight = ref(1.8);
 const { setAiSelectionBarPosition } = useAISelectionBar();
+
+const defaultPlaceholder = computed(() => props.placeholder || "开始输入...");
+
 const editor = useEditor({
   content: modelValue.value,
   extensions: [
@@ -24,89 +31,92 @@ const editor = useEditor({
     Paragraph,
     Text,
     Placeholder.configure({
-      placeholder: props.placeholder || "开始输入...",
+      placeholder: defaultPlaceholder.value,
     }),
   ],
   editable: true,
   injectCSS: false,
   onSelectionUpdate: ({ editor }) => {
-    selectionTxt.value = editor.state.doc.textBetween(
+    const selectionText = editor.state.doc.textBetween(
       editor.state.selection.from,
       editor.state.selection.to
     );
-    if (!selectionTxt.value) {
-      setAiSelectionBarPosition({
-        y: 0,
-        x: 0,
-      });
+
+    if (!selectionText) {
+      resetAiSelectionBarPosition();
     }
   },
   onUpdate: ({ editor }) => {
-    let newText = editor.getText();
-    let newJSON = editor.getJSON();
-    if (props.disableEnter) {
-      newText = newText.replace(/\n/g, "");
-      if (newText !== editor.getText()) {
-        editor.commands.setContent(newText);
-        if (newText !== modelValue.value) {
-          modelValue.value = newText;
-        }
-      }
-      return;
-    }
-    if (newJSON !== modelValue.value) {
-      modelValue.value = newJSON;
-    }
+    updateModelValue(editor);
   },
   autofocus: true,
 });
 
+const resetAiSelectionBarPosition = () => {
+  setAiSelectionBarPosition({ x: 0, y: 0 });
+};
+
+const updateModelValue = (editor: any) => {
+  const newText = editor.getText();
+  const newJSON = editor.getJSON();
+
+  if (props.disableEnter) {
+    const textWithoutNewlines = newText.replace(/\n/g, "");
+    modelValue.value = textWithoutNewlines;
+    return;
+  }
+
+  if (newJSON !== modelValue.value) {
+    modelValue.value = newJSON;
+  }
+};
+
 const setAiSelectionBarPositionHandler = () => {
   requestAnimationFrame(() => {
-    const selectionTxt = editor.value?.state.doc.textBetween(
-      editor.value?.state.selection.from,
-      editor.value?.state.selection.to
+    if (!editor.value) return;
+
+    const selectionText = editor.value.state.doc.textBetween(
+      editor.value.state.selection.from,
+      editor.value.state.selection.to
     );
-    if (selectionTxt) {
-      const selection = window.getSelection();
-      const range = selection!.getRangeAt(0);
-      const rect = range.getBoundingClientRect();
-      if (rect.top - 50 < 50) {
-        setAiSelectionBarPosition({
-          y: rect.bottom,
-          x: rect.left,
-        });
-        return;
-      }
-      setAiSelectionBarPosition({
-        y: rect.top - 55,
-        x: rect.left,
-      });
-    } else {
-      setAiSelectionBarPosition({
-        y: 0,
-        x: 0,
-      });
+
+    if (!selectionText) {
+      resetAiSelectionBarPosition();
+      return;
     }
+
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return;
+
+    const range = selection.getRangeAt(0);
+    const rect = range.getBoundingClientRect();
+    const yPosition = rect.top - 50 < 50 ? rect.bottom : rect.top - 55;
+
+    setAiSelectionBarPosition({
+      y: yPosition,
+      x: rect.left,
+    });
   });
 };
 
 onMounted(() => {
-  editor.value!.commands.setContent(modelValue.value, false);
+  if (!editor.value) return;
+  editor.value.commands.setContent(modelValue.value, false);
   const tiptapContainer = document.querySelector(".tiptap-container");
-  tiptapContainer?.addEventListener(
-    "mouseup",
-    setAiSelectionBarPositionHandler
-  );
-  tiptapContainer?.addEventListener("scroll", setAiSelectionBarPositionHandler);
+  if (!tiptapContainer) return;
+  tiptapContainer.addEventListener("mouseup", setAiSelectionBarPositionHandler);
+  tiptapContainer.addEventListener("scroll", setAiSelectionBarPositionHandler);
 });
+
 onBeforeUnmount(() => {
   const tiptapContainer = document.querySelector(".tiptap-container");
-  tiptapContainer?.removeEventListener(
+  if (!tiptapContainer) return;
+
+  tiptapContainer.removeEventListener(
     "scroll",
     setAiSelectionBarPositionHandler
   );
-  tiptapContainer?.removeEventListener(
+  tiptapContainer.removeEventListener(
     "mouseup",
     setAiSelectionBarPositionHandler
   );
