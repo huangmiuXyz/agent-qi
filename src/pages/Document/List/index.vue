@@ -24,7 +24,7 @@
           <div
             :class="{ 'bg-document-list-active': nowSectionId === item.id }"
             class="reset-naive-input cursor-pointer hover:bg-document-list-active rounded-md mt-1"
-            @click="setNowSectionId(item.id)"
+            @click="setSectionId(item.id)"
             @dblclick="sectionsTitleReadonly = false"
             :key="item.id"
           >
@@ -65,6 +65,13 @@ const newSection = async () => {
   }, 100);
 };
 const sectionsTitleReadonly = ref(true);
+const emit = defineEmits<{
+  (e: "change-section"): void;
+}>();
+const setSectionId = (sectionId: string) => {
+  setNowSectionId(sectionId);
+  emit("change-section");
+};
 </script>
 
 <style scoped></style>

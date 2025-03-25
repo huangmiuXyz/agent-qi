@@ -99,10 +99,8 @@ const setAiSelectionBarPositionHandler = () => {
     });
   });
 };
-
 onMounted(() => {
   if (!editor.value) return;
-  editor.value.commands.setContent(modelValue.value, false);
   const tiptapContainer = document.querySelector(".tiptap-container");
   if (!tiptapContainer) return;
   tiptapContainer.addEventListener("mouseup", setAiSelectionBarPositionHandler);
@@ -121,6 +119,11 @@ onBeforeUnmount(() => {
     "mouseup",
     setAiSelectionBarPositionHandler
   );
+});
+defineExpose({
+  setContent: (content: string) => {
+    editor.value?.commands.setContent(content, false);
+  },
 });
 </script>
 
