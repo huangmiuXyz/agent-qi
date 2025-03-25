@@ -20,7 +20,8 @@ interface Props {
 const props = defineProps<Props>();
 const modelValue = defineModel<string | Object>({ default: "" });
 const lineHeight = ref(1.8);
-const { setAiSelectionBarPosition } = useAISelectionBar();
+const { setAiSelectionBarPosition, setAiSelectionBarShow } =
+  useAISelectionBar();
 
 const defaultPlaceholder = computed(() => props.placeholder || "开始输入...");
 
@@ -53,7 +54,7 @@ const editor = useEditor({
 });
 
 const resetAiSelectionBarPosition = () => {
-  setAiSelectionBarPosition({ x: 0, y: 0 });
+  setAiSelectionBarShow(false);
 };
 
 const updateModelValue = (editor: any) => {
