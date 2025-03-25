@@ -1,7 +1,7 @@
 <template>
   <Transition name="fade">
     <div
-      v-if="showBar"
+      v-show="aiSelectionBarShow"
       ref="aiSelectionBarRef"
       class="bg-ai-selection-bar shadow-ai-selection-bar flex items-center absolute w-100 h-10 rounded-lg pl-2"
       :style="{
@@ -15,11 +15,8 @@
 </template>
 
 <script lang="ts" setup>
-const { aiSelectionBarPosition } = toRefs(useAISelectionBar());
-const showBar = computed(
-  () =>
-    aiSelectionBarPosition.value.x !== 0 && aiSelectionBarPosition.value.y !== 0
-);
+const { aiSelectionBarPosition, aiSelectionBarShow } =
+  toRefs(useAISelectionBar());
 
 const aiSelectionBarRef = useTemplateRef<HTMLDivElement>("aiSelectionBarRef");
 

@@ -8,6 +8,15 @@
   --n-border-disabled: none !important;
   background-color: transparent !important;
 }
+
+.cursor-pointer .n-input input,
+.cursor-pointer .n-input__textarea,
+.cursor-pointer .n-input__wrapper,
+.cursor-pointer .n-input__border,
+.cursor-pointer .n-input__state-border {
+  cursor: pointer !important;
+}
+
 .n-form-item-label {
   font-weight: 500 !important;
 }

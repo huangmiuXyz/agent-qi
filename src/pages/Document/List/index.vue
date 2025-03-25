@@ -23,7 +23,7 @@
         <template #default="{ item }">
           <div
             :class="{ 'bg-document-list-active': nowSectionId === item.id }"
-            class="reset-naive-input hover:bg-document-list-active rounded-md"
+            class="reset-naive-input cursor-pointer hover:bg-document-list-active rounded-md mt-1"
             @click="setNowSectionId(item.id)"
             @dblclick="sectionsTitleReadonly = false"
             :key="item.id"
