@@ -1,14 +1,10 @@
 <template>
   <Transition name="fade">
-    <div
-      v-show="aiSelectionBarShow"
-      ref="aiSelectionBarRef"
-      class="bg-ai-selection-bar shadow-ai-selection-bar flex items-center absolute w-100 h-10 rounded-lg pl-2"
-      :style="{
+    <div v-show="aiSelectionBarShow" ref="aiSelectionBarRef"
+      class="bg-ai-selection-bar shadow-ai-selection-bar flex items-center absolute w-100 h-10 rounded-lg pl-2" :style="{
         left: aiSelectionBarPosition.x + 'px',
         top: aiSelectionBarPosition.y + 'px',
-      }"
-    >
+      }">
       <div @click="onAskAI" class="ui-button-ai">Ask AI</div>
     </div>
   </Transition>
@@ -40,6 +36,5 @@ const onAskAI = () => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-  transform: translateY(10px);
 }
 </style>
