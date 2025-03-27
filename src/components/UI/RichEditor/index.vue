@@ -8,6 +8,7 @@ import Document from "@tiptap/extension-document";
 import Paragraph from "@tiptap/extension-paragraph";
 import Text from "@tiptap/extension-text";
 import Placeholder from "@tiptap/extension-placeholder";
+import { Mark } from "@tiptap/core";
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import { useAISelectionBar } from "@/composable";
 
@@ -25,12 +26,33 @@ const { setAiSelectionBarPosition, setAiSelectionBarShow } =
 
 const defaultPlaceholder = computed(() => props.placeholder || "开始输入...");
 
+const Span = Mark.create({
+  name: "span",
+  parseHTML() {
+    return [
+      {
+        tag: "span",
+        getAttrs: (node) => {
+          if (typeof node === "string") return {};
+          return {
+            class: node.getAttribute("class"),
+          };
+        },
+      },
+    ];
+  },
+  renderHTML({ HTMLAttributes }) {
+    return ["span", { ...HTMLAttributes, class: "select-data" }, 0];
+  },
+});
+
 const editor = useEditor({
   content: modelValue.value,
   extensions: [
     Document,
     Paragraph,
     Text,
+    Span,
     Placeholder.configure({
       placeholder: defaultPlaceholder.value,
     }),
@@ -45,7 +67,39 @@ const editor = useEditor({
 
     if (!selectionText) {
       resetAiSelectionBarPosition();
+      editor
+        .chain()
+        .command(({ tr }) => {
+          const mark = editor.schema.marks.span;
+          if (!mark) return false;
+          editor.state.doc.descendants((node, pos) => {
+            if (node.isText) {
+              tr.removeMark(pos, pos + node.nodeSize, mark);
+            }
+          });
+          return true;
+        })
+        .run();
+      return;
     }
+
+    const { from, to } = editor.state.selection;
+    editor
+      .chain()
+      .command(({ tr }) => {
+        const mark = editor.schema.marks.span;
+        if (!mark) return false;
+
+        editor.state.doc.descendants((node, pos) => {
+          if (node.isText) {
+            tr.removeMark(pos, pos + node.nodeSize, mark);
+          }
+        });
+
+        tr.addMark(from, to, mark.create());
+        return true;
+      })
+      .run();
   },
   onUpdate: ({ editor }) => {
     updateModelValue(editor);
@@ -124,6 +178,22 @@ defineExpose({
   setContent: (content: string) => {
     editor.value?.commands.setContent(content, false);
   },
+  wrapSelectionWithSpan: () => {
+    if (!editor.value) return;
+
+    const { from, to } = editor.value.state.selection;
+    if (from === to) return;
+
+    editor.value
+      .chain()
+      .command(({ tr }) => {
+        const mark = editor.value?.schema.marks.span;
+        if (!mark) return false;
+        tr.addMark(from, to, mark.create());
+        return true;
+      })
+      .run();
+  },
 });
 </script>
 
@@ -137,14 +207,16 @@ defineExpose({
   flex-direction: column;
   width: 100%;
 }
-
+.select-data {
+  background-color: var(--color-bg-selection-richEditor);
+}
 .ProseMirror p {
   line-height: v-bind(lineHeight);
   color: var(--color-textColor-selection-richEditor);
 }
 
 .ProseMirror ::selection {
-  background: var(--color-bg-selection-richEditor);
+  background: transparent;
 }
 
 .ProseMirror p.is-editor-empty:first-child::before {
