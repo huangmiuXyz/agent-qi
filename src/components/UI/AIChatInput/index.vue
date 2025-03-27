@@ -11,7 +11,7 @@
         id="ai-chat-input"
         type="text"
         v-model="message"
-        class="flex-1 py-3 px-5 rounded-full border-0 focus:outline-none focus:ring-0 bg-transparent"
+        class="w-100 flex-1 py-3 px-5 rounded-full border-0 focus:outline-none focus:ring-0 bg-transparent"
         :style="{
           color: 'var(--color-ai-chat-input-text)',
         }"

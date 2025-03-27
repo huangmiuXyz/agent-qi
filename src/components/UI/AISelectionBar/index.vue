@@ -42,7 +42,10 @@
       class="absolute"
       :style="{
         left: aiSelectionBarPosition.x + 'px',
-        top: aiSelectionBarPosition.y + 'px',
+        top:
+          aiSelectionBarPosition.type === 'top'
+            ? aiSelectionBarPosition.y - 12 + 'px'
+            : aiSelectionBarPosition.y + 'px',
       }"
     />
   </Transition>

@@ -1,6 +1,7 @@
 const aiSelectionBarPosition = ref({
     x: 0,
     y: 0,
+    type: "top",
 });
 const aiSelectionBarShow = ref(false);
 const aiChatInputShow = ref(false);
