@@ -26,8 +26,20 @@ body,
   --color-form: #fff;
   --color-document-list: #fff;
   --color-document-list-active: #f5f5f3;
+
+  /* AI Selection Bar */
   --color-ai-selection-bar: #fff;
   --shadow-ai-selection-bar: 0 0 10px rgba(0, 0, 0, 0.1);
+  --color-ai-selection-bar-border: #e8e9e9;
+  --color-ai-selection-bar-text: #000;
+
+  /* AI Chat Input */
+  --color-ai-chat-input-bg: #fff;
+  --shadow-ai-chat-input: 0 1px 40px rgba(0, 0, 0, 0.04);
+  --color-ai-chat-input-text: #000;
+  --color-ai-chat-input-placeholder: #adb5bd;
+  --color-ai-chat-send-button-bg: #000;
+  --color-ai-chat-send-button-text: #fff;
 }
 .dark {
   --color-sidebar: #444545;
@@ -48,8 +60,20 @@ body,
   --color-form: #262626;
   --color-document-list: #1a1a1a;
   --color-document-list-active: #262626;
+
+  /* AI Selection Bar */
   --color-ai-selection-bar: #262626;
   --shadow-ai-selection-bar: 0 0 10px rgba(0, 0, 0, 0.1);
+  --color-ai-selection-bar-border: #2a2a2a;
+  --color-ai-selection-bar-text: #fff;
+
+  /* AI Chat Input */
+  --color-ai-chat-input-bg: #262626;
+  --shadow-ai-chat-input: 0 1px 40px rgba(0, 0, 0, 0.2);
+  --color-ai-chat-input-text: #fff;
+  --color-ai-chat-input-placeholder: #666666;
+  --color-ai-chat-send-button-bg: #fff;
+  --color-ai-chat-send-button-text: #262626;
 }
 
 .n-icon-slot {

@@ -36,6 +36,7 @@ declare module 'vue' {
     SettingsMenus: typeof import('./../pages/Settings/Menus/index.vue')['default']
     SettingsMenusItem: typeof import('./../pages/Settings/Menus/Item/index.vue')['default']
     SettingsTitleBar: typeof import('./../pages/Settings/TitleBar/index.vue')['default']
+    UIAIChatInput: typeof import('./../components/UI/AIChatInput/index.vue')['default']
     UIAISelectionBar: typeof import('./../components/UI/AISelectionBar/index.vue')['default']
     UIButton: typeof import('./../components/UI/Button/index.vue')['default']
     UICard: typeof import('./../components/UI/Card/index.vue')['default']
