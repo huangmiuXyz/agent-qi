@@ -139,15 +139,21 @@ const setAiSelectionBarPositionHandler = () => {
 
     const selection = window.getSelection();
     if (!selection || selection.rangeCount === 0) return;
-
-    const range = selection.getRangeAt(0);
-    const rect = range.getBoundingClientRect();
-    const yPosition = rect.top - 50 < 50 ? rect.bottom : rect.top - 55;
-
-    setAiSelectionBarPosition({
-      y: yPosition,
-      x: rect.left,
-    });
+    const selectDatas = Array.from(document.querySelectorAll(".select-data"));
+    const firstRect = selectDatas[0].getBoundingClientRect();
+    const lastRect =
+      selectDatas[selectDatas.length - 1].getBoundingClientRect();
+    if (firstRect.top - 50 < 50) {
+      setAiSelectionBarPosition({
+        y: lastRect.bottom + 2,
+        x: firstRect.left,
+      });
+    } else {
+      setAiSelectionBarPosition({
+        y: firstRect.top - 40,
+        x: firstRect.left,
+      });
+    }
   });
 };
 onMounted(() => {
