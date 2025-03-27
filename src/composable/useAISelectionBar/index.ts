@@ -6,7 +6,7 @@ const aiSelectionBarShow = ref(false);
 const aiChatInputShow = ref(false);
 export const useAISelectionBar = () => {
 
-    const setAiSelectionBarPosition = async (position: { x: number; y: number }) => {
+    const setAiSelectionBarPosition = async (position: { x: number; y: number; type: "top" | "bottom" }) => {
         aiSelectionBarPosition.value = position;
         await nextTick()
         setAiSelectionBarShow(true);

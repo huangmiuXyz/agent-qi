@@ -147,11 +147,13 @@ const setAiSelectionBarPositionHandler = () => {
       setAiSelectionBarPosition({
         y: lastRect.bottom + 2,
         x: firstRect.left,
+        type: "bottom",
       });
     } else {
       setAiSelectionBarPosition({
         y: firstRect.top - 40,
         x: firstRect.left,
+        type: "top",
       });
     }
   });
