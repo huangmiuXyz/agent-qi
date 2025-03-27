@@ -8,10 +8,13 @@
       }"
     >
       <UISelect
-        class="w-35"
+        class="w-30"
         placeholder="选择模型"
         v-model="selectedModel"
         no-style
+        :options="modalSenderOptions"
+        filterable
+        :consistent-menu-width="false"
       ></UISelect>
 
       <UIInput
@@ -51,17 +54,12 @@
 </template>
 
 <script lang="ts" setup>
+import { storeToRefs } from "pinia";
+
 const message = ref("");
 const selectedModel = ref("chat");
-
-const sendMessage = () => {
-  if (message.value.trim()) {
-    console.log("Message sent:", message.value);
-    console.log("Selected model:", selectedModel.value);
-    // Emit event or call API here
-    message.value = "";
-  }
-};
+const { modalSenderOptions } = storeToRefs(settingsStore());
+const sendMessage = () => {};
 </script>
 
 <style scoped>

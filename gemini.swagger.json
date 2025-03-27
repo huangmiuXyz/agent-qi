@@ -1,0 +1,524 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Google Gemini copy",
+    "description": "Gemini 是谷歌公司发布的人工智能大模型，能够在从数据中心到移动设备等不同平台上运行。",
+    "version": "1.0.0"
+  },
+  "tags": [],
+  "paths": {
+    "/v1/models/gemini-pro:generateContent": {
+      "post": {
+        "summary": "纯文字输入",
+        "deprecated": false,
+        "description": "Gemini API 还可处理纯文字输入。借助此功能，您可以执行自然语言处理 (NLP) 任务，例如文本补全和摘要。\n\n",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "example": "{{API_KEY}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "contents": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "parts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "text": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "contents"
+                ]
+              },
+              "example": {
+                "contents": [
+                  {
+                    "parts": [
+                      {
+                        "text": "广东省的省会是哪里"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "candidates": [
+                    {
+                      "content": {
+                        "parts": [
+                          {
+                            "text": "广州市"
+                          }
+                        ],
+                        "role": "model"
+                      },
+                      "finishReason": "STOP",
+                      "index": 0,
+                      "safetyRatings": [
+                        {
+                          "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                          "probability": "NEGLIGIBLE"
+                        },
+                        {
+                          "category": "HARM_CATEGORY_HATE_SPEECH",
+                          "probability": "NEGLIGIBLE"
+                        },
+                        {
+                          "category": "HARM_CATEGORY_HARASSMENT",
+                          "probability": "NEGLIGIBLE"
+                        },
+                        {
+                          "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                          "probability": "NEGLIGIBLE"
+                        }
+                      ]
+                    }
+                  ],
+                  "promptFeedback": {
+                    "safetyRatings": [
+                      {
+                        "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                        "probability": "NEGLIGIBLE"
+                      },
+                      {
+                        "category": "HARM_CATEGORY_HATE_SPEECH",
+                        "probability": "NEGLIGIBLE"
+                      },
+                      {
+                        "category": "HARM_CATEGORY_HARASSMENT",
+                        "probability": "NEGLIGIBLE"
+                      },
+                      {
+                        "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                        "probability": "NEGLIGIBLE"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/v1beta/models/gemini-pro:generateContent": {
+      "post": {
+        "summary": "多轮对话（聊天）",
+        "deprecated": false,
+        "description": "您可以使用 Gemini API 为您的用户打造互动式聊天体验。 借助此 API 的聊天功能，您可以收集多轮问题和回复，从而支持用户逐步寻找答案，或获得有关多部分问题的帮助。此功能非常适合需要持续通信的应用，例如聊天机器人、互动式导师或客户服务助理。\n\n",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "{{API_KEY }}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "contents": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "role": {
+                          "type": "string",
+                          "description": "必须是“user”或“model”。"
+                        },
+                        "parts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "text": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "text"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "role",
+                        "parts"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "contents"
+                ]
+              },
+              "example": {
+                "contents": [
+                  {
+                    "role": "user",
+                    "parts": [
+                      {
+                        "text": "广东省省会是哪里"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/v1/models/gemini-pro:streamGenerateContent": {
+      "post": {
+        "summary": "流式传输",
+        "deprecated": false,
+        "description": "Gemini API 提供了另一种从生成式 AI 模型接收响应的方式：以数据流的形式接收。流式响应在模型生成增量数据时，会将这些数据发送回您的应用。借助此功能，您可以快速响应用户请求以显示进度，并打造更具互动性的体验。\n\n",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "{{API_KEY}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "contents": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "role": {
+                          "type": "string",
+                          "description": "必须是“user”或“model”。"
+                        },
+                        "parts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "text": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "contents"
+                ]
+              },
+              "example": {
+                "contents": [
+                  {
+                    "role": "user",
+                    "parts": [
+                      {
+                        "text": "广东省省会是哪里？"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                },
+                "example": [
+                  {
+                    "candidates": [
+                      {
+                        "content": {
+                          "parts": [
+                            {
+                              "text": "广州市"
+                            }
+                          ],
+                          "role": "model"
+                        },
+                        "finishReason": "STOP",
+                        "index": 0,
+                        "safetyRatings": [
+                          {
+                            "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                            "probability": "NEGLIGIBLE"
+                          },
+                          {
+                            "category": "HARM_CATEGORY_HATE_SPEECH",
+                            "probability": "NEGLIGIBLE"
+                          },
+                          {
+                            "category": "HARM_CATEGORY_HARASSMENT",
+                            "probability": "NEGLIGIBLE"
+                          },
+                          {
+                            "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                            "probability": "NEGLIGIBLE"
+                          }
+                        ]
+                      }
+                    ],
+                    "promptFeedback": {
+                      "safetyRatings": [
+                        {
+                          "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                          "probability": "NEGLIGIBLE"
+                        },
+                        {
+                          "category": "HARM_CATEGORY_HATE_SPEECH",
+                          "probability": "NEGLIGIBLE"
+                        },
+                        {
+                          "category": "HARM_CATEGORY_HARASSMENT",
+                          "probability": "NEGLIGIBLE"
+                        },
+                        {
+                          "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                          "probability": "NEGLIGIBLE"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/v1/models/gemini-pro-vision:GenerateContent": {
+      "post": {
+        "summary": "文本和图片输入",
+        "deprecated": true,
+        "description": "您可以向 `gemini-pro-vision` 模型发送包含图片的文本提示，以执行与视觉相关的任务。例如，为图片添加说明或识别图片中的内容。\n\n**注意** ：您不能向 `gemini-pro-vision` 模型发送纯文本提示。请为纯文本提示使用 `gemini-pro` 模型。",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "{{API_KEY}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "contents": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "parts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "text": {
+                                "type": "string"
+                              },
+                              "inlineData": {
+                                "type": "object",
+                                "properties": {
+                                  "mimeType": {
+                                    "type": "string"
+                                  },
+                                  "data": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "mimeType",
+                                  "data"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "contents"
+                ]
+              },
+              "example": {
+                "contents": [
+                  {
+                    "parts": [
+                      {
+                        "text": "Do these look store-bought or homemade?"
+                      },
+                      {
+                        "inlineData": {
+                          "mimeType": "image/png",
+                          "data": "'$(base64 -w0 cookie.png)'"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {}
+  },
+  "servers": [],
+  "security": []
+}

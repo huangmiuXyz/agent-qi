@@ -1,3 +1,4 @@
+import { SelectMixedOption } from "naive-ui/es/select/src/interface";
 import { defineStore } from "pinia";
 export const settingsStore = defineStore("settings", () => {
   const isDark = ref<boolean>(false);
@@ -19,6 +20,24 @@ export const settingsStore = defineStore("settings", () => {
       ],
       nowProvides: "openai",
     },
+  });
+  const modalSenderOptions = computed(() => {
+    const result: SelectMixedOption[] = [];
+    for (const provider of settings.value.aiSetting.value) {
+      result.push({
+        label: provider.PROVIDES,
+        value: provider.PROVIDES,
+        disabled: true,
+      });
+
+      for (const model of provider.MODELS) {
+        result.push({
+          label: model,
+          value: model,
+        });
+      }
+    }
+    return result;
   });
   const getAllSettings = computed({
     get: () => settings.value,
@@ -53,5 +72,6 @@ export const settingsStore = defineStore("settings", () => {
     setSetting,
     getSetting,
     getNowProvidesSetting,
+    modalSenderOptions,
   };
 });

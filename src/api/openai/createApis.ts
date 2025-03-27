@@ -64,13 +64,13 @@ const createFunctionalProxy = (array: (string | symbol)[], alovaInstance: Alova<
 };
 
 export const createApis = (alovaInstance: Alova<AlovaGenerics>, configMap: any) => {
-  const Apis = new Proxy({} as Apis, {
+  const Apis = new Proxy({} as Openais, {
     get(_, property) {
       return createFunctionalProxy([property], alovaInstance, configMap);
     }
   });
   // define global variable `Apis`
-  (globalThis as any).Apis = Apis;
+  (globalThis as any).Openais = Apis;
   return Apis;
 };
 type MethodConfig<T> = AlovaMethodCreateConfig<
@@ -78,10 +78,10 @@ type MethodConfig<T> = AlovaMethodCreateConfig<
   any,
   T
 >;
-type APISofParameters<Tag extends string, Url extends string> = Tag extends keyof Apis
-  ? Url extends keyof Apis[Tag]
-    ? Apis[Tag][Url] extends (...args: any) => any
-      ? Parameters<Apis[Tag][Url]>
+type APISofParameters<Tag extends string, Url extends string> = Tag extends keyof Openais
+  ? Url extends keyof Openais[Tag]
+    ? Openais[Tag][Url] extends (...args: any) => any
+      ? Parameters<Openais[Tag][Url]>
       : any
     : any
   : any;

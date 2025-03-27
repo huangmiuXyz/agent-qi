@@ -36,15 +36,15 @@ type Alova2MethodConfig<Responded> =
       infer SE
     >
   >
-  ? Omit<
-    AlovaMethodCreateConfig<
-      AlovaGenerics<Responded, any, RequestConfig, Response, ResponseHeader, L1Cache, L2Cache, SE>,
-      any,
-      Responded
-    >,
-    'params'
-  >
-  : never;
+    ? Omit<
+        AlovaMethodCreateConfig<
+          AlovaGenerics<Responded, any, RequestConfig, Response, ResponseHeader, L1Cache, L2Cache, SE>,
+          any,
+          Responded
+        >,
+        'params'
+      >
+    : never;
 
 // Extract the return type of transform function that define in $$userConfigMap, if it not exists, use the default type.
 type ExtractUserDefinedTransformed<
@@ -52,8 +52,8 @@ type ExtractUserDefinedTransformed<
   Default
 > = DefinitionKey extends keyof UserMethodConfigMap
   ? UserMethodConfigMap[DefinitionKey]['transform'] extends (...args: any[]) => any
-  ? Awaited<ReturnType<UserMethodConfigMap[DefinitionKey]['transform']>>
-  : Default
+    ? Awaited<ReturnType<UserMethodConfigMap[DefinitionKey]['transform']>>
+    : Default
   : Default;
 type Alova2Method<
   Responded,
@@ -72,26 +72,26 @@ type Alova2Method<
       infer SE
     >
   >
-  ? Method<
-    AlovaGenerics<
-      CurrentConfig extends undefined
-      ? ExtractUserDefinedTransformed<DefinitionKey, Responded>
-      : CurrentConfig['transform'] extends (...args: any[]) => any
-      ? Awaited<ReturnType<CurrentConfig['transform']>>
-      : ExtractUserDefinedTransformed<DefinitionKey, Responded>,
-      any,
-      RequestConfig,
-      Response,
-      ResponseHeader,
-      L1Cache,
-      L2Cache,
-      SE
-    >
-  >
-  : never;
+    ? Method<
+        AlovaGenerics<
+          CurrentConfig extends undefined
+            ? ExtractUserDefinedTransformed<DefinitionKey, Responded>
+            : CurrentConfig['transform'] extends (...args: any[]) => any
+              ? Awaited<ReturnType<CurrentConfig['transform']>>
+              : ExtractUserDefinedTransformed<DefinitionKey, Responded>,
+          any,
+          RequestConfig,
+          Response,
+          ResponseHeader,
+          L1Cache,
+          L2Cache,
+          SE
+        >
+      >
+    : never;
 
 declare global {
-  interface Apis {
+  interface Openais {
     general: {
       /**
        * ---
@@ -8429,5 +8429,5 @@ declare global {
     };
   }
 
-  var Apis: Apis;
+  var Openais: Openais;
 }

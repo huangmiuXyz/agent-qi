@@ -1,4 +1,4 @@
-import '@/api'
+import '@/api/openai'
 export const openAiService = () => {
     return {
         getModel: AIF({
@@ -9,7 +9,7 @@ export const openAiService = () => {
             type: 'remote-api',
             category: 'setting'
         }, () => {
-            return Apis.general.get_v1_models()
+            return Openais.general.get_v1_models()
         }),
     }
 };
