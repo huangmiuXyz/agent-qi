@@ -40,6 +40,7 @@ body,
   --color-ai-chat-input-placeholder: #adb5bd;
   --color-ai-chat-send-button-bg: #000;
   --color-ai-chat-send-button-text: #fff;
+  --shadow-ai-chat-input: 0 1px 40px rgba(0, 0, 0, 0.1);
 }
 .dark {
   --color-sidebar: #444545;
@@ -74,6 +75,7 @@ body,
   --color-ai-chat-input-placeholder: #666666;
   --color-ai-chat-send-button-bg: #fff;
   --color-ai-chat-send-button-text: #262626;
+  --shadow-ai-chat-input: 0 1px 40px rgba(0, 0, 0, 0.2);
 }
 
 .n-icon-slot {
