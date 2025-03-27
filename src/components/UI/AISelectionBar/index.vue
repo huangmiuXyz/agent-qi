@@ -67,7 +67,7 @@ onMounted(() => {
 const onAskAI = () => {
   setAiChatInputShow(true);
   nextTick(() => {
-    document.getElementById("ai-chat-input")?.focus();
+    document.getElementById("ai-chat-input")?.querySelector("input")?.focus();
   });
 };
 </script>

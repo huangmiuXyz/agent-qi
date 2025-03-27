@@ -42,7 +42,7 @@
 
 <script setup lang="ts">
 import { LabelPlacement } from "naive-ui/es/form/src/interface";
-import { VNode } from "vue";
+
 defineProps<{
   schemas: FormSchema<SettingsFormKey>[];
   labelPlacement: LabelPlacement;

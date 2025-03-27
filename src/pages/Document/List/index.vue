@@ -23,12 +23,13 @@
         <template #default="{ item }">
           <div
             :class="{ 'bg-document-list-active': nowSectionId === item.id }"
-            class="reset-naive-input cursor-pointer hover:bg-document-list-active rounded-md mt-1"
+            class="cursor-pointer hover:bg-document-list-active rounded-md mt-1"
             @click="setSectionId(item.id)"
             @dblclick="sectionsTitleReadonly = false"
             :key="item.id"
           >
             <UIInput
+              no-style
               @blur="sectionsTitleReadonly = true"
               :readonly="sectionsTitleReadonly"
               size="small"

@@ -39,6 +39,11 @@ export const settingsStore = defineStore("settings", () => {
   ) => {
     return settings.value[key][field];
   };
+  const getNowProvidesSetting = () => {
+    return settings.value.aiSetting.value.find(
+      (item) => item.PROVIDES === settings.value.aiSetting.nowProvides
+    );
+  };
   return {
     isDark,
     settings,
@@ -47,5 +52,6 @@ export const settingsStore = defineStore("settings", () => {
     getAllSettings,
     setSetting,
     getSetting,
+    getNowProvidesSetting,
   };
 });

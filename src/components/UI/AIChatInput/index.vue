@@ -1,29 +1,35 @@
 <template>
   <div class="shadow-ai-chat-input rounded-lg">
     <div
-      class="relative flex items-center rounded-lg shadow-sm transition-all duration-300 focus-within:ring-2 focus-within:ring-opacity-25"
+      class="p-2 relative flex items-center rounded-lg shadow-sm transition-all duration-300 focus-within:ring-2 focus-within:ring-opacity-25"
       :style="{
         backgroundColor: 'var(--color-ai-chat-input-bg)',
         boxShadow: 'var(--shadow-ai-chat-input)',
       }"
     >
-      <input
+      <UISelect
+        class="w-35"
+        placeholder="选择模型"
+        v-model="selectedModel"
+        no-style
+      ></UISelect>
+
+      <UIInput
+        no-style
+        class="w-100"
         id="ai-chat-input"
         type="text"
-        v-model="message"
-        class="w-100 flex-1 py-3 px-5 rounded-full border-0 focus:outline-none focus:ring-0 bg-transparent"
-        :style="{
-          color: 'var(--color-ai-chat-input-text)',
-        }"
+        v-model:value="message"
         placeholder="输入你想问的..."
         @keydown.enter="sendMessage"
       />
-      <button
-        class="flex items-center justify-center w-8 h-8 mr-2 rounded-full transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+      <UIButton
+        class="flex items-center justify-center min-w-8 h-8 rounded-full transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
         :style="{
           backgroundColor: 'var(--color-ai-chat-send-button-bg)',
           color: 'var(--color-ai-chat-send-button-text)',
         }"
+        circle
         @click="sendMessage"
       >
         <svg
@@ -39,19 +45,19 @@
           <line x1="22" y1="2" x2="11" y2="13"></line>
           <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
         </svg>
-      </button>
+      </UIButton>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-
 const message = ref("");
+const selectedModel = ref("chat");
 
 const sendMessage = () => {
   if (message.value.trim()) {
     console.log("Message sent:", message.value);
+    console.log("Selected model:", selectedModel.value);
     // Emit event or call API here
     message.value = "";
   }
@@ -61,5 +67,14 @@ const sendMessage = () => {
 <style scoped>
 input::placeholder {
   color: var(--color-ai-chat-input-placeholder);
+}
+
+select option {
+  background-color: var(--color-ai-chat-input-bg);
+  color: var(--color-ai-chat-input-text);
+}
+
+.relative:hover select {
+  opacity: 0.8;
 }
 </style>

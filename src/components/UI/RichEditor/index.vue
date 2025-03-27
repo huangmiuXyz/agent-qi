@@ -9,8 +9,6 @@ import Paragraph from "@tiptap/extension-paragraph";
 import Text from "@tiptap/extension-text";
 import Placeholder from "@tiptap/extension-placeholder";
 import { Mark } from "@tiptap/core";
-import { ref, computed, onMounted, onBeforeUnmount } from "vue";
-import { useAISelectionBar } from "@/composable";
 
 interface Props {
   placeholder?: string;
