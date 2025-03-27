@@ -135,10 +135,7 @@ const setAiSelectionBarPositionHandler = () => {
       editor.value.state.selection.to
     );
 
-    if (!selectionText) {
-      resetAiSelectionBarPosition();
-      return;
-    }
+    if (!selectionText) return;
 
     const selection = window.getSelection();
     if (!selection || selection.rangeCount === 0) return;
