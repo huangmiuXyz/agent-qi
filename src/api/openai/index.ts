@@ -4,7 +4,6 @@ import vueHook from 'alova/vue';
 import { createApis, withConfigType } from './createApis';
 
 export const alovaInstance = createAlova({
-  baseURL: 'https://api.openai.com/v1',
   statesHook: vueHook,
   requestAdapter: fetchAdapter(),
   beforeRequest: method => {
