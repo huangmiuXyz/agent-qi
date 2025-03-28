@@ -1,5 +1,5 @@
 <template>
-  <div @click="handleClick">
+  <div :class="{ 'reset-naive-button': props.noStyle }" @click="handleClick">
     <n-button
       :render-icon="icon"
       v-bind="$attrs"
