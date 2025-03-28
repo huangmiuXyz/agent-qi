@@ -54,12 +54,12 @@ declare global {
         general: {},
         function: {},
         aiSetting: {
-            value: [{
+            value: {
                 API_KEY: string,
                 API_URL: string,
                 MODELS: string[]
                 PROVIDES: PROVIDES
-            }],
+            }[],
             nowProvides: PROVIDES
         }
     }
