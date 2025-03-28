@@ -1,5 +1,5 @@
 <template>
-  <editor-content class="select-none" :editor="editor" />
+  <editor-content class="select-none text-base" :editor="editor" />
 </template>
 
 <script setup lang="ts">
@@ -15,6 +15,8 @@ interface Props {
   placeholder?: string;
   disableEnter?: boolean;
   id: string;
+  showWordCount?: boolean;
+  fontSize?: number;
 }
 
 const props = defineProps<Props>();
@@ -44,6 +46,13 @@ const Span = Mark.create({
     return ["span", { ...HTMLAttributes, class: "select-data" }, 0];
   },
 });
+
+const wordCount = ref(0);
+
+const updateWordCount = (editor: any) => {
+  const text = editor.getText();
+  wordCount.value = text.trim() ? text.trim().split(/\s+/).length : 0;
+};
 
 const editor = useEditor({
   content: modelValue.value,
@@ -103,6 +112,7 @@ const editor = useEditor({
   },
   onUpdate: ({ editor }) => {
     updateModelValue(editor);
+    updateWordCount(editor);
   },
   autofocus: true,
 });
@@ -211,6 +221,7 @@ defineExpose({
   display: table;
   flex-direction: column;
   width: 100%;
+  font-size: v-bind(fontSize + "px");
 }
 
 .select-data {

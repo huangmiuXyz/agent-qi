@@ -17,6 +17,7 @@
     "@tauri-apps/plugin-opener": "^2",
     "@tauri-apps/plugin-os": "~2",
     "@tiptap/core": "3.0.0-next.4",
+    "@tiptap/extension-character-count": "3.0.0-next.4",
     "@tiptap/extension-document": "3.0.0-next.4",
     "@tiptap/extension-history": "3.0.0-next.4",
     "@tiptap/extension-paragraph": "3.0.0-next.4",
