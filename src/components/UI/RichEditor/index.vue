@@ -8,6 +8,7 @@ import Document from "@tiptap/extension-document";
 import Paragraph from "@tiptap/extension-paragraph";
 import Text from "@tiptap/extension-text";
 import Placeholder from "@tiptap/extension-placeholder";
+import History from '@tiptap/extension-history';
 import { Mark } from "@tiptap/core";
 
 interface Props {
@@ -54,6 +55,7 @@ const editor = useEditor({
     Placeholder.configure({
       placeholder: defaultPlaceholder.value,
     }),
+    History,
   ],
   editable: true,
   injectCSS: false,
@@ -210,9 +212,11 @@ defineExpose({
   flex-direction: column;
   width: 100%;
 }
+
 .select-data {
   background-color: var(--color-bg-selection-richEditor);
 }
+
 .ProseMirror p {
   line-height: v-bind(lineHeight);
   color: var(--color-textColor-selection-richEditor);

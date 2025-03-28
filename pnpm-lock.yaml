@@ -26,6 +26,9 @@ importers:
       '@tiptap/extension-document':
         specifier: 3.0.0-next.4
         version: 3.0.0-next.4(@tiptap/core@3.0.0-next.4(@tiptap/pm@3.0.0-next.4))
+      '@tiptap/extension-history':
+        specifier: 3.0.0-next.4
+        version: 3.0.0-next.4(@tiptap/core@3.0.0-next.4(@tiptap/pm@3.0.0-next.4))(@tiptap/pm@3.0.0-next.4)
       '@tiptap/extension-paragraph':
         specifier: 3.0.0-next.4
         version: 3.0.0-next.4(@tiptap/core@3.0.0-next.4(@tiptap/pm@3.0.0-next.4))
