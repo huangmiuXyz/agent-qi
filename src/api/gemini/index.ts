@@ -8,14 +8,15 @@ export const alovaInstance = createAlova({
   statesHook: vueHook,
   requestAdapter: fetchAdapter(),
   beforeRequest: method => {
+    console.log(method);
     if (!method.baseURL) {
       method.url = settingsStore(piniaInstance).getNowProvidesSetting()?.API_URL + method.url
     }
+
   },
   responded: res => {
     return res.json();
   },
-
 });
 
 export const $$userConfigMap = withConfigType({});

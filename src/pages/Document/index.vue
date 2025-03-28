@@ -11,6 +11,7 @@
         class="title-input w-full bg-transparent outline-none"
         :disableEnter="true"
         ref="titleEditorRef"
+        id="titleEditor"
       />
       <div class="divider mb-4"></div>
       <UIRichEditor
@@ -31,6 +32,9 @@ import { storeToRefs } from "pinia";
 import UIRichEditor from "@/components/UI/RichEditor/index.vue";
 const { document, nowDocumentIndex, nowSectionIndex } =
   storeToRefs(documentStore());
+
+const { aiSelectionBarPosition, aiSelectionBarShow, aiChatInputShow } =
+  storeToRefs(useAISelectionBar());
 
 const titleEditorRef = useTemplateRef("titleEditorRef");
 const sectionEditorRef = useTemplateRef("sectionEditorRef");

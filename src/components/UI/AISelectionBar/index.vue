@@ -52,9 +52,12 @@
 </template>
 
 <script lang="ts" setup>
-const { aiSelectionBarPosition, aiSelectionBarShow, aiChatInputShow } =
-  toRefs(useAISelectionBar());
-const { setAiChatInputShow } = useAISelectionBar();
+const {
+  aiSelectionBarPosition,
+  aiSelectionBarShow,
+  aiChatInputShow,
+  setAiChatInputShow,
+} = useAISelectionBar();
 
 const aiSelectionBarRef = useTemplateRef<HTMLDivElement>("aiSelectionBarRef");
 
