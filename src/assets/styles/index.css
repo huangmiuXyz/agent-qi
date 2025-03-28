@@ -47,7 +47,7 @@ textarea {
   opacity: 0.9;
 }
 .n-card-header {
-  display: none;
+  display: none !important;
 }
 .n-card-header__main {
   display: none;
