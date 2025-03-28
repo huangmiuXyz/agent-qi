@@ -8,7 +8,10 @@ export const alovaInstance = createAlova({
   requestAdapter: fetchAdapter(),
   beforeRequest: method => {
     if (!method.baseURL) {
-      method.url = settingsStore(piniaInstance).getNowProvidesSetting()?.API_URL + method.url
+      method.url =
+        settingsStore(piniaInstance).getNowProvidesSetting()?.API_URL +
+        method.url;
+      method.config.headers.Authorization = `Bearer ${settingsStore(piniaInstance).getNowProvidesSetting()?.API_KEY}`;
     }
   },
   responded: res => {

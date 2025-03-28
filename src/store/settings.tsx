@@ -72,7 +72,33 @@ export const settingsStore = defineStore("settings", () => {
       (item) => item.PROVIDES === settings.value.aiSetting.nowProvides
     );
   };
+  const aiBarChatNowSelectModel = ref<string>("");
+  const setAiBarChatNowSelectModel = AIF(
+    {
+      name: "设置AI聊天框当前选中的模型",
+      command: "aiBarChatNowSelectModel",
+      description: "设置AI聊天框当前选中的模型",
+      params: [
+        {
+          type: "string",
+          description: `设置AI聊天框当前选中的模型仅能从${
+            settings.value.aiSetting.value.find(
+              (item) => item.PROVIDES === settings.value.aiSetting.nowProvides
+            )?.MODELS
+          }中选择`,
+          required: true,
+        },
+      ],
+      windowLabel: "main",
+      category: "document",
+      type: "local-function",
+    },
+    (value: string) => {
+      aiBarChatNowSelectModel.value = value;
+    }
+  );
   return {
+    setAiBarChatNowSelectModel,
     isDark,
     settings,
     setDark,
@@ -82,5 +108,6 @@ export const settingsStore = defineStore("settings", () => {
     getSetting,
     getNowProvidesSetting,
     modalSenderOptions,
+    aiBarChatNowSelectModel,
   };
 });

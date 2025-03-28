@@ -10,7 +10,7 @@
       <UISelect
         class="w-30"
         placeholder="选择模型"
-        v-model="selectedModel"
+        v-model:value="aiBarChatNowSelectModel"
         no-style
         :options="modalSenderOptions"
         filterable
@@ -57,8 +57,8 @@
 import { storeToRefs } from "pinia";
 
 const message = ref("");
-const selectedModel = ref("chat");
-const { modalSenderOptions } = storeToRefs(settingsStore());
+const { modalSenderOptions, aiBarChatNowSelectModel } =
+  storeToRefs(settingsStore());
 const sendMessage = () => {};
 </script>
 
