@@ -41,6 +41,7 @@ declare module 'vue' {
     UIAISelectionBar: typeof import('./../components/UI/AISelectionBar/index.vue')['default']
     UIButton: typeof import('./../components/UI/Button/index.vue')['default']
     UICard: typeof import('./../components/UI/Card/index.vue')['default']
+    UIChatPlanel: typeof import('./../components/UI/ChatPlanel/index.vue')['default']
     UIForm: typeof import('./../components/UI/Form/index.vue')['default']
     UIInput: typeof import('./../components/UI/Input/index.vue')['default']
     UIRichEditor: typeof import('./../components/UI/RichEditor/index.vue')['default']
