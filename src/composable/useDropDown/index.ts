@@ -10,6 +10,13 @@ export const useDropDown = (options?: []) => {
     if (options) {
         dropDownOptions.value = options
     }
+    const showDropdown = (e: MouseEvent) => {
+        showDropdownRef.value = true
+        position.value = {
+            x: e.clientX,
+            y: e.clientY
+        }
+    }
     const onClickoutside = () => {
         showDropdownRef.value = false
     }
@@ -17,10 +24,11 @@ export const useDropDown = (options?: []) => {
         showDropdownRef.value = false
     }
     return {
-        showDropdown: showDropdownRef,
+        showDropdownRef,
         onClickoutside,
         handleSelect,
         position,
-        dropDownOptions
+        dropDownOptions,
+        showDropdown
     }
 }
