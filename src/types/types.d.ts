@@ -57,6 +57,7 @@ declare global {
             value: {
                 API_KEY: string,
                 API_URL: string,
+                DEFAULT_URL: string,
                 MODELS: string[]
                 PROVIDES: PROVIDES
             }[],

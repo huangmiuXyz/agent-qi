@@ -13,9 +13,18 @@ export const settingsStore = defineStore("settings", () => {
       value: [
         {
           API_KEY: "",
-          API_URL: "",
+          API_URL: "https://api.openai.com",
           MODELS: [],
           PROVIDES: "openai",
+          DEFAULT_URL: "https://api.openai.com",
+        },
+        {
+          API_KEY: "",
+          API_URL: "https://generativelanguage.googleapis.com/v1beta/openai/",
+          DEFAULT_URL:
+            "https://generativelanguage.googleapis.com/v1beta/openai/",
+          MODELS: [],
+          PROVIDES: "gemini",
         },
       ],
       nowProvides: "openai",
